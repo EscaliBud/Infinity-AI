@@ -84,51 +84,8 @@ Membuat gambar dari teks
 Cmd: ${prefix}sc
 Menampilkan source code bot yang dipakai`)
           break;
-        case "ai": case "openai": case "chatgpt": case "ask":
-          try {
-            // tidak perlu diisi apikeynya disini, karena sudah diisi di file key.json
-            if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
-            if (!text) return reply(`Chat dengan AI.\n\nContoh:\n${prefix}${command} Apa itu resesi`);
-            const chatCompletion = await openai.chat.completions.create({
-              messages: [{ role: 'user', content: q }],
-              model: 'gpt-3.5-turbo'
-            });
-          
-            await m.reply(chatCompletion.choices[0].message.content);
-          } catch (error) {
-          if (error.response) {
-            console.log(error.response.status);
-            console.log(error.response.data);
-          } else {
-            console.log(error);
-            m.reply("Maaf, sepertinya ada yang error :"+ error.message);
-          }
-        }
-          break;
-        case "img": case "ai-img": case "image": case "images": case "dall-e": case "dalle":
-          try {
-            // tidak perlu diisi apikeynya disini, karena sudah diisi di file key.json
-            if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
-            if (!text) return reply(`Membuat gambar dari AI.\n\nContoh:\n${prefix}${command} Wooden house on snow mountain`);
-            const image = await openai.images.generate({ 
-              model: "dall-e-3",
-              prompt: q, 
-              n: 1,
-              size: '1024x1024' 
-              });
-            //console.log(response.data.data[0].url) // see the response
-            client.sendImage(from, image.data[0].url, text, mek);
-            } catch (error) {
-          if (error.response) {
-            console.log(error.response.status);
-            console.log(error.response.data);
-            console.log(`${error.response.status}\n\n${error.response.data}`);
-          } else {
-            console.log(error);
-            m.reply("Maaf, sepertinya ada yang error :"+ error.message);
-          }
-        }
-          break;
+       
+        
           case "sc": case "script": case "scbot":
            m.reply("I am not yet on github. Maybe my owner will publish my source soon...");
           break
