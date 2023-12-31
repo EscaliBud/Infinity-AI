@@ -3,8 +3,6 @@ const fs = require("fs");
 const util = require("util");
 const chalk = require("chalk");
 const OpenAI = require("openai");
-let setting = require("./key.json");
-const openai = new OpenAI({ apiKey: setting.keyopenai });
 
 module.exports = escalibud = async (client, m, chatUpdate) => {
   try {
