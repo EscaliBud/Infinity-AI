@@ -46,6 +46,7 @@ const Heroku = require("heroku-client");
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
 const wapresence = process.env.WA_PRESENCE || 'recording';
 const autobio = process.env.AUTOBIO || 'TRUE';
+const dev = process.env.OWNER || '254114018035'
 
     const from = m.chat;
     const reply = m.reply;
