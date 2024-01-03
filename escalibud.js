@@ -7,6 +7,7 @@ const chalk = require("chalk");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
+const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc')
