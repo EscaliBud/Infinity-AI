@@ -1,4 +1,5 @@
 const sessionName = "escalibud";
+const autobio = process.env.AUTOBIO || 'TRUE';
 const owner = ["254798242085"]
 const {
   default: escalibudConnect,
