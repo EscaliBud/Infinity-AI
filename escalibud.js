@@ -254,6 +254,27 @@ if (autobio === 'TRUE'){
 *┃➥ Creator : Kresswell*
 *┗━──────────────*
 
+*⌜ Owner Commands ⌟*
+*┏━───────────────╮*
+*┃➥Setvar*
+*┃➥Getvar*
+*┃➥Restart*
+*┃➥Botpp*
+*┃➥Admin*
+*┃➥Eval*
+*┗━───────────────╯*
+
+*⌜ Group Commands ⌟*
+
+*┏━───────────────╮*
+*┃➥Promote*
+*┃➥Demote*
+*┃➥Kick*
+*┃➥Delete*
+*┃➥Gpp*
+*┗━───────────────╯*
+
+
 *⌜ Downloader & Media ⌟*
 
 *┏━───────────────╮*
