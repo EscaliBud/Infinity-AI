@@ -171,7 +171,10 @@ if (autobio === 'TRUE'){
 
 *┏━──●★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★●───*
 *┃➥ Hello ${m.pushName}*
+*┃➥ Runtime: ${runtime(process.uptime())}*
 *┃➥ Library : Baileys*
+*┃➥ Host Name : ${os.hostname()}*
+*┃➥ Platform : ${os.platform()}*
 *┃➥ Bot Name : InfinityAI*
 *┃➥ Whatsapp Bot Ver : 2.12.0*
 *┃➥ Creator : Kresswell*
