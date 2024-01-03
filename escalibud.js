@@ -63,6 +63,25 @@ const dev = process.env.OWNER || '254798242085'
     const color = (text, color) => {
       return !color ? chalk.green(text) : chalk.keyword(color)(text);
     };
+const runtime = function (seconds) { 
+ seconds = Number(seconds); 
+ var d = Math.floor(seconds / (3600 * 24)); 
+ var h = Math.floor((seconds % (3600 * 24)) / 3600); 
+ var m = Math.floor((seconds % 3600) / 60); 
+ var s = Math.floor(seconds % 60); 
+ var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " Day, ") : ""; 
+ var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " Hours, ") : ""; 
+ var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " Minutes, ") : ""; 
+ var sDisplay = s > 0 ? s + (s == 1 ? " second" : " Seconds") : ""; 
+ return dDisplay + hDisplay + mDisplay + sDisplay; 
+ } 
+
+ const timestamp = speed(); 
+   const infinityspeed = speed() - timestamp 
+
+    const color = (text, color) => {
+      return !color ? chalk.green(text) : chalk.keyword(color)(text);
+    };
  const devkresswell = dev.split(",");
     const Owner = devkresswell.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 
@@ -171,6 +190,16 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+ case "ping": { 
+                 m.reply (`Pong\n ${infinityspeed.toFixed(4)} _miliseconds_`) 
+ } 
+ break;
+
+case "alive": { 
+
+ client.sendMessage(m.chat, { image: { url: 'https://te.legra.ph/file/5b3c55eb8f214b2006c06.jpg' }, caption: `Hello ${m.pushName}, InfinityAI is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
+ }
+break;
 case '':
         if(isCmd2){
         client.sendMessage(from, { react: { text: "✨" , key: m.key }})
