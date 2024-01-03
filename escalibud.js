@@ -122,16 +122,18 @@ if (autobio === 'TRUE'){
     if (isCmd2) {
       switch (command) {
         case "help": case "menu": case "start": case "info":
-          let caption= `*Mi ata Sio Bot😂😂*
-            
-
-◇Menu
-◇Play
-◇Yts
-◇Ytv 
-◇Github
-◇Anime
-◇Manga`;
+          let caption= `
+╭═▬▬▬▬★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★▬▬▬▬
+   ⏤͟͟͞͞★┇*Play*
+   ⏤͟͟͞͞★┇*Ytv*
+   ⏤͟͟͞͞★┇*Yts*
+   ⏤͟͟͞͞★┇*Video*
+   ⏤͟͟͞͞★┇*Song*
+   ⏤͟͟͞͞★┇*Github*
+   ⏤͟͟͞͞★┇*Gdrive*
+   ⏤͟͟͞͞★┇*Anime*
+   ⏤͟͟͞͞★┇*Manga*
+╰═▬▬▬▬▬▬▬✮✮✮✮▬▬▬▬▬▬▬`;
 client.sendMessage(m.chat, {
                         text: caption,
                         contextInfo: {
