@@ -59,6 +59,29 @@ const autobio = process.env.AUTOBIO || 'TRUE';
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
+if (wapresence === 'recording' && !m.isGroup) { 
+
+  client.sendPresenceUpdate('recording', m.chat);
+} else if (wapresence === 'typing' && !m.isGroup) { 
+
+  client.sendPresenceUpdate('composing', m.chat);
+    }
+
+if (autobio === 'TRUE'){ 
+            setInterval(() => { 
+
+                                 const date = new Date() 
+
+                         client.updateProfileStatus( 
+
+                                         `InfinityAI is active now\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.` 
+
+                                 ) 
+
+                         }, 10 * 1000) 
+
+}
+
     if (isCmd2 && !m.isGroup) {
       console.log(chalk.black(chalk.bgWhite("[ LOGS ]")), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
     } else if (isCmd2 && m.isGroup) {
