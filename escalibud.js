@@ -97,6 +97,33 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
     const NotOwner = process.env.NOT_OWNER_MSG || 'Owner Command';
+
+//Bot status
+        const used = process.memoryUsage()
+        const cpus = os.cpus().map(cpu => {
+            cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
+                        return cpu
+        })
+        const cpu = cpus.reduce((last, cpu, _, { length }) => {
+            last.total += cpu.total
+                        last.speed += cpu.speed / length
+                        last.times.user += cpu.times.user
+                        last.times.nice += cpu.times.nice
+                        last.times.sys += cpu.times.sys
+                        last.times.idle += cpu.times.idle
+                        last.times.irq += cpu.times.irq
+                        return last
+        }, {
+            speed: 0,
+                        total: 0,
+                        times: {
+                            user: 0,
+                            nice: 0,
+                            sys: 0,
+                            idle: 0,
+                            irq: 0
+            }
+        })
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
