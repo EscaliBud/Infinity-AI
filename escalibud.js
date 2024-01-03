@@ -278,7 +278,16 @@ if (autobio === 'TRUE'){
 *┃➥delttt*
 *┗━───────────────╯*
 
-  `;
+*⌜ Programming ⌟*
+
+*┏━───────────────╮*
+*┃➥Compile-py*
+*┃➥Compile-c*
+*┃➥Compile-c++*
+*┃➥Compile-js*
+*┃➥Enc*
+*┗━───────────────╯*
+ `;
 client.sendMessage(m.chat, {
                         text: caption,
                         contextInfo: {
