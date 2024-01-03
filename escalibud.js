@@ -72,19 +72,14 @@ module.exports = escalibud = async (client, m, chatUpdate) => {
     if (isCmd2) {
       switch (command) {
         case "help": case "menu": case "start": case "info":
-          m.reply(`*Whatsapp Bot OpenAI*
+          m.reply(`*Mi ata Sio Bot😂😂*
             
-*(ChatGPT)*
-Cmd: ${prefix}ai 
-Tanyakan apa saja kepada AI. 
 
-*(DALL-E)*
-Cmd: ${prefix}img
-Membuat gambar dari teks
-
-*(Source Code Bot)*
-Cmd: ${prefix}sc
-Menampilkan source code bot yang dipakai`)
+◇Menu
+◇Play
+◇Yts
+◇Ytv 
+◇Yts`)
           break;
        case 'ytmp4':
 case 'ytvideo':
