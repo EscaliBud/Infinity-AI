@@ -60,9 +60,6 @@ const dev = process.env.OWNER || '254798242085'
        return admins || []; 
      };
 
-    const color = (text, color) => {
-      return !color ? chalk.green(text) : chalk.keyword(color)(text);
-    };
 const runtime = function (seconds) { 
  seconds = Number(seconds); 
  var d = Math.floor(seconds / (3600 * 24)); 
