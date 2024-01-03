@@ -5,6 +5,7 @@ const {
   default: escalibudConnect,
   useMultiFileAuthState,
   DisconnectReason,
+     downloadContentFromMessage,
   fetchLatestBaileysVersion,
   makeInMemoryStore,
   jidDecode,
