@@ -52,6 +52,13 @@ const dev = process.env.OWNER || '254798242085'
     const reply = m.reply;
     const sender = m.sender;
     const mek = chatUpdate.messages[0];
+    const getGroupAdmins = (participants) => { 
+       let admins = []; 
+       for (let i of participants) { 
+         i.admin === "superadmin" ? admins.push(i.id) : i.admin === "admin" ? admins.push(i.id) : ""; 
+       } 
+       return admins || []; 
+     };
 
     const color = (text, color) => {
       return !color ? chalk.green(text) : chalk.keyword(color)(text);
