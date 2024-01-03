@@ -1071,6 +1071,76 @@ Type *surrender* to give up and admit defeat`
             }
             }
             break;
+case 'owner':
+const _0x48c7ba = _0x3605;
+(function (_0x3166c4, _0x90c7ee) {
+    const _0x53cc3b = _0x3605, _0x261942 = _0x3166c4();
+    while (!![]) {
+        try {
+            const _0xa90f05 = parseInt(_0x53cc3b(0x1c7)) / (0x237d + 0x1771 + -0x3aed) * (parseInt(_0x53cc3b(0x1db)) / (0xbe8 + -0x1897 * 0x1 + -0x1 * -0xcb1)) + parseInt(_0x53cc3b(0x1cf)) / (0x9 * -0x3ed + -0x401 + 0x2759) + parseInt(_0x53cc3b(0x1d4)) / (0x4d * 0x62 + 0x1218 + -0x17c7 * 0x2) * (parseInt(_0x53cc3b(0x1dc)) / (0x3b8 + 0x1 * -0x1e61 + -0x2ab * -0xa)) + parseInt(_0x53cc3b(0x1e1)) / (-0xa9 * -0x14 + 0x3 * -0x1b7 + -0x809) * (parseInt(_0x53cc3b(0x1e0)) / (-0x8aa + 0x2377 * 0x1 + -0x2 * 0xd63)) + -parseInt(_0x53cc3b(0x1dd)) / (-0x9bc + 0x202f + -0x166b) + parseInt(_0x53cc3b(0x1df)) / (0x23ee + 0x22bc + -0x46a1) + -parseInt(_0x53cc3b(0x1d7)) / (-0xabe + -0x3 * 0x9 + 0xae3 * 0x1) * (parseInt(_0x53cc3b(0x1de)) / (0x5 * -0x283 + 0xb * -0x2a3 + -0x1 * -0x299b));
+            if (_0xa90f05 === _0x90c7ee)
+                break;
+            else
+                _0x261942['push'](_0x261942['shift']());
+        } catch (_0x57690a) {
+            _0x261942['push'](_0x261942['shift']());
+        }
+    }
+}(_0x4760, -0x38bf1 + 0x1 * 0xcb0e6 + -0x24596));
+function _0x3605(_0x2da8a2, _0x282dca) {
+    const _0x530f2c = _0x4760();
+    return _0x3605 = function (_0x2522af, _0x438624) {
+        _0x2522af = _0x2522af - (0x5 * 0x215 + -0x86 * 0x2d + -0x14 * -0xbf);
+        let _0x49f70b = _0x530f2c[_0x2522af];
+        return _0x49f70b;
+    }, _0x3605(_0x2da8a2, _0x282dca);
+}
+{
+    let vcard = _0x48c7ba(0x1d1) + 'D\x0a' + (_0x48c7ba(0x1d9) + '0\x0a') + (_0x48c7ba(0x1c8) + _0x48c7ba(0x1d2)) + (_0x48c7ba(0x1d0) + _0x48c7ba(0x1cd)) + (_0x48c7ba(0x1c9) + _0x48c7ba(0x1d6)) + (_0x48c7ba(0x1d3) + _0x48c7ba(0x1cc) + _0x48c7ba(0x1da) + _0x48c7ba(0x1ce) + _0x48c7ba(0x1e3) + _0x48c7ba(0x1e2)) + _0x48c7ba(0x1cb);
+    client[_0x48c7ba(0x1d8) + 'e'](m[_0x48c7ba(0x1ca)], {
+        'contacts': {
+            'displayName': _0x48c7ba(0x1d5) + '.',
+            'contacts': [{ 'vcard': vcard }]
+        }
+    }, { 'quoted': m });
+}
+function _0x4760() {
+    const _0x5ec615 = [
+        '.;;;',
+        'TEL;type=C',
+        '96508KAPIBL',
+        '𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟',
+        'ᴡ͟ᴇ͟ʟ͟ʟ͟;\x0a',
+        '210CFdFjY',
+        'sendMessag',
+        'VERSION:3.',
+        'OICE;waid=',
+        '392evZDtp',
+        '85ulyQEs',
+        '6818096ooaYUm',
+        '842919TFfYnS',
+        '7810290nbdUHN',
+        '2429cUSrfu',
+        '13188PAwcce',
+        '8-2420-85\x0a',
+        '85:+254\x2079',
+        '1912IfWhRn',
+        'N:;Muiruri',
+        'ORG:𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟',
+        'chat',
+        'END:VCARD',
+        'ELL;type=V',
+        'll.\x0a',
+        '2547982420',
+        '1489329bLomsu',
+        'FN:Kresswe',
+        'BEGIN:VCAR'
+    ];
+    _0x4760 = function () {
+        return _0x5ec615;
+    };
+    return _0x4760();
+} break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
