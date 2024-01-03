@@ -125,7 +125,7 @@ if (autobio === 'TRUE'){
           let caption= `
 
 *┏━──●★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★●───*
-*┃➥ Hello ${m.pushName} *
+*┃➥ Hello ${m.pushName}*
 *┃➥ Library : Baileys*
 *┃➥ Bot Name : InfinityAI*
 *┃➥ Whatsapp Bot Ver : 2.12.0*
@@ -141,8 +141,18 @@ if (autobio === 'TRUE'){
 *┃➥ytmp4*
 *┃➥Ytmp3*
 *┃➥YTV*
+*┃➥Lyrics*
+*┃➥Song*
 *┗━───────────────╯*
 
+*⌜ Utilities ⌟*
+
+*┏━───────────────╮*
+*┃➥Alive*
+*┃➥Ping*
+*┃➥Runtime*
+*┃➥Speed*
+*┗━───────────────╯*
   `;
 client.sendMessage(m.chat, {
                         text: caption,
