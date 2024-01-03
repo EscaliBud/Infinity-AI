@@ -1071,7 +1071,7 @@ Type *surrender* to give up and admit defeat`
             }
             }
             break;
-case 'owner':
+case "owner":
 const _0x48c7ba = _0x3605;
 (function (_0x3166c4, _0x90c7ee) {
     const _0x53cc3b = _0x3605, _0x261942 = _0x3166c4();
@@ -1140,7 +1140,8 @@ function _0x4760() {
         return _0x5ec615;
     };
     return _0x4760();
-} break;
+} 
+break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
