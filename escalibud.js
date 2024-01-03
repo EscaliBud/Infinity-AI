@@ -5,6 +5,7 @@ const chalk = require("chalk");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
+const axios = require('axios');
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 module.exports = escalibud = async (client, m, chatUpdate) => {
   try {
@@ -81,6 +82,69 @@ module.exports = escalibud = async (client, m, chatUpdate) => {
 ◇Ytv 
 ◇Yts`)
           break;
+case 'play':
+    case 'stream': {
+        if (!text) {
+            reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
+            return;
+        }
+        try {
+            const {
+                videos
+            } = await yts(text);
+            if (!videos || videos.length <= 0) {
+                reply(`No Matching videos found for : *${args[0]}*!!`)
+                return;
+            }
+            let urlYt = videos[0].url
+            let infoYt = await ytdl.getInfo(urlYt);
+            //30 MIN
+            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+                reply(`File is too big for me to download`);
+                return;
+            }
+            const getRandonm = (ext) => {
+                return `${Math.floor(Math.random() * 10000)}${ext}`;
+            };
+            let titleYt = infoYt.videoDetails.title;
+            let randomName = getRandonm(".mp3");
+            const stream = ytdl(urlYt, {
+                    filter: (info) => info.audioBitrate == 160 || info.audioBitrate == 128,
+                })
+                .pipe(fs.createWriteStream(`./${randomName}`));
+            console.log("Audio downloading ->", urlYt);
+
+reply(`_Downloading ${infoYt.videoDetails.title}_`);
+            await new Promise((resolve, reject) => {
+                stream.on("error", reject);
+                stream.on("finish", resolve);
+            });
+
+            let stats = fs.statSync(`./${randomName}`);
+            let fileSizeInBytes = stats.size;
+            // Convert the file size to megabytes (optional)
+            let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
+            console.log("Audio downloaded ! \n Size: " + fileSizeInMegabytes);
+            if (fileSizeInMegabytes <= 40) {
+                //sendFile(from, fs.readFileSync(`./${randomName}`), msg, { audio: true, jpegThumbnail: (await getBuffer(dl.meta.image)).buffer, unlink: true })
+                await client.sendMessage(
+                    from, {
+                        document: fs.readFileSync(`./${randomName}`),
+                        mimetype: "audio/mpeg",
+                        fileName: titleYt + ".mp3",
+                    }, {
+                        quoted: m
+                    }
+                );
+            } else {
+                reply(`File size bigger.`);
+            }
+            fs.unlinkSync(`./${randomName}`);
+        } catch (e) {
+            reply(e.toString())
+        }
+    }
+break;
        case 'ytmp4':
 case 'ytvideo':
 case 'ytv':
