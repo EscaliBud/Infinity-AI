@@ -129,7 +129,7 @@ if (autobio === 'TRUE'){
 ◇Play
 ◇Yts
 ◇Ytv 
-◇Yts`)
+◇Github`)
           break;
 case '':
         if(isCmd2){
@@ -466,6 +466,9 @@ break;
         
           case "sc": case "script": case "scbot":
            m.reply("I am not yet on github. Maybe my owner will publish my source soon...");
+
+//Heroku Settings
+
           break;
 case "getvar": 
  if (!Owner) throw NotOwner;  
@@ -497,7 +500,88 @@ case "getvar":
 
 
 
- break
+ break;
+
+//Goup Commands 
+
+          case "admin" : { 
+                 if (!m.isGroup) throw group; 
+         if (!isBotAdmin) throw botAdmin; 
+          if (!Owner) throw NotOwner; 
+                 await client.groupParticipantsUpdate(m.chat,  [m.sender], 'promote'); 
+ m.reply('Promoted To Admin<🥇'); 
+          }
+          break;
+
+case 'restart':  
+  if (!Owner) throw `Owner Only` 
+  reply(`Restarting. . .`)  
+  await sleep(3000)  
+  process.exit()  
+  break;
+case "remove": case "kick": { 
+try {
+
+                 if (!m.isGroup) throw group; 
+  if (!isBotAdmin) throw botAdmin; 
+  if (!isAdmin) throw admin; 
+
+
+
+                 let users = m.mentionedJid[0] ? m.mentionedJid : m.quoted ? [m.quoted.sender] : [text.replace(/[^0-9]/g, '')+'@s.whatsapp.net']; 
+ if (!users) throw NotOwner; 
+ if (users  == client.decodeJid(client.user.id)) throw 'Bot cannot remove itself 😡';
+ if (users == Owner) { m.reply('I cannot kick Remove my owner')}; 
+                 await client.groupParticipantsUpdate(m.chat, users, 'remove'); 
+await m.reply('Successfully removed!'); 
+} catch (errr) { 
+ await reply("Something is wrong! Did you give me a user to remove?")}
+
+
+         } 
+
+  break;
+ case "mute": { 
+
+                 if (!m.isGroup) throw group; 
+                 if (!isBotAdmin) throw botAdmin; 
+                 if (!isAdmin) throw admin; 
+
+                     await client.groupSettingUpdate(m.chat, 'announcement'); 
+ m.reply('Group successfully locked!'); 
+ } 
+ break; 
+ case "unmute": { 
+                 if (!m.isGroup) throw group; 
+                 if (!isBotAdmin) throw botAdmin; 
+                 if (!isAdmin) throw admin; 
+
+                     await client.groupSettingUpdate(m.chat, 'not_announcement'); 
+ m.reply('Group successfully unlocked!'); 
+
+ }          
+case "promote" : { 
+                 if (!m.isGroup) throw group; 
+         if (!isBotAdmin) throw botAdmin; 
+         if (!isAdmin) throw admin; 
+ if (!m.quoted) throw `Tag someone with the command!`; 
+                 let users = m.mentionedJid[0] ? m.mentionedJid : m.quoted ? [m.quoted.sender] : [text.replace(/[^0-9]/g, '')+'@s.whatsapp.net']; 
+
+                 await client.groupParticipantsUpdate(m.chat, users, 'promote'); 
+ m.reply('Promoted Successfully! 👑'); 
+         } 
+ break; 
+ case "demote": { 
+                 if (!m.isGroup) throw group; 
+         if (!isBotAdmin) throw botAdmin; 
+         if (!isAdmin) throw admin; 
+ if (!m.quoted) throw `Tag someone with the command!`; 
+                 let users = m.mentionedJid[0] ? m.mentionedJid : m.quoted ? [m.quoted.sender] : [text.replace(/[^0-9]/g, '')+'@s.whatsapp.net']; 
+
+                 await client.groupParticipantsUpdate(m.chat, users, 'demote'); 
+ m.reply('Demoted Successfully! 🎗️'); 
+         } 
+ break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
