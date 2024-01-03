@@ -269,6 +269,7 @@ if (autobio === 'TRUE'){
 *┃➥Ping*
 *┃➥Runtime*
 *┃➥Speed*
+*┃➥Link*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
