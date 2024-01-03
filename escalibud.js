@@ -129,7 +129,9 @@ if (autobio === 'TRUE'){
 ◇Play
 ◇Yts
 ◇Ytv 
-◇Github`)
+◇Github
+◇Anime
+◇Manga`)
           break;
 case '':
         if(isCmd2){
