@@ -124,6 +124,72 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
                             irq: 0
             }
         })
+
+        //TicTacToe
+            this.game = this.game ? this.game : {}
+            let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
+            if (room) {
+            let ok
+            let isWin = !1
+            let isTie = !1
+            let isSurrender = !1
+            // m.reply(`[DEBUG]\n${parseInt(m.text)}`)
+            if (!/^([1-9]|(me)?nyerah|surr?ender|off|skip)$/i.test(m.text)) return
+            isSurrender = !/^[1-9]$/.test(m.text)
+            if (m.sender !== room.game.currentTurn) { // nek wayahku
+            if (!isSurrender) return !0
+            }
+            if (!isSurrender && 1 > (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1))) {
+            m.reply({
+            '-3': 'Game telah berakhir',
+            '-2': 'Invalid',
+            '-1': 'Invalid Position',
+            0: 'Invalid Position',
+            }[ok])
+            return !0
+            }
+            if (m.sender === room.game.winner) isWin = true
+            else if (room.game.board === 511) isTie = true
+            let arr = room.game.render().map(v => {
+            return {
+            X: '❌',
+            O: '⭕',
+            1: '1️⃣',
+            2: '2️⃣',
+            3: '3️⃣',
+            4: '4️⃣',
+            5: '5️⃣',
+            6: '6️⃣',
+            7: '7️⃣',
+            8: '8️⃣',
+            9: '9️⃣',
+            }[v]
+            })
+            if (isSurrender) {
+            room.game._currentTurn = m.sender === room.game.playerX
+            isWin = true
+            }
+            let winner = isSurrender ? room.game.currentTurn : room.game.winner
+            let str = `Room ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+${isWin ? `@${winner.split('@')[0]} Wins!!🥳` : isTie ? `Game Tie` : `Current Player: ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+❌: @${room.game.playerX.split('@')[0]}
+⭕: @${room.game.playerO.split('@')[0]}
+
+Type *surrender* to admit defeat`
+            if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
+            room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
+            if (room.x !== room.o) await client.sendText(room.x, str, m, { mentions: parseMention(str) } )
+            await client.sendText(room.o, str, m, { mentions: parseMention(str) } )
+            if (isTie || isWin) {
+            delete this.game[room.id]
+            }
+            }
+
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
@@ -201,6 +267,14 @@ if (autobio === 'TRUE'){
 *┃➥Runtime*
 *┃➥Speed*
 *┗━───────────────╯*
+
+*⌜ Games And Fun ⌟*
+
+*┏━───────────────╮*
+*┃➥ttt*
+*┃➥delttt*
+*┗━───────────────╯*
+
   `;
 client.sendMessage(m.chat, {
                         text: caption,
@@ -815,6 +889,71 @@ case 'xnxxsearch': {
               if (res.status) reply(ff)
               }
               break;
+case 'ttc': case 'ttt': case 'tictactoe': {
+            let TicTacToe = require("./lib/tictactoe")
+            this.game = this.game ? this.game : {}
+            if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'You are still in the game!!'
+            let room = Object.values(this.game).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
+            if (room) {
+            m.reply('Partne Joined!')
+            room.o = m.chat
+            room.game.playerO = m.sender
+            room.state = 'PLAYING'
+            let arr = room.game.render().map(v => {
+            return {
+            X: '❌',
+            O: '⭕',
+            1: '1️⃣',
+            2: '2️⃣',
+            3: '3️⃣',
+            4: '4️⃣',
+            5: '5️⃣',
+            6: '6️⃣',
+            7: '7️⃣',
+            8: '8️⃣',
+            9: '9️⃣',
+            }[v]
+            })
+            let str = `Room ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+Current Player: @${room.game.currentTurn.split('@')[0]}
+
+
+Type *surrender* to give up and admit defeat`
+            if (room.x !== room.o) await client.sendText(room.x, str, m, { mentions: parseMention(str) } )
+            await client.sendText(room.o, str, m, { mentions: parseMention(str) } )
+            } else {
+            room = {
+            id: 'tictactoe-' + (+new Date),
+            x: m.chat,
+            o: '',
+            game: new TicTacToe(m.sender, 'o'),
+            state: 'WAITING'
+            }
+            if (text) room.name = text
+            m.reply('Waiting for a patner.' + (text ? ` Type the following command: ${prefix}${command} ${text}` : ''))
+            this.game[room.id] = room
+            }
+            }
+            break;
+            case 'delttc': case 'delttt': {
+            this.game = this.game ? this.game : {}
+            try {
+            if (this.game) {
+            delete this.game
+            client.sendText(m.chat, `Successfully deleted the TicTacToe Session`, m)
+            } else if (!this.game) {
+            m.reply(`No active TicTacToe  session.`)
+            } else throw '?'
+            } catch (e) {
+            m.reply('Damaged💀')
+            }
+            }
+            break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
