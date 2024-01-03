@@ -2,8 +2,10 @@ const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, g
 const fs = require("fs");
 const util = require("util");
 const chalk = require("chalk");
-const OpenAI = require("openai");
-
+const Genius = require("genius-lyrics"); 
+const yts = require("yt-search");
+const ytdl = require("ytdl-core");
+ const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 module.exports = escalibud = async (client, m, chatUpdate) => {
   try {
     var body =
