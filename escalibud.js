@@ -40,6 +40,8 @@ module.exports = escalibud = async (client, m, chatUpdate) => {
     let text = (q = args.join(" "));
     const arg = budy.trim().substring(budy.indexOf(" ") + 1);
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
+const wapresence = process.env.WA_PRESENCE || 'recording';
+const autobio = process.env.AUTOBIO || 'TRUE';
 
     const from = m.chat;
     const reply = m.reply;
