@@ -652,6 +652,50 @@ let srh = await manga.searchManga(q)
   )}`;
 client.sendMessage(m.chat,{image:{url:srh.data[0].images.jpg.large_image_url},caption:mang},{quoted:m})   
 break;
+case 'gdrive': {
+                if (!args[0]) return reply(`Enter the Google Drive link`)
+        reply ('please wait..')
+        const fg = require('api-dylux')
+        try {
+        let res = await fg.GDriveDl(args[0])
+         await reply(`
+≡ *Google Drive DL*
+▢ *Nama:* ${res.fileName}
+▢ *Size:* ${res.fileSize}
+▢ *Type:* ${res.mimetype}`)
+        client.sendMessage(m.chat, { document: { url: res.downloadUrl }, fileName: res.fileName, mimetype: res.mimetype }, { quoted: m })
+   } catch {
+        reply('Error: Check link or try another link') 
+  }
+}
+break;
+case "xnxxdl": {
+
+        if (!m.isGroup) return reply ('Group command')
+        if (!text) return reply(`Enter Url`)
+        if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
+        reply('Please wait')
+        const fg = require('api-dylux')
+            let xn = await fg.xnxxdl(text)
+client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
+        
+▢ *📌Title*: ${xn.title}
+▢ *⌚Duration:* ${xn.duration}
+▢ *🎞️Quality:* ${xn.quality}
+`, video: {url: xn.url_dl} }, { quoted: m })
+}
+break;
+case 'xnxxsearch': {
+
+        if (!m.isGroup) return reply('Group command')
+        if (!text) return reply(`Enter Query`)
+        reply('Please wait')
+        const fg = require('api-dylux')
+        let res = await fg.xnxxSearch(text)
+            let ff = res.result.map((v, i) => `${i + 1}┃ *Title* : ${v.title}\n*Link:* ${v.link}\n`).join('\n') 
+              if (res.status) reply(ff)
+              }
+              break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
