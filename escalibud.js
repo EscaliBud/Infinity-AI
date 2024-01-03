@@ -1,6 +1,8 @@
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const util = require("util");
+const speed = require("performance-now");
+const os = require('os');
 const chalk = require("chalk");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
@@ -194,7 +196,7 @@ client.sendMessage(m.chat, {
 
 case "alive": { 
 
- client.sendMessage(m.chat, { image: { url: 'https://te.legra.ph/file/5b3c55eb8f214b2006c06.jpg' }, caption: `Hello ${m.pushName}, InfinityAI is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
+ client.sendMessage(m.chat, { image: { url: 'https://i.imgur.com/xGzvN3y.jpeg' }, caption: `Hello ${m.pushName}, InfinityAI is active\n\nActive for:  ${runtime(process.uptime())}\n\nType ${prefix}help.`, fileLength: "9999999999898989899999999" }, { quoted: m }); 
  }
 break;
 case '':
