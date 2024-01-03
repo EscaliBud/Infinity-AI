@@ -122,7 +122,7 @@ if (autobio === 'TRUE'){
     if (isCmd2) {
       switch (command) {
         case "help": case "menu": case "start": case "info":
-          m.reply(`*Mi ata Sio Bot😂😂*
+          let caption= `*Mi ata Sio Bot😂😂*
             
 
 ◇Menu
@@ -131,7 +131,23 @@ if (autobio === 'TRUE'){
 ◇Ytv 
 ◇Github
 ◇Anime
-◇Manga`)
+◇Manga`;
+client.sendMessage(m.chat, {
+                        text: caption,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: `INFINITY-AI`,
+                                body: `Ni God Manzee!! ◇.`,
+                                thumbnail: fs.readFileSync('./escalibud.jpg'),
+                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    }, {
+                        quoted: m
+                    })
           break;
 case '':
         if(isCmd2){
