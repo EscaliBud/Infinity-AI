@@ -5,6 +5,7 @@ const chalk = require("chalk");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
+const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 module.exports = escalibud = async (client, m, chatUpdate) => {
@@ -82,6 +83,36 @@ module.exports = escalibud = async (client, m, chatUpdate) => {
 ◇Ytv 
 ◇Yts`)
           break;
+case '':
+        if(isCmd2){
+        client.sendMessage(from, { react: { text: "✨" , key: m.key }})
+
+     reply(`Hello ${pushname} ,You used my prefix.Please  Type *${prefix}help* to get my full command list.`)
+        }
+
+    break;
+case 'ghstalk': case 'githubstalk': case'github': {
+  client.sendMessage(from, { react: { text: "🔍" , key: m.key }})
+
+  if (!q) return replay(`Give me a user name like *${prefix}github EscaliBud*`)
+
+  gitdata = await githubstalk.githubstalk(`${q}`)
+  client.sendMessage(m.chat, { image: { url : gitdata.profile_pic }, caption: 
+  `*ㅤㅤㅤ|ㅤㅤㅤGithub Info ㅤㅤㅤ|\*
+
+  🚩 Id : ${gitdata.id}
+  🔖 Nickname : ${gitdata.nickname}
+  🔖 Username : ${gitdata.username}
+  ✨ Bio : ${gitdata.bio}
+  🏢 Company : ${gitdata.company}
+  📍 Location : ${gitdata.location}
+  📧 Email : ${gitdata.email}
+  🔓 Public Repo : ${gitdata.public_repo}
+  🔐 Public Gists : ${gitdata.public_gists}
+  💕 Followers : ${gitdata.followers}
+  👉 Following : ${gitdata.following}` }, { quoted: m } )
+  }
+  break;  
 case 'play':
     case 'stream': {
         if (!text) {
