@@ -582,6 +582,74 @@ case "promote" : {
  m.reply('Demoted Successfully! 🎗️'); 
          } 
  break;
+
+//Anime and Manga
+
+case 'anime': {
+
+  if (!m.isGroup) return reply('Use this command on a group')
+  client.sendMessage(from, { react: { text: "🍁" , key: m.key }});
+  if(!text) return reply(`Please proide a search term!\n\n*Example:* ${prefix}anime naruto`)
+
+  const malScraper = require('mal-scraper')
+  reply('Please wait...');
+          const anime = await malScraper.getInfoFromName(text).catch(() => null)
+          if (!anime) return reply(`${p}Could not find your scarch`)
+  let animetxt = `
+  🎀 *Title: ${anime.title}*
+  🎋 *Type: ${anime.type}*
+  🎐 *Premiered on: ${anime.premiered}*
+  💠 *Total Episodes: ${anime.episodes}*
+  📈 *Status: ${anime.status}*
+  💮 *Genres: ${anime.genres}
+  📍 *Studio: ${anime.studios}*
+  🌟 *Score: ${anime.score}*
+  💎 *Rating: ${anime.rating}*
+  🏅 *Rank: ${anime.ranked}*
+  💫 *Popularity: ${anime.popularity}*
+  ♦️ *Trailer: ${anime.trailer}*
+  🌐 *URL: ${anime.url}*
+  ❄ *Description:* ${anime.synopsis}*`
+                  await client.sendMessage(m.chat,{image:{url:anime.picture}, caption:animetxt},{quoted:m})
+                  }
+                  break;
+
+
+case 'manga':
+
+  if (!m.isGroup) return reply('Group command') 
+client.sendMessage(from, { react: { text: "🍁" , key: m.key }})
+
+reply('Please wait..')                                                        
+const { Manga } =require("@shineiichijo/marika")
+const manga = new Manga();
+if(!text) return reply(`Please proide a search term!\n\n_Example:_ ${prefix}manga naruto`)
+let srh = await manga.searchManga(q)
+  let mang = `*Title:* ${srh.data[0].title}\n`;
+  mang += `*Status:* ${srh.data[0].status}\n`;
+  mang += `*Total Volumes:* ${srh.data[0].volumes}\n`;
+  mang += `*Total Chapters:* ${srh.data[0].chapters}\n`;
+  mang += `*Genres:*\n`;
+  for (let i = 0; i < srh.data[0].genres.length; i++) {
+    mang += `\t\t\t\t\t\t\t\t${srh.data[0].genres[i].name}\n`;
+  }
+  mang += `*Published on:* ${srh.data[0].published.from}\n`;
+  mang += `*Score:* ${srh.data[0].scored}\n`;
+  mang += `*Popularity:* ${srh.data[0].popularity}\n`;
+  mang += `*Favorites:* ${srh.data[0].favorites}\n`;
+  mang += `*Authors:*\n`;
+  for (let i = 0; i < srh.data[0].authors.length; i++) {
+    mang += `\t\t\t\t\t\t\t\t\t${srh.data[0].authors[i].name} (${srh.data[0].authors[0].type})\n`;
+  }
+  mang += `\n*URL:* ${srh.data[0].url}\n\n`;
+  if (srh.data[0].background !== null)
+    mang += `*Background:* ${srh.data[0].background}`;
+  mang += `*Description:* ${srh.data[0].synopsis.replace(
+    /\[By InfinityAI]/g,
+    ""
+  )}`;
+client.sendMessage(m.chat,{image:{url:srh.data[0].images.jpg.large_image_url},caption:mang},{quoted:m})   
+break;
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
