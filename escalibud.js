@@ -137,8 +137,8 @@ client.sendMessage(m.chat, {
                         contextInfo: {
                             externalAdReply: {
                                 showAdAttribution: true,
-                                title: `INFINITY-AI`,
-                                body: `Ni God Manzee!! ◇.`,
+                                title: `EscaliBud`,
+                                body: `Ain't Nothing But A G Thang!! ◇.`,
                                 thumbnail: fs.readFileSync('./escalibud.jpg'),
                                 sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
                                 mediaType: 1,
