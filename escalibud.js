@@ -55,11 +55,22 @@ const autobio = process.env.AUTOBIO || 'TRUE';
     const color = (text, color) => {
       return !color ? chalk.green(text) : chalk.keyword(color)(text);
     };
+ const devkresswell = dev.split(",");
+    const Owner = devkresswell.map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender)
 
     // Group
+    
     const groupMetadata = m.isGroup ? await client.groupMetadata(m.chat).catch((e) => {}) : "";
     const groupName = m.isGroup ? groupMetadata.subject : "";
 
+    const participants = m.isGroup ? await groupMetadata.participants : ""; 
+     const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
+     const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
+     const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
+const admin = process.env.ADMIN_MSG || 'Admin Command Only';
+    const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
+    const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
+    const NotOwner = process.env.NOT_OWNER_MSG || 'Owner Command';
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
