@@ -253,7 +253,6 @@ async function startEscalibud() {
       console.log(color("Bot success conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
-      client.sendMessage(owner, { text: `ESCALI BUD BOT STARTED` });
     }
     // console.log('Connected...', update)
   });
