@@ -63,7 +63,7 @@ const Heroku = require("heroku-client");
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
   
-const checkRegisteredUser = (m.sender) => {
+/*const checkRegisteredUser = (m.sender) => {
             let status = false
             Object.keys(_registered).forEach((i) => {
                 if (_registered.id === sender) {
@@ -71,7 +71,16 @@ const checkRegisteredUser = (m.sender) => {
                 }
             })
             return status
-        }
+        }    const sender = mek.key.fromMe
+      ? xeon.user.jid
+      : isGroup
+      ? mek.participant
+      : mek.key.remoteJid;
+    let senderr = mek.key.fromMe
+      ? xeon.user.jid
+      : mek.key.remoteJid.endsWith("@g.us")
+      ? mek.participant
+      : mek.key.remoteJid;*/
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
