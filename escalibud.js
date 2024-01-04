@@ -362,7 +362,7 @@ if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in J
  
     let userQuery = text.slice(7).trim(); // Extract user's query after '/ihkgpt'
 
-    let chatGPTUrl = https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(userQuery)};
+    let chatGPTUrl =" https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(userQuery)}";
 
     // Make a request to the ChatGPT API
     fetch(chatGPTUrl)
