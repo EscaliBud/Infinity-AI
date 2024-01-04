@@ -261,6 +261,9 @@ if (autobio === 'TRUE'){
 *┃➥Restart*
 *┃➥Botpp*
 *┃➥Admin*
+*┃➥Block*
+*┃➥Unblock*
+*┃➥Join*
 *┃➥Eval*
 *┗━───────────────╯*
 
@@ -272,6 +275,9 @@ if (autobio === 'TRUE'){
 *┃➥Kick*
 *┃➥Delete*
 *┃➥Gpp*
+*┃➥Subject*
+*┃➥Hidetag*
+*┃➥Tagall*
 *┗━───────────────╯*
 
 
@@ -317,6 +323,12 @@ if (autobio === 'TRUE'){
 *┃➥Enc*
 *┗━───────────────╯*
 
+*⌜ 🔞 NSFW 🔞 ⌟*
+*┏━───────────────╮*
+*┃➥Xnxxsearch*
+*┃➥Xnxxdl*
+*┗━───────────────╯*
+
 ▬▬▬✮✮★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★✮✮▬▬▬
  `;
 client.sendMessage(m.chat, {
@@ -336,6 +348,63 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+ case "hidetag": { 
+             if (!m.isGroup) throw group; 
+             if (!isBotAdmin) throw botAdmin; 
+             if (!isAdmin) throw admin; 
+            client.sendMessage(m.chat, { text : q ? q : '☞︎︎︎ YOU ARE TAGGED ☜︎︎︎' , mentions: participants.map(a => a.id)}, { quoted: m }); 
+             } 
+ break; 
+ case "tagall": { 
+                 if (!m.isGroup) throw group; 
+                 if (!isBotAdmin) throw botAdmin; 
+                 if (!isAdmin) throw admin; 
+ let teks = `You have been tagged here: 
+   
+  Message ${q ? q : ''}*\n\n`; 
+                 for (let mem of participants) { 
+                 teks += `🍷 @${mem.id.split('@')[0]}\n`; 
+                 } 
+                 client.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m }); 
+                 } 
+ break;
+
+          case "block": { 
+ if (!Owner) throw NotOwner; 
+ if (!m.quoted) throw `Tag someone!`; 
+ let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net' 
+ await client.updateBlockStatus(users, 'block'); 
+ m.reply (`Blocked!`); 
+ } 
+ break; 
+
+ case "unblock": { 
+ if (!Owner) throw NotOwner; 
+ if (!m.quoted) throw `Tag someone!`; 
+ let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'; 
+ await client.updateBlockStatus(users, 'unblock'); 
+ m.reply (`Unblocked!`); 
+ } 
+ break;
+
+          case 'join': { 
+                 if (!Owner) throw NotOwner
+                 if (!text) return reply("provide a valid group link") 
+                 let result = args[0].split('https://chat.whatsapp.com/')[1] 
+                 await client.groupAcceptInvite(result).then((res) =>  reply(jsonformat(res))).catch((err) =>reply(`Link has problem.`)) 
+
+             } 
+
+ break;
+          case "subject": case "changesubject": { 
+                 if (!m.isGroup) throw group; 
+                 if (!isBotAdmin) throw botAdmin; 
+                 if (!isAdmin) throw admin; 
+                 if (!text) throw 'Provide the text for the group subject.'; 
+                 await client.groupUpdateSubject(m.chat, text); 
+ m.reply('Group name successfully updated! 👍'); 
+             } 
+             break; 
  case "ping": { 
                  m.reply (`Pong\n ${infinityspeed.toFixed(4)} _miliseconds_`) 
  } 
