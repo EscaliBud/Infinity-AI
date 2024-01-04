@@ -368,8 +368,8 @@ let escalibudimg ="https://api.akuari.my.id/search/googleimage?query=${text}";
 
         images = n[Math.floor(Math.random() * n.length)]
 
-
-                client.sendMessage(m.chat, { image: { url: images}, caption: *-------「 GIMAGE SEARCH 」-------*\n🤠 *Query* : ${text}\n🔗 *Media Url* : ${images}}, { quoted: m })
+let kressimg=`*-------「 GIMAGE SEARCH 」-------*\n🤠 *Query* : ${text}\n🔗 *Media Url* : ${images}}`;
+                client.sendMessage(m.chat, { image: { url: images}, caption: kressimg, { quoted: m })
         }
 
         break;
