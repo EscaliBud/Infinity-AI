@@ -239,9 +239,9 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
-if (budy.toLowerCase() === `8473`){
-                if (isRegister) return 
-                    register.push(m.sender)
+if (budy.toLowerCase() === `register`){
+                if (isRegister) return reply('You are registered to the infinity systems ')
+                   
                     fs.writeFileSync('./database/user.json', JSON.stringify(register))
                     teks = `Verification success\n\nPlease send *!menu* to view menu`
                     client.sendMessage(from, teks, text, {quoted: fkontak })
@@ -584,6 +584,7 @@ client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, file
 }
 break;
 case 'ig': {
+if (!isRegistered) return reply('To use this bot,you must be registered!!\nRegister by sending .register')
 if (!args[0]) return reply('Enter Instagram Username\n\nExample: ${prefix + command} Kresswell0')
 const fg = require('api-dylux')
     try {
