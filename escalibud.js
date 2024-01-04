@@ -63,15 +63,8 @@ const Heroku = require("heroku-client");
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
   
-/*const checkRegisteredUser = (m.sender) => {
-            let status = false
-            Object.keys(_registered).forEach((i) => {
-                if (_registered.id === sender) {
-                    status = true
-                }
-            })
-            return status
-        }    const sender = mek.key.fromMe
+/*
+      const sender = mek.key.fromMe
       ? xeon.user.jid
       : isGroup
       ? mek.participant
@@ -263,6 +256,18 @@ const getRegisteredRandomId = () => {
             _registered.push(obj)
             fs.writeFileSync('./database/user/registered.json', JSON.stringify(_registered))
         }
+
+const checkRegisteredUser = (sender) => {
+let status = false
+Object.keys(_registered).forEach((i) => {
+if (_registered[i].id === sender) {
+status = true
+}
+})
+return status
+}
+
+const isRegistered = checkRegisteredUser(sender)
 
 
 if (!client.public) {
