@@ -240,7 +240,8 @@ if (wapresence === 'recording' && !m.isGroup) {
   client.sendPresenceUpdate('composing', m.chat);
     }
 if (budy.toLowerCase() === `register`){
-                if (isRegister) return reply('You are registered to the infinity systems ')
+            if (isRegister) return 
+                    register.push(m.sender)
                    
                     fs.writeFileSync('./database/user.json', JSON.stringify(register))
                     teks = `Verification success\n\nPlease send *!menu* to view menu`
