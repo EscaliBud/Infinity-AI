@@ -224,6 +224,25 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
+if (budy.toLowerCase() === `8473`){
+                if (isRegister) return 
+                    register.push(m.sender)
+                    fs.writeFileSync('./database/user.json', JSON.stringify(register))
+                    teks = `Verification success\n\nPlease send *!menu* to view menu`
+                    client.sendMessage(from, teks, text, {quoted: fkontak })
+}          /*if (!mek.key.fromMe && banChats === false) return*/
+
+
+const getRegisteredRandomId = () => {
+            return _registered[Math.floor(Math.random() * _registered.length)].id
+        }
+        const addRegisteredUser = (userid, sender, age, time, serials) => {
+            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
+            _registered.push(obj)
+            fs.writeFileSync('./database/user/registered.json', JSON.stringify(_registered))
+        }
+
+
 if (!client.public) {
 if (!m.key.fromMe) return
 }
@@ -388,6 +407,25 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'addprem':
+if (!Owner) return reply('You are not my Owner')
+if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 254754046165`)
+prrkek = q.split("|")[0].replace(/[^0-9]/g, '')+`@s.whatsapp.net`
+let ceknya = await client.onWhatsApp(prrkek)
+if (ceknya.length == 0) return reply(`Enter a valid and registered number on WhatsApp!!!`)
+prem.push(prrkek)
+fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
+reply(`The Number ${prrkek} Has Been Premium!`)
+break;
+case 'delprem':
+if (!Owner) return reply('You are not My Owner')
+if (!args[0]) return reply(`Use ${prefix+command} nomor\nExample ${prefix+command} 254754046165`)
+ya = q.split("|")[0].replace(/[^0-9]/g, '')+`@s.whatsapp.net`
+unp = prem.indexOf(ya)
+prem.splice(unp, 1)
+fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
+reply(`The Number ${ya} Has Been Removed Premium!`)
+break;
 case 'public': {
                 if (!Owner) return reply('You are Not my owner')
                 client.public = true
