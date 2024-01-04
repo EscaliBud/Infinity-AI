@@ -362,7 +362,7 @@ if(!text) return reply('Please give me a query\n\nExample: ${prefix} ihk Hello w
 
 let ihkgpt ="https://chatgpt.apinepdev.workers.dev/?question=${text}";
 
-ai = ihkgpt.response
+ai = ihkgpt.answer
 
 client.sendMessage(m.chat,{text: ai,},{quoted: m,})
 }
