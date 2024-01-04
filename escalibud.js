@@ -400,7 +400,7 @@ setTimeout(() => {
 var nomor = m.participant
 const close = `*On time* Group Closed By Admin\nNow Only Admins Can Send Messages`
 client.groupSettingUpdate(from, 'announcement')
-replyg(close)
+reply(close)
 }, timer)
 }
 break;
