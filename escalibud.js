@@ -357,6 +357,16 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case "ihk":{
+if(!text) return reply('Please give me a query\n\nExample: ${prefix} ihk Hello world in Java')
+
+let ihkgpt ="https://chatgpt.apinepdev.workers.dev/?question=${text}";
+
+ai = ihkgpt.response
+
+client.sendMessage(m.chat,{text: ai,},{quoted: m,})
+}
+break;
 case 'img': {
 
        if (!text) return reply('Example : ${prefix + command} Snoop Dogg'
