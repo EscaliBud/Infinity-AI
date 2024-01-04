@@ -233,7 +233,7 @@ if (autobio === 'TRUE'){
     return (withoutContact ? "" : v.name) || v.subject || v.verifiedName || PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
   };
 
-  client.public = true;
+  client.public = true
 
   client.serializeM = (m) => smsg(client, m, store);
   client.ev.on("connection.update", async (update) => {
