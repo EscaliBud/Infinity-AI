@@ -356,21 +356,7 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
-case  'kickall': //mengeluarkan semua member
-                                        if (!m.isGroup) return reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!')
-                                        let isOwnerGroup = sender.id === groupMetadata.owner
-                                        if (!isOwnerGroup) return reply(from, 'Maaf, perintah ini hanya dapat digunakan oleh Owner Grup!')
-                                        if (!isBotAdmin) return reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!')
-                                        const allMem = await client.getGroupMembers(groupId)
-                                        for (let i = 0; i < allMem.length; i++) {
-                                                if (groupAdmins.includes(allMem[i].id)) {
 
-                                                } else {
-                                                        await client.removeParticipant(groupId, allMem[i].id)
-                                                }
-                                        }
-                                        reply(from, 'Success kick all member', id)
-                                        break;
 case 'openin': {
 if (!m.isGroup) return reply('Group Command')
 if (!isAdmin) return reply('Are you an Admin??')
