@@ -66,7 +66,7 @@ const Heroku = require("heroku-client");
 const checkRegisteredUser = (m.sender) => {
             let status = false
             Object.keys(_registered).forEach((i) => {
-                if (_registered[i].id === sender) {
+                if (_registered.id === sender) {
                     status = true
                 }
             })
