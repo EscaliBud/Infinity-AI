@@ -1337,7 +1337,7 @@ case 'gdrive': {
 }
 break;
 case "xnxxdl": {
-
+if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
         if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
@@ -1353,7 +1353,7 @@ client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
 }
 break;
 case 'xnxxsearch': {
-
+if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
         reply('Please wait')
