@@ -14,6 +14,8 @@ const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
 const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
 const verifieduser = JSON.parse(fs.readFileSync('./database/user.json'));
+let _registered = JSON.parse(fs.readFileSync('./database/user.json'));
+let register = JSON.parse(fs.readFileSync('./database/user.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
