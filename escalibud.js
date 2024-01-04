@@ -60,7 +60,16 @@ const Heroku = require("heroku-client");
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
-
+  
+const checkRegisteredUser = (m.sender) => {
+            let status = false
+            Object.keys(_registered).forEach((i) => {
+                if (_registered[i].id === sender) {
+                    status = true
+                }
+            })
+            return status
+        }
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
@@ -73,6 +82,8 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
+    const isRegistered = checkRegisteredUser(m.sender)
+   const isRegister = register.includes(m.sender)
 const isPrem = prem.includes(m.sender);
     	const isUser = verifieduser.includes(m.sender);
     const reply = m.reply;
