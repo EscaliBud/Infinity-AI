@@ -14,8 +14,8 @@ const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
 const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
 const verifieduser = JSON.parse(fs.readFileSync('./database/user.json'));
-let _registered = JSON.parse(fs.readFileSync('./database/user.json'));
-let register = JSON.parse(fs.readFileSync('./database/user.json'));
+let _registered = JSON.parse(fs.readFileSync('./database/registered.json'));
+let register = JSON.parse(fs.readFileSync('./database/registered.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
@@ -243,7 +243,7 @@ if (budy.toLowerCase() === `register`){
             if (isRegister) return 
                     register.push(m.sender)
                    
-                    fs.writeFileSync('./database/user.json', JSON.stringify(register))
+                    fs.writeFileSync('./database/registered.json', JSON.stringify(register))
                     teks = `Verification success\n\nPlease send *!menu* to view menu`
                     client.sendMessage(from, teks, text, {quoted: fkontak })
 }          /*if (!mek.key.fromMe && banChats === false) return*/
@@ -734,8 +734,10 @@ case 'ytsearch':
         return;
     }
     break;
+
 case 'play':
     case 'stream': {
+if (!isPrem) return reply('This is a premium command')
         if (!text) {
             reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
             return;
@@ -929,6 +931,7 @@ break;
 break;
           case "lyrics": 
  try { 
+if (!isPrem) return reply('This is a premium command')
  if (!text) return reply("Provide a song name!"); 
  const searches = await Client.songs.search(text); 
  const firstSong = searches[0]; 
