@@ -438,9 +438,7 @@ client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, file
 break;
 case 'weather':{
 if (!text) return reply('What location?')
-            let wdata = await axios.get(
-                https://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=en
-            );
+            let wdata = await axios.get(https://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=en);
             let textw = ""
             textw += *🗺️Weather of  ${text}*\n\n
             textw += *Weather:-* ${wdata.data.weather[0].main}\n
