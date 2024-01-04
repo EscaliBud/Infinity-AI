@@ -357,7 +357,7 @@ client.sendMessage(m.chat, {
                     })
           break;
 case  'kickall': //mengeluarkan semua member
-                                        if (!m.isGroup) return reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
+                                        if (!m.isGroup) return reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!')
                                         let isOwnerGroup = sender.id === groupMetadata.owner
                                         if (!isOwnerGroup) return reply(from, 'Maaf, perintah ini hanya dapat digunakan oleh Owner Grup!')
                                         if (!isBotAdmin) return reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!')
