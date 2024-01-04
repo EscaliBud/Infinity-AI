@@ -74,7 +74,7 @@ const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
 const isPrem = prem.includes(m.sender);
-    	const isUser = verifieduser.includes(sender);
+    	const isUser = verifieduser.includes(m.sender);
     const reply = m.reply;
     const sender = m.sender;
     const mek = chatUpdate.messages[0];
