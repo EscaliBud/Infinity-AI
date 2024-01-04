@@ -361,7 +361,8 @@ case 'img': {
 
        if (!text) return reply('Example : ${prefix + command} Snoop Dogg'
 )
-        xeonezyanu = await fetchJson(https://api.akuari.my.id/search/googleimage?query=${text})
+let escalibudimg ="https://api.akuari.my.id/search/googleimage?query=${text}";
+        xeonezyanu = await fetchJson(escalibudimg)
 
         n = xeonezyanu.result
 
