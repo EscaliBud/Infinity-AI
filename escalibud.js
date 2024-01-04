@@ -11,9 +11,22 @@ const ytdl = require("ytdl-core");
 const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
-const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc')
-
+const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
+const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
+const verifieduser = JSON.parse(fs.readFileSync('./database/user.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
+
+global.db = JSON.parse(fs.readFileSync('./database/database.json'))
+if (global.db) global.db = {
+sticker: {},
+database: {}, 
+game: {},
+others: {},
+users: {},
+chats: {},
+...(global.db || {})
+}
+
 module.exports = escalibud = async (client, m, chatUpdate) => {
   try {
     var body =
@@ -60,6 +73,8 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
+const isPrem = prem.includes(m.sender);
+    	const isUser = verifieduser.includes(sender);
     const reply = m.reply;
     const sender = m.sender;
     const mek = chatUpdate.messages[0];
@@ -209,6 +224,22 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
+if (!EscaliBud.public) {
+if (!m.key.fromMe) return
+}
+
+//chat counter (console log)
+        if (m.message && m.isGroup) {
+            client.readMessages([m.key])
+            console.log(color(`\n< ================================================== >\n`, 'cyan'))
+			console.log(color(`Group Chat:`, 'green'))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(groupName, m.chat))
+        } else {
+            client.readMessages([m.key])
+            console.log(color(`\n< ================================================== >\n`, 'cyan'))
+			console.log(color(`Private Chat:`, 'green'))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
+        }
 
 if (autobio === 'TRUE'){ 
             setInterval(() => { 
@@ -357,6 +388,18 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'public': {
+                if (!XeonTheCreator) return reply('You are Not my owner')
+                EscaliBud.public = true
+                reply('*Successful in Changing To Public Usage*')
+            }
+            break
+            case 'self': {
+                if (!XeonTheCreator) return reply('You are not my Owner')
+                EscaliBud.public = false
+                reply('*Successful in Changing To Self Usage*')
+            }
+            break;
 case "ihkgpt":{
 if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
  
