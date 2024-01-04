@@ -265,6 +265,9 @@ if (autobio === 'TRUE'){
 *┃➥Unblock*
 *┃➥Join*
 *┃➥Eval*
+*┃➥Broadcast*
+*┃➥Broadcastimg*
+*┃➥Broadcastvid*
 *┗━───────────────╯*
 
 *⌜ Group Commands ⌟*
@@ -278,6 +281,10 @@ if (autobio === 'TRUE'){
 *┃➥Subject*
 *┃➥Hidetag*
 *┃➥Tagall*
+*┃➥Mute*
+*┃➥Unmute*
+*┃➥Closein*
+*┃➥Openin*
 *┗━───────────────╯*
 
 
@@ -294,6 +301,7 @@ if (autobio === 'TRUE'){
 *┃➥Song*
 *┃➥Gitclone*
 *┃➥Github*
+*┃➥Tovv*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -348,6 +356,86 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'openin': {
+if (!m.isGroup) return reply('Group Command')
+if (!isAdmin) return reply('Are you an Admin??')
+if (!isBotAdmin) return reply('Foolish,,Are you a Bot Admin')
+if (args[1] == 'second') {
+var timer = args[0] * `1000`
+} else if (args[1] == 'minute') {
+var timer = args[0] * `60000`
+} else if (args[1] == 'hour') {
+var timer = args[0] * `3600000`
+} else if (args[1] == 'day') {
+var timer = args[0] * `86400000`
+} else {
+return reply('*Choose:*\nsecond\nminute\nhour\n\n*Example*\n10 second')
+}
+reply(`Open Time ${q} Starting from now`)
+setTimeout(() => {
+var nomor = m.participant
+const open = `*On time* Group Opened By Admin\n Now Members Can Send Messages`
+client.groupSettingUpdate(from, 'not_announcement')
+reply(open)
+}, timer)
+}
+break;
+case 'closein': {
+if (!m.isGroup) return reply('Group Command')
+if (!isAdmin) return reply('Admin Command')
+if (!isBotAdmin) return reply('Bot Admin Command')
+if (args[1] == 'second') {
+var timer = args[0] * `1000`
+} else if (args[1] == 'minute') {
+var timer = args[0] * `60000`
+} else if (args[1] == 'hour') {
+var timer = args[0] * `3600000`
+} else if (args[1] == 'day') {
+var timer = args[0] * `86400000`
+} else {
+return reply('*Choose:*\nsecond\nminute\nhour\n\n*Example*\n10 second')
+}
+reply(`Close Time ${q} Starting from now`)
+setTimeout(() => {
+var nomor = m.participant
+const close = `*On time* Group Closed By Admin\nNow Only Admins Can Send Messages`
+client.groupSettingUpdate(from, 'announcement')
+replyg(close)
+}, timer)
+}
+break;
+                            case 'broadcastig': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
+if(!Owner) throw NotOwner;
+        if (!q) return reply(`Enter text`)
+        let getGroups = await client.groupFetchAllParticipating()
+        let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+        let xeoncast = groups.map(v => v.id)
+        reply(` Broadcasting in ${xeoncast.length} Group Chat, in ${xeoncast.length * 1.5} seconds`)
+        for (let i of xeoncast) {
+let txt = `${ownername}'s Broadcast\n\nMessage : ${q}`
+if(/image/.test(mime)) {
+let media = await quoted.download()
+await client.sendMessage(i, { image:media,  caption: txt,mentions:participants.map(a => a.id) })
+}
+if(/video/.test(mime)){
+let media = await quoted.download()
+await client.sendMessage(i, { video:media,  caption: txt, mentions:participants.map(a => a.id) })
+}
+            }
+        reply(`Successfuly Broadcasted in ${xeoncast.length} Groups`)      
+        break;
+case 'tovv': case 'toviewonce': { 
+if (!quoted) return reply(`Reply Image/Video`)
+if (/image/.test(mime)) {
+anuan = await client.downloadAndSaveMediaMessage(quoted)
+client.sendMessage(m.chat, {image: {url:anuan}, caption: `Here you go!`, fileLength: "999", viewOnce : true},{quoted: m })
+} else if (/video/.test(mime)) {
+anuanuan = await client.downloadAndSaveMediaMessage(quoted)
+client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, fileLength: "99999999", viewOnce : true},{quoted: m })
+}
+}
+break;
+
  case "hidetag": { 
              if (!m.isGroup) throw group; 
              if (!isBotAdmin) throw botAdmin; 
