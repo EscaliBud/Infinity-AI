@@ -357,15 +357,28 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
-case "ihk":{
-if(!text) return reply('Please give me a query\n\nExample: ${prefix} ihk Hello world in Java')
+case "ihkgpt":{
+if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
+ 
+    let userQuery = text.slice(7).trim(); // Extract user's query after '/ihkgpt'
 
-let ihkgpt ="https://chatgpt.apinepdev.workers.dev/?question=${text}";
+    let chatGPTUrl = https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(userQuery)};
 
-ai = ihkgpt.answer
+    // Make a request to the ChatGPT API
+    fetch(chatGPTUrl)
+        .then(response => response.json())
+        .then(data => {
+            let gptResponse = data.answer;
 
-client.sendMessage(m.chat,{text: ai,},{quoted: m,})
-}
+            // Send the GPT response back to the user
+            client.sendMessage(m.chat, gptResponse, { quoted: m });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error response
+            reply('An error occurred. Please try again later.');
+        });
+} 
 break;
 case 'img': {
 
