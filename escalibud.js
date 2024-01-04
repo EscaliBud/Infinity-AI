@@ -1,3 +1,4 @@
+
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const util = require("util");
@@ -356,7 +357,21 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'img': {
 
+       if (!text) return reply('Example : ${prefix + command} Snoop Dogg'
+)
+        xeonezyanu = await fetchJson(https://api.akuari.my.id/search/googleimage?query=${text})
+
+        n = xeonezyanu.result
+
+        images = n[Math.floor(Math.random() * n.length)]
+
+
+                client.sendMessage(m.chat, { image: { url: images}, caption: *-------「 GIMAGE SEARCH 」-------*\n🤠 *Query* : ${text}\n🔗 *Media Url* : ${images}}, { quoted: m })
+        }
+
+        break;
 case 'openin': {
 if (!m.isGroup) return reply('Group Command')
 if (!isAdmin) return reply('Are you an Admin??')
