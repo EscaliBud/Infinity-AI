@@ -389,13 +389,13 @@ client.sendMessage(m.chat, {
                     })
           break;
 case 'public': {
-                if (!XeonTheCreator) return reply('You are Not my owner')
+                if (!Owner) return reply('You are Not my owner')
                 EscaliBud.public = true
                 reply('*Successful in Changing To Public Usage*')
             }
             break
             case 'self': {
-                if (!XeonTheCreator) return reply('You are not my Owner')
+                if (!Owner) return reply('You are not my Owner')
                 EscaliBud.public = false
                 reply('*Successful in Changing To Self Usage*')
             }
