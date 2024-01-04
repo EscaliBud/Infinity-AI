@@ -86,8 +86,8 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
-    const isRegistered = checkRegisteredUser(m.sender)
-   const isRegister = register.includes(m.sender)
+   
+   const isRegister = register.includes(m.sender);
 const isPrem = prem.includes(m.sender);
     	const isUser = verifieduser.includes(m.sender);
     const reply = m.reply;
