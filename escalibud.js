@@ -224,7 +224,7 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
-if (!EscaliBud.public) {
+if (!client.public) {
 if (!m.key.fromMe) return
 }
 
@@ -390,13 +390,13 @@ client.sendMessage(m.chat, {
           break;
 case 'public': {
                 if (!Owner) return reply('You are Not my owner')
-                EscaliBud.public = true
+                client.public = true
                 reply('*Successful in Changing To Public Usage*')
             }
             break
             case 'self': {
                 if (!Owner) return reply('You are not my Owner')
-                EscaliBud.public = false
+                 client.public = false
                 reply('*Successful in Changing To Self Usage*')
             }
             break;
