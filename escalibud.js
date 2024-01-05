@@ -853,7 +853,7 @@ case 'ytsearch':
 
 case 'play':
     case 'stream': {
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
         if (!text) {
             reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
             return;
