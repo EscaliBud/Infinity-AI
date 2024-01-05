@@ -132,7 +132,7 @@ async function startEscalibud() {
   console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
     color(
-      figlet.textSync("Wa-OpenAI", {
+      figlet.textSync("INFINITYAI", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -270,6 +270,7 @@ if (autobio === 'TRUE'){
       console.log(color("Bot success conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
+                  client.sendMessage(owner + "@s.whatsapp.net", { text: `INFINITY-AI Has successfully started. Type ${prefix} menu for full command list.☆Enjoy☆ ` });
     }
     // console.log('Connected...', update)
   });
