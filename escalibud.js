@@ -259,7 +259,7 @@ for (let anji of setik){
 
 //******************* 》banchat《 ********************\\
 if (isBanchat){
-if (!itsMe && !isOwner)return 
+if (!itsMe && !Owner)return 
 }
 
     // Push Message To Console
