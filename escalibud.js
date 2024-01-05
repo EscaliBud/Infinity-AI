@@ -572,7 +572,7 @@ break;
 case 'listbanchat': case 'listbc':
  teks = `*List Banchat Group!*\n_Total : ${bancht.length}_\n\n`
 for(let i of bancht){
-met = await xeon.groupMetadata(i)
+met = await client.groupMetadata(i)
 teks += 'Id : ' + i + '\n'
 teks += 'Nama Group : ' + met.subject + '\n\n'
 }
