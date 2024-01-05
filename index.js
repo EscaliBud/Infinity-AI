@@ -129,10 +129,10 @@ function smsg(conn, m, store) {
 async function startEscalibud() {
   const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName ? sessionName : "session"}`);
   const { version, isLatest } = await fetchLatestWaWebVersion().catch(() => fetchLatestBaileysVersion());
-  console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+    console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
     color(
-      figlet.textSync("INFINITYAI", {
+      figlet.textSync("KRESSWELL BOT", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -145,9 +145,11 @@ async function startEscalibud() {
   const client = escalibudConnect({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
-    browser: Browsers.macOS('Desktop'),
+    browser: ["KRESSWELL - BOT", "Safari", "5.1.7"],
     auth: state,
+syncFullHistory: true,
   });
+
 if (autobio === 'TRUE'){ 
             setInterval(() => { 
 
