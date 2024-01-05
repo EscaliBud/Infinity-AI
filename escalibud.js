@@ -230,7 +230,26 @@ Type *surrender* to admit defeat`
             delete this.game[room.id]
             }
             }
+//══════════[ Automatic Reply ]══════════//
 
+for (let anji of setik){
+                                if (budy === anji){
+                                        result = fs.readFileSync(`./media/sticker/${anji}.webp`)
+                                        client.sendMessage(from, result, sticker, { quoted: mek})
+                                        }
+                        }
+                        for (let anju of vien){
+                                if (budy === anju){
+                                        result = fs.readFileSync(`./media/vn/${anju}.mp3`)
+                                        client.sendMessage(from, result, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek})
+                                        }
+                        }
+                        for (let anjh of imagi){
+                                if (budy === anjh){
+                                        result = fs.readFileSync(`./media/image/${anjh}.jpg`)
+                                        client.sendMessage(from, result, image, { quoted: mek})
+                                        }
+                                  }
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
