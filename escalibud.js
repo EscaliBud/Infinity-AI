@@ -36,7 +36,7 @@ chats: {},
 ...(global.db || {})
 }
 
-module.exports = escalibud = async (client, m, chatUpdate) => {
+module.exports = escalibud = async (client, m, chatUpdate, store) => {
   try {
     var body =
       m.mtype === "conversation"
