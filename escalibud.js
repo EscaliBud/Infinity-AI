@@ -1803,7 +1803,7 @@ break;
 
 case 'pornhub':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} ajg | ea)
+if(!q) return reply('Example: ${prefix + command} ajg | ea')
 reply ('Please Wait')
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -1816,7 +1816,7 @@ client.sendMessage(from,{image:{url:anuphub}, caption:"Here you go!"},{quoted:m}
 break;
 case 'retro':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} ajg | ea)
+if(!q) return reply('Example: ${prefix + command} ajg | ea')
 reply ('Please Wait')
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -1829,7 +1829,7 @@ client.sendMessage(from,{image:{url:anutro2}, caption:"Here you go!"},{quoted:m}
 break;
 case '8bit':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return replygcxeon(Example: ${prefix + command} ajg | ea)
+if(!q) return replygcxeon('Example: ${prefix + command} ajg | ea')
 reply ('Please Wait')
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -1842,8 +1842,8 @@ client.sendMessage(from,{image:{url:anubit8}, caption:"Here you go!"},{quoted:m}
 break;
 case 'batman':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} 
-ajg)
+if(!q) return reply('Example: ${prefix + command} 
+ajg')
 reply ('Please Wait')
 maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
     ${q},])
@@ -1853,7 +1853,7 @@ maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
    break;
 case '3dbox':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} ea)
+if(!q) return reply('Example: ${prefix + command} ea')
 reply ('Please Wait')
 maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
     ${q},])
@@ -1863,7 +1863,7 @@ maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
 break
 case 'lion':{
 if (!isPrem) return reply('This is a premium command')
-  if(!q) return reply(Example: ${prefix + command} ajg)
+  if(!q) return reply('Example: ${prefix + command} ajg')
 reply ('Please Wait')
   maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
       ${q},])
@@ -1872,7 +1872,7 @@ reply ('Please Wait')
      break
 case '3davengers':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return replygcxeon(Example: ${prefix + command} ajg)
+if(!q) return replygcxeon('Example: ${prefix + command} ajg')
 reply ('Please Wait')
 maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
     ${q},])
@@ -1882,7 +1882,7 @@ maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
    break ;
 case 'window':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} ajg)
+if(!q) return reply('Example: ${prefix + command} ajg')
 reply ('Please Wait')
 maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     ${q},])
@@ -1892,7 +1892,7 @@ maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.ht
    break;
 case '3dspace':{
 if (!isPrem) return reply('This is a premium command')
-if(!q) return reply(Example: ${prefix + command} ajg | ea)
+if(!q) return reply('Example: ${prefix + command} ajg | ea')
 XeonStickWait()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
