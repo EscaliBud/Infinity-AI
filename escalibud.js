@@ -363,7 +363,6 @@ if (autobio === 'TRUE'){
 *┃➥ Host Name : ${os.hostname()}*
 *┃➥ Platform : ${os.platform()}*
 *┃➥ Bot Name : InfinityAI*
-*┃➥ Mode :* ${self ? "Self" : "Public"}
 *┃➥ Owner : 𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟*
 *┗━──────────────*
 
