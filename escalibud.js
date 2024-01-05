@@ -776,7 +776,7 @@ case 'nsfw':
                                         } else if (Number(args[0]) === 0) {
                                                 if (!isNsfw) return reply('Its off')
                                                 var ini = nsfw.indexOf(from)
-                                                nsfww.splice(ini, 1)
+                                                nsfw.splice(ini, 1)
                                                 fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
                                                 reply('Successfully disabled the nsfw feature')
                                         } else {
