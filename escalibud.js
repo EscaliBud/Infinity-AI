@@ -20,6 +20,7 @@ let _registered = JSON.parse(fs.readFileSync('./database/registered.json'));
 let register = JSON.parse(fs.readFileSync('./database/registered.json'));
 const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
 const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
+const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
