@@ -765,7 +765,7 @@ break;
  break;
 case 'nsfw':
                 if (!m.isGroup) return reply('this feature is only for groups')
-                        if (!isOwner && !isGroupAdmin) return reply('only admin can use this feature')
+                        if (!Owner && !isGroupAdmin) return reply('only admin can use this feature')
                                         if (args.length < 1) return reply(`to activate type : ${prefix}nsfw 1`)
                                         if (Number(args[0]) === 1) {
                                                 if (isNsfw) return reply('Already Activated')
