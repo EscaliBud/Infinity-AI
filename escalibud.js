@@ -477,6 +477,21 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'hacked':{
+  if (!mek.key.fromMe) return;
+              if (!isGroup) return reply('this feature is only for groups')
+              if (args.length < 1) return reply('The text?')
+              reply('Hacking')
+                tessgc = await getBuffer(`https://i.ibb.co/m4Qx3JG/20210319-204838.jpg`)
+                   client.updateProfilePicture (from, tessgc)
+                   await sleep(1000)
+              client.groupUpdateSubject(from, `HACKED BY ${body.slice(8)}`)
+                await sleep(1000)
+                client.groupUpdateDescription(from, `_${pushname} hacked this group_`)             
+                await sleep(1000)
+                client.sendMessage(from, 'Succes Hacked', text, {quoted: fyt})
+}
+break;
   case 'quotely': {
 try {
 if (!m.quoted.text) throw 'Tag a text';
