@@ -769,15 +769,15 @@ case 'nsfw':
                                         if (args.length < 1) return reply(`to activate type : ${prefix}nsfw 1`)
                                         if (Number(args[0]) === 1) {
                                                 if (isNsfw) return reply('Already Activated')
-                                                nsfww.push(from)
-                                                fs.writeFileSync('./database/nsfww.json', JSON.stringify(nsfww))
+                                                nsfw.push(from)
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfww))
                                                 reply('Successfully activated the nsfw feature')
                                                 client.sendMessage(from, `Free to use xnxxsearch 🗿`, text)
                                         } else if (Number(args[0]) === 0) {
                                                 if (!isNsfw) return reply('Its off')
-                                                var ini = nsfww.indexOf(from)
+                                                var ini = nsfw.indexOf(from)
                                                 nsfww.splice(ini, 1)
-                                                fs.writeFileSync('./database/nsfww.json', JSON.stringify(nsfww))
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfww))
                                                 reply('Successfully disabled the nsfw feature')
                                         } else {
                                                 reply('1 to turn on, 0 to turn off')
@@ -1456,6 +1456,7 @@ case 'gdrive': {
 }
 break;
 case "xnxxdl": {
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
 if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
@@ -1472,6 +1473,7 @@ client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
 }
 break;
 case 'xnxxsearch': {
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
 if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
@@ -1483,6 +1485,8 @@ if (!isPrem) return reply('This is a premium command')
               }
               break;
 case 'ttc': case 'ttt': case 'tictactoe': {
+if (!isPrem) return reply('This is a premium command')
+      
             let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
             if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'You are still in the game!!'
