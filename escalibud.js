@@ -770,14 +770,14 @@ case 'nsfw':
                                         if (Number(args[0]) === 1) {
                                                 if (isNsfw) return reply('Already Activated')
                                                 nsfw.push(from)
-                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfww))
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
                                                 reply('Successfully activated the nsfw feature')
                                                 client.sendMessage(from, `Free to use xnxxsearch 🗿`, text)
                                         } else if (Number(args[0]) === 0) {
                                                 if (!isNsfw) return reply('Its off')
                                                 var ini = nsfw.indexOf(from)
                                                 nsfww.splice(ini, 1)
-                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfww))
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
                                                 reply('Successfully disabled the nsfw feature')
                                         } else {
                                                 reply('1 to turn on, 0 to turn off')
