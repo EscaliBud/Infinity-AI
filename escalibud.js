@@ -140,6 +140,7 @@ const runtime = function (seconds) {
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
     const isBanchat = m.isGroup ? bancht.includes(from) : false;
+    const isNsfw = isGroup ? nsfw.includes(from) : false;
 const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
@@ -762,6 +763,26 @@ break;
                  m.reply (`Pong\n ${infinityspeed.toFixed(4)} _miliseconds_`) 
  } 
  break;
+case 'nsfw':
+                if (!isGroup) return reply('this feature is only for groups')
+                        if (!isOwner && !isGroupAdmin) return reply('only admin can use this feature')
+                                        if (args.length < 1) return reply(`to activate type : ${prefix}nsfw 1`)
+                                        if (Number(args[0]) === 1) {
+                                                if (isNsfw) return reply('Already Activated')
+                                                nsfww.push(from)
+                                                fs.writeFileSync('./database/nsfww.json', JSON.stringify(nsfww))
+                                                reply('Successfully activated the nsfw feature')
+                                                client.sendMessage(from, `Free to use xnxxsearch 🗿`, text)
+                                        } else if (Number(args[0]) === 0) {
+                                                if (!isNsfw) return reply('Its off')
+                                                var ini = nsfww.indexOf(from)
+                                                nsfww.splice(ini, 1)
+                                                fs.writeFileSync('./database/nsfww.json', JSON.stringify(nsfww))
+                                                reply('Successfully disabled the nsfw feature')
+                                        } else {
+                                                reply('1 to turn on, 0 to turn off')
+                                        }
+                                        break;
 
 case "alive": { 
 
