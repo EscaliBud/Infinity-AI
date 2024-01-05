@@ -357,7 +357,7 @@ if (autobio === 'TRUE'){
           let caption= `
 
 *┏━──●★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★●───*
-*┃➥ Hello ${m.pushName}*
+*┃➥ Howdy ${m.pushName}*
 *┃➥ Runtime: ${runtime(process.uptime())}*
 *┃➥ Library : Baileys*
 *┃➥ Host Name : ${os.hostname()}*
@@ -390,10 +390,11 @@ if (autobio === 'TRUE'){
 *⌜ Admin Commands ⌟*
 
 *┏━───────────────╮*
-*┃➥Register*
 *┃➥Promote*
 *┃➥Demote*
 *┃➥Kick*
+*┃➥Add*
+*┃➥revoke*
 *┃➥Delete*
 *┃➥Gpp*
 *┃➥Subject*
@@ -421,6 +422,7 @@ if (autobio === 'TRUE'){
 *┃➥Gitclone*
 *┃➥Github*
 *┃➥Tovv*
+*┃➥Qoutely*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -475,6 +477,80 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+  case 'quotely': {
+try {
+if (!m.quoted.text) throw 'Tag a text';
+let xf = m.quoted.text;
+
+                const {
+                    quote
+                } = require('./lib/infinityquotely.js')
+
+                let pppuser = await client.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/75272825615a4dcb69526.png')
+
+const rel = await quote(xf, pushname, pppuser)
+
+                client.sendImageAsSticker(m.chat, rel.result, m, {
+                    packname: pushname,
+                    author: `InfinityAI`
+                })
+
+} catch (errr) { 
+ await reply("Tag some text for quotely")}
+
+            }
+
+break;
+//owner commands
+case 'listpc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+                 let teks = `⬣ *LIST OF PERSONAL CHATS*\n\nTotal Chat : ${anu.length} Chats\n\n`
+                 for (let i of anu) {
+                     let nama = store.messages[i].array[0].pushName
+                     teks += `⬡ *Name :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                 }
+                 client.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+                case 'listgc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+                 let teks = `⬣ *LIST OF GROUP CHATS*\n\nTotal Group : ${anu.length} Group\n\n`
+                 for (let i of anu) {
+                     let metadata = await client.groupMetadata(i)
+                     teks += `⬡ *Name :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Created on :* ${moment(metadata.creation * 1000).tz('Africa/Nairobi').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Members :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                 }
+                 client.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+             case 'listonline': case 'liston': {
+                    let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
+                    let online = [...Object.keys(store.presences[id]), botNumber]
+                    client.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+             }
+             break;
+case 'add': {
+                if (!m.isGroup) throw group
+                if (!isBotAdmin) throw botAdmin
+                if (!isAdmin) throw admin
+                let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                await client.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+        }
+        break;
+          case "revoke": 
+ case "newlink": 
+ case "reset": { 
+   if (!m.isGroup) throw group; // add "new Error" to create a new Error object 
+   if (!isAdmin) throw admin; // add "new Error" to create a new Error object 
+   if (!isBotAdmin) throw botAdmin; // add "new Error" to create a new Error object 
+   await client.groupRevokeInvite(m.chat); 
+   await client.sendText(m.chat, 'Group link revoked!', m); // use "client.sendText" instead of "m.reply" to ensure message is sent 
+   let response = await client.groupInviteCode(m.chat); 
+ client.sendText(m.sender, `https://chat.whatsapp.com/${response}\n\nHere is the new group link for ${groupMetadata.subject}`, m, { detectLink: true }); 
+ client.sendText(m.chat, `Sent  the new group link to your inbox!`, m); 
+   // use "client.sendTextWithMentions" instead of "client.sendText" to include group name in message 
+ }
+
+  break;
 case 'addprem':
 if (!Owner) return reply('You are not my Owner')
 if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 254754046165`)
