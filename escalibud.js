@@ -1800,7 +1800,7 @@ break;
   } 
  break;
 //logo Commands
-
+/*
 case 'pornhub':{
 if (!isPrem) return reply('This is a premium command')
 if(!q) return reply('Example: ${prefix + command} ajg | ea')
@@ -1901,7 +1901,7 @@ maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", 
   .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
   .catch((err) => console.log(err));
 }
-   break;
+   break;*/
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
