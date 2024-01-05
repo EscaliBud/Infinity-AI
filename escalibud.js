@@ -139,6 +139,7 @@ const runtime = function (seconds) {
      const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
+    const isBanchat = isGroup ? bancht.includes(from) : false;
 const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
@@ -255,6 +256,12 @@ for (let anji of setik){
                                         client.sendMessage(from, result, image, { quoted: mek})
                                         }
                                   }
+
+//******************* 》banchat《 ********************\\
+if (isBanchat){
+if (!itsMe && !isOwner)return 
+}
+
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
@@ -541,6 +548,35 @@ if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in J
             reply('An error occurred. Please try again later.');
         });
 } 
+break;
+        // banchat fixed by xeon
+case 'banchat':
+if (!isGroup) return reply('this feature is only for groups')
+if (!itsMe && !Owner && !isGroupAdmin)return mentions(`*This Order is Specially for owner @${ownerN} !*`, [`${ownerN}@s.whatsapp.net`], true)
+//if (!isBotGroupAdmins) return reply('You are not an admin')
+if (isBanchat) return reply(`already banned`)
+bancht.push(from)
+fs.writeFileSync('./database/banchat.json', JSON.stringify(bancht))
+reply(`Successful bot Ban on this group`)
+break
+
+case 'unbanchat':
+if (!itsMe && !Owner)return reply('Only owner can use this feature')
+if (!isBanchat) return reply(`Already at UnBan`)
+let ubc = bancht.indexOf(from)
+bancht.splice(ubc, 1)
+fs.writeFileSync('./database/banchat.json', JSON.stringify(bancht))
+reply(`The bot has been unbanned in this group`)
+break;
+
+case 'listbanchat': case 'listbc':
+ teks = `*List Banchat Group!*\n_Total : ${bancht.length}_\n\n`
+for(let i of bancht){
+met = await xeon.groupMetadata(i)
+teks += 'Id : ' + i + '\n'
+teks += 'Nama Group : ' + met.subject + '\n\n'
+}
+reply(teks)
 break;
 case 'img': {
 
