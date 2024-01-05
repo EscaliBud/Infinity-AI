@@ -377,14 +377,19 @@ if (autobio === 'TRUE'){
 *┃➥Unblock*
 *┃➥Join*
 *┃➥Eval*
+*┃➥Addprem*
+*┃➥Delprem*
+*┃➥Banchat*
+*┃➥Unbanchat*
 *┃➥Broadcast*
 *┃➥Broadcastimg*
 *┃➥Broadcastvid*
 *┗━───────────────╯*
 
-*⌜ Group Commands ⌟*
+*⌜ Admin Commands ⌟*
 
 *┏━───────────────╮*
+*┃➥Register*
 *┃➥Promote*
 *┃➥Demote*
 *┃➥Kick*
@@ -397,6 +402,7 @@ if (autobio === 'TRUE'){
 *┃➥Unmute*
 *┃➥Closein*
 *┃➥Openin*
+*┃➥Nsfw*
 *┗━───────────────╯*
 
 
