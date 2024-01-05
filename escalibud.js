@@ -470,7 +470,7 @@ case 'public': {
             break;
                                         // add respond
                                         case 'addresponse':
-                        if (!isOwner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                        if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
                                 if (args.length < 1) return reply(`Use ${prefix}addresponse Hi|Hi too`)
                                 argz = arg.split('|')
                                 if (checkCommands(argz[0], commandsDB) === true) return reply(`Already there`)
@@ -478,7 +478,7 @@ case 'public': {
                                 reply(`Successful adding response ${argz[0]}`)
                                 break
                                 case 'delresponse':
-                        if (!isOwner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                        if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
                                 if (args.length < 1) return reply(`Use ${prefix}delrespond hi`)
                                 if (!checkCommands(body.slice(11), commandsDB)) return reply(`Not in my database`)
                 deleteCommands(body.slice(11), commandsDB)
