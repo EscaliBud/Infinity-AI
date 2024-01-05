@@ -325,7 +325,8 @@ if (autobio === 'TRUE'){
          await fs.writeFileSync(trueFileName, buffer); 
          return trueFileName; 
      };
-
+client.sendTextWithMentions = async (jid, text, quoted, options = {}) => 
+client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
   client.sendText = (jid, text, quoted = "", options) => client.sendMessage(jid, { text: text, ...options }, { quoted });
 
