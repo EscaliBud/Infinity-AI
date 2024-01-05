@@ -552,7 +552,7 @@ break;
         // banchat fixed by xeon
 case 'banchat':
 if (!m.isGroup) return reply('this feature is only for groups')
-if (!itsMe && !Owner && !isGroupAdmin)return mentions(`*This Order is Specially for owner @${ownerN} !*`, [`${ownerN}@s.whatsapp.net`], true)
+if (!itsMe && !Owner && !isAdmin)return mentions(`*This Order is Specially for owner @${ownerN} !*`, [`${ownerN}@s.whatsapp.net`], true)
 //if (!isBotGroupAdmin) return reply('You are not an admin')
 if (isBanchat) return reply(`already banned`)
 bancht.push(from)
