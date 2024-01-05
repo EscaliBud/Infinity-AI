@@ -13,6 +13,8 @@ const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
 const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
+const commandsDB = JSON.parse(fs.readFileSync('./database/commands.json'));
+//const { addCommands, checkCommands, deleteCommands } = require('./lib/autoresp')
 const verifieduser = JSON.parse(fs.readFileSync('./database/user.json'));
 let _registered = JSON.parse(fs.readFileSync('./database/registered.json'));
 let register = JSON.parse(fs.readFileSync('./database/registered.json'));
@@ -466,6 +468,33 @@ case 'public': {
                 reply('*Successful in Changing To Self Usage*')
             }
             break;
+                                        // add respond
+                                        case 'addresponse':
+                        if (!isOwner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                                if (args.length < 1) return reply(`Use ${prefix}addresponse Hi|Hi too`)
+                                argz = arg.split('|')
+                                if (checkCommands(argz[0], commandsDB) === true) return reply(`Already there`)
+                                addCommands(argz[0], argz[1], sender, commandsDB)
+                                reply(`Successful adding response ${argz[0]}`)
+                                break
+                                case 'delresponse':
+                        if (!isOwner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                                if (args.length < 1) return reply(`Use ${prefix}delrespond hi`)
+                                if (!checkCommands(body.slice(11), commandsDB)) return reply(`Not in my database`)
+                deleteCommands(body.slice(11), commandsDB)
+                                reply(`Successfully deleted response ${body.slice(11)}`)
+                                break
+                                case 'respondlist':
+if (!isPrem) return reply('This is a premium command')
+      
+teks = `\`\`\`「 LIST RESPON  」\`\`\`\n\n`
+for (let i = 0; i < commandsDB.length; i ++){
+teks += `❏ *Ask:* ${commandsDB[i].pesan}\n`
+teks += `❏ *Reply:* ${commandsDB[i].balasan}\n`
+teks += `❏ *Creator:* ${commandsDB[i].creator}\n\n`
+}
+reply(teks)
+break 
 case "ihkgpt":{
 if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
  
