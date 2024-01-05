@@ -11,9 +11,31 @@ const ytdl = require("ytdl-core");
 const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
-const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc')
-
+const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
+const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
+const commandsDB = JSON.parse(fs.readFileSync('./database/commands.json'));
+const { addCommands, checkCommands, deleteCommands } = require('./lib/autoresp')
+const verifieduser = JSON.parse(fs.readFileSync('./database/user.json'));
+let _registered = JSON.parse(fs.readFileSync('./database/registered.json'));
+let register = JSON.parse(fs.readFileSync('./database/registered.json'));
+const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
+const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
+const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
+const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
+    const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
+
+global.db = JSON.parse(fs.readFileSync('./database/database.json'))
+if (global.db) global.db = {
+sticker: {},
+database: {}, 
+game: {},
+others: {},
+users: {},
+chats: {},
+...(global.db || {})
+}
+
 module.exports = escalibud = async (client, m, chatUpdate) => {
   try {
     var body =
@@ -47,7 +69,18 @@ const Heroku = require("heroku-client");
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
-
+  
+/*
+      const sender = mek.key.fromMe
+      ? xeon.user.jid
+      : isGroup
+      ? mek.participant
+      : mek.key.remoteJid;
+    let senderr = mek.key.fromMe
+      ? xeon.user.jid
+      : mek.key.remoteJid.endsWith("@g.us")
+      ? mek.participant
+      : mek.key.remoteJid;*/
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
@@ -60,6 +93,10 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
+   
+   const isRegister = register.includes(m.sender);
+const isPrem = prem.includes(m.sender);
+    	const isUser = verifieduser.includes(m.sender);
     const reply = m.reply;
     const sender = m.sender;
     const mek = chatUpdate.messages[0];
@@ -102,6 +139,8 @@ const runtime = function (seconds) {
      const groupAdmin = m.isGroup ? await getGroupAdmins(participants) : ""; 
      const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false; 
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
+    const isBanchat = m.isGroup ? bancht.includes(from) : false;
+    const isNsfw = m.isGroup ? nsfw.includes(from) : false;
 const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
@@ -198,6 +237,31 @@ Type *surrender* to admit defeat`
             delete this.game[room.id]
             }
             }
+//══════════[ Automatic Reply ]══════════//
+
+for (let anji of setik){
+                                if (budy === anji){
+                                        result = fs.readFileSync(`./media/sticker/${anji}.webp`)
+                                        client.sendMessage(from, result, sticker, { quoted: mek})
+                                        }
+                        }
+                        for (let anju of vien){
+                                if (budy === anju){
+                                        result = fs.readFileSync(`./media/vn/${anju}.mp3`)
+                                        client.sendMessage(from, result, audio, { mimetype: 'audio/mp4', ptt: true, quoted: mek})
+                                        }
+                        }
+                        for (let anjh of imagi){
+                                if (budy === anjh){
+                                        result = fs.readFileSync(`./media/image/${anjh}.jpg`)
+                                        client.sendMessage(from, result, image, { quoted: mek})
+                                        }
+                                  }
+
+//******************* 》banchat《 ********************\\
+if (isBanchat){
+if (!itsMe && !Owner)return 
+}
 
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
@@ -209,6 +273,54 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
+if (budy.toLowerCase() === `register`){
+            if (isRegister) return 
+                    register.push(m.sender)
+                   
+                    fs.writeFileSync('./database/registered.json', JSON.stringify(register))
+                    teks = `Verification success\n\nPlease send *!menu* to view menu`
+                    client.sendMessage(from, teks, text, {quoted: fkontak })
+}          /*if (!mek.key.fromMe && banChats === false) return*/
+
+
+const getRegisteredRandomId = () => {
+            return _registered[Math.floor(Math.random() * _registered.length)].id
+        }
+        const addRegisteredUser = (userid, sender, age, time, serials) => {
+            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
+            _registered.push(obj)
+            fs.writeFileSync('./database/user/registered.json', JSON.stringify(_registered))
+        }
+
+const checkRegisteredUser = (sender) => {
+let status = false
+Object.keys(_registered).forEach((i) => {
+if (_registered[i].id === sender) {
+status = true
+}
+})
+return status
+}
+
+const isRegistered = checkRegisteredUser(sender)
+
+
+if (!client.public) {
+if (!m.key.fromMe) return
+}
+
+//chat counter (console log)
+        if (m.message && m.isGroup) {
+            client.readMessages([m.key])
+            console.log(color(`\n< ================================================== >\n`, 'cyan'))
+			console.log(color(`Group Chat:`, 'green'))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(groupName, m.chat))
+        } else {
+            client.readMessages([m.key])
+            console.log(color(`\n< ================================================== >\n`, 'cyan'))
+			console.log(color(`Private Chat:`, 'green'))
+            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
+        }
 
 if (autobio === 'TRUE'){ 
             setInterval(() => { 
@@ -266,14 +378,19 @@ if (autobio === 'TRUE'){
 *┃➥Unblock*
 *┃➥Join*
 *┃➥Eval*
+*┃➥Addprem*
+*┃➥Delprem*
+*┃➥Banchat*
+*┃➥Unbanchat*
 *┃➥Broadcast*
 *┃➥Broadcastimg*
 *┃➥Broadcastvid*
 *┗━───────────────╯*
 
-*⌜ Group Commands ⌟*
+*⌜ Admin Commands ⌟*
 
 *┏━───────────────╮*
+*┃➥Register*
 *┃➥Promote*
 *┃➥Demote*
 *┃➥Kick*
@@ -286,6 +403,7 @@ if (autobio === 'TRUE'){
 *┃➥Unmute*
 *┃➥Closein*
 *┃➥Openin*
+*┃➥Nsfw*
 *┗━───────────────╯*
 
 
@@ -357,6 +475,64 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'addprem':
+if (!Owner) return reply('You are not my Owner')
+if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 254754046165`)
+prrkek = q.split("|")[0].replace(/[^0-9]/g, '')+`@s.whatsapp.net`
+let ceknya = await client.onWhatsApp(prrkek)
+if (ceknya.length == 0) return reply(`Enter a valid and registered number on WhatsApp!!!`)
+prem.push(prrkek)
+fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
+reply(`The Number ${prrkek} Has Been Premium!`)
+break;
+case 'delprem':
+if (!Owner) return reply('You are not My Owner')
+if (!args[0]) return reply(`Use ${prefix+command} nomor\nExample ${prefix+command} 254754046165`)
+ya = q.split("|")[0].replace(/[^0-9]/g, '')+`@s.whatsapp.net`
+unp = prem.indexOf(ya)
+prem.splice(unp, 1)
+fs.writeFileSync('./database/premium.json', JSON.stringify(prem))
+reply(`The Number ${ya} Has Been Removed Premium!`)
+break;
+case 'public': {
+                if (!Owner) return reply('You are Not my owner')
+                client.public = true
+                reply('*Successful in Changing To Public Usage*')
+            }
+            break
+            case 'self': {
+                if (!Owner) return reply('You are not my Owner')
+                 client.public = false
+                reply('*Successful in Changing To Self Usage*')
+            }
+            break;
+                                        // add respond
+                                        case 'addresponse':
+                        if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                                if (args.length < 1) return reply(`Use ${prefix}addresponse Hi|Hi too`)
+                                argz = arg.split('|')
+                                if (checkCommands(argz[0], commandsDB) === true) return reply(`Already there`)
+                                addCommands(argz[0], argz[1], sender, commandsDB)
+                                reply(`Successful adding response ${argz[0]}`)
+                                break
+                                case 'delresponse':
+                        if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
+                                if (args.length < 1) return reply(`Use ${prefix}delrespond hi`)
+                                if (!checkCommands(body.slice(11), commandsDB)) return reply(`Not in my database`)
+                deleteCommands(body.slice(11), commandsDB)
+                                reply(`Successfully deleted response ${body.slice(11)}`)
+                                break
+                                case 'respondlist':
+if (!isPrem) return reply('This is a premium command')
+      
+teks = `\`\`\`「 LIST RESPON  」\`\`\`\n\n`
+for (let i = 0; i < commandsDB.length; i ++){
+teks += `❏ *Ask:* ${commandsDB[i].pesan}\n`
+teks += `❏ *Reply:* ${commandsDB[i].balasan}\n`
+teks += `❏ *Creator:* ${commandsDB[i].creator}\n\n`
+}
+reply(teks)
+break 
 case "ihkgpt":{
 if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
  
@@ -379,6 +555,35 @@ if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in J
             reply('An error occurred. Please try again later.');
         });
 } 
+break;
+        // banchat fixed by xeon
+case 'banchat':
+if (!m.isGroup) return reply('this feature is only for groups')
+if (!itsMe && !Owner && !isAdmin)return mentions(`*This Order is Specially for owner @${ownerN} !*`, [`${ownerN}@s.whatsapp.net`], true)
+//if (!isBotGroupAdmin) return reply('You are not an admin')
+if (isBanchat) return reply(`already banned`)
+bancht.push(from)
+fs.writeFileSync('./database/banchat.json', JSON.stringify(bancht))
+reply(`Successful bot Ban on this group`)
+break
+
+case 'unbanchat':
+if (!itsMe && !Owner)return reply('Only owner can use this feature')
+if (!isBanchat) return reply(`Already at UnBan`)
+let ubc = bancht.indexOf(from)
+bancht.splice(ubc, 1)
+fs.writeFileSync('./database/banchat.json', JSON.stringify(bancht))
+reply(`The bot has been unbanned in this group`)
+break;
+
+case 'listbanchat': case 'listbc':
+ teks = `*List Banchat Group!*\n_Total : ${bancht.length}_\n\n`
+for(let i of bancht){
+met = await client.groupMetadata(i)
+teks += 'Id : ' + i + '\n'
+teks += 'Nama Group : ' + met.subject + '\n\n'
+}
+reply(teks)
 break;
 case 'img': {
 
@@ -476,6 +681,7 @@ client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, file
 }
 break;
 case 'ig': {
+if (!isRegistered) return reply('To use this bot,you must be registered!!\nRegister by sending .register')
 if (!args[0]) return reply('Enter Instagram Username\n\nExample: ${prefix + command} Kresswell0')
 const fg = require('api-dylux')
     try {
@@ -557,6 +763,26 @@ break;
                  m.reply (`Pong\n ${infinityspeed.toFixed(4)} _miliseconds_`) 
  } 
  break;
+case 'nsfw':
+                if (!m.isGroup) return reply('this feature is only for groups')
+                        if (!Owner && !isAdmin) return reply('only admin can use this feature')
+                                        if (args.length < 1) return reply(`to activate type : ${prefix}nsfw 1`)
+                                        if (Number(args[0]) === 1) {
+                                                if (isNsfw) return reply('Already Activated')
+                                                nsfw.push(from)
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
+                                                reply('Successfully activated the nsfw feature')
+                                                client.sendMessage(from, `Free to use xnxxsearch 🗿`, text)
+                                        } else if (Number(args[0]) === 0) {
+                                                if (!isNsfw) return reply('Its off')
+                                                var ini = nsfw.indexOf(from)
+                                                nsfw.splice(ini, 1)
+                                                fs.writeFileSync('./database/nsfw.json', JSON.stringify(nsfw))
+                                                reply('Successfully disabled the nsfw feature')
+                                        } else {
+                                                reply('1 to turn on, 0 to turn off')
+                                        }
+                                        break;
 
 case "alive": { 
 
@@ -624,8 +850,10 @@ case 'ytsearch':
         return;
     }
     break;
+
 case 'play':
     case 'stream': {
+if (!isPrem) return reply('This is a premium command')
         if (!text) {
             reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
             return;
@@ -819,6 +1047,7 @@ break;
 break;
           case "lyrics": 
  try { 
+if (!isPrem) return reply('This is a premium command')
  if (!text) return reply("Provide a song name!"); 
  const searches = await Client.songs.search(text); 
  const firstSong = searches[0]; 
@@ -1227,7 +1456,8 @@ case 'gdrive': {
 }
 break;
 case "xnxxdl": {
-
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
+if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
         if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
@@ -1243,7 +1473,8 @@ client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
 }
 break;
 case 'xnxxsearch': {
-
+if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
+if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
         reply('Please wait')
@@ -1254,6 +1485,8 @@ case 'xnxxsearch': {
               }
               break;
 case 'ttc': case 'ttt': case 'tictactoe': {
+if (!isPrem) return reply('This is a premium command')
+      
             let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
             if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'You are still in the game!!'

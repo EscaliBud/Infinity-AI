@@ -129,10 +129,10 @@ function smsg(conn, m, store) {
 async function startEscalibud() {
   const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName ? sessionName : "session"}`);
   const { version, isLatest } = await fetchLatestWaWebVersion().catch(() => fetchLatestBaileysVersion());
-  console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
+    console.log(`using WA v${version.join(".")}, isLatest: ${isLatest}`);
   console.log(
     color(
-      figlet.textSync("Wa-OpenAI", {
+      figlet.textSync("KRESSWELL BOT", {
         font: "Standard",
         horizontalLayout: "default",
         vertivalLayout: "default",
@@ -145,9 +145,11 @@ async function startEscalibud() {
   const client = escalibudConnect({
     logger: pino({ level: "silent" }),
     printQRInTerminal: true,
-    browser: Browsers.macOS('Desktop'),
+    browser: ["KRESSWELL - BOT", "Safari", "5.1.7"],
     auth: state,
+syncFullHistory: true,
   });
+
 if (autobio === 'TRUE'){ 
             setInterval(() => { 
 
@@ -233,7 +235,7 @@ if (autobio === 'TRUE'){
     return (withoutContact ? "" : v.name) || v.subject || v.verifiedName || PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
   };
 
-  client.public = true;
+  client.public = true
 
   client.serializeM = (m) => smsg(client, m, store);
   client.ev.on("connection.update", async (update) => {
@@ -270,6 +272,7 @@ if (autobio === 'TRUE'){
       console.log(color("Bot success conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
+                  client.sendMessage(owner + "@s.whatsapp.net", { text: `INFINITY-AI Has successfully started. Type ${prefix} menu for full command list.☆Enjoy☆ ` });
     }
     // console.log('Connected...', update)
   });
