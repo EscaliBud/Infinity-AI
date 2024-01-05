@@ -551,7 +551,7 @@ if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in J
 break;
         // banchat fixed by xeon
 case 'banchat':
-if (!isGroup) return reply('this feature is only for groups')
+if (!m.isGroup) return reply('this feature is only for groups')
 if (!itsMe && !Owner && !isGroupAdmin)return mentions(`*This Order is Specially for owner @${ownerN} !*`, [`${ownerN}@s.whatsapp.net`], true)
 //if (!isBotGroupAdmins) return reply('You are not an admin')
 if (isBanchat) return reply(`already banned`)
