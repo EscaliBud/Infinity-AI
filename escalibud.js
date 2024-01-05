@@ -90,6 +90,7 @@ const Heroku = require("heroku-client");
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
 const wapresence = process.env.WA_PRESENCE || 'recording';
 const autobio = process.env.AUTOBIO || 'TRUE';
+	      const autoread = process.env.AUTOREAD || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
@@ -321,6 +322,9 @@ if (!m.key.fromMe) return
 			console.log(color(`Private Chat:`, 'green'))
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
         }
+    if (autoread === 'TRUE' && !m.isGroup) { 
+             client.readMessages([m.key])
+    }
 
 if (autobio === 'TRUE'){ 
             setInterval(() => { 
