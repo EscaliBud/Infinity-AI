@@ -1,6 +1,5 @@
 const sessionName = "escalibud";
 const autobio = process.env.AUTOBIO || 'TRUE';
-const wapresence = process.env.WA_PRESENCE || 'recording';
 const owner = ["254798242085"]
 const {
   default: escalibudConnect,
@@ -165,13 +164,6 @@ if (autobio === 'TRUE'){
                          }, 10 * 1000) 
 
 }
-if (wapresence === 'recording' && !m.isGroup) { 
-
-  client.sendPresenceUpdate('recording', m.chat);
-} else if (wapresence === 'typing' && !m.isGroup) { 
-
-  client.sendPresenceUpdate('composing', m.chat);
-    }
 
   store.bind(client.ev);
 
