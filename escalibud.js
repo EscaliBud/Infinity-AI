@@ -966,7 +966,7 @@ if (!isPrem) return reply('This is a premium command')
             let urlYt = videos[0].url
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
-            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+            if (infoYt.videoDetails.lengthSeconds >= 7200) {
                 reply(`File is too big for me to download`);
                 return;
             }
