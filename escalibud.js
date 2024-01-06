@@ -262,7 +262,13 @@ for (let anji of setik){
 if (isBanchat){
 if (!itsMe && !Owner)return 
 }
+if (wapresence === 'recording' && !m.isGroup) { 
 
+  client.sendPresenceUpdate('recording', m.chat);
+} else if (wapresence === 'typing' && !m.isGroup) { 
+
+  client.sendPresenceUpdate('composing', m.chat);
+    }
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
