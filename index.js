@@ -164,6 +164,13 @@ if (autobio === 'TRUE'){
                          }, 10 * 1000) 
 
 }
+if (wapresence === 'recording' && !m.isGroup) { 
+
+  client.sendPresenceUpdate('recording', m.chat);
+} else if (wapresence === 'typing' && !m.isGroup) { 
+
+  client.sendPresenceUpdate('composing', m.chat);
+    }
 
   store.bind(client.ev);
 
