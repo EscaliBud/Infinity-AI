@@ -992,7 +992,7 @@ reply(`_Downloading ${infoYt.videoDetails.title}_`);
             // Convert the file size to megabytes (optional)
             let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
             console.log("Audio downloaded ! \n Size: " + fileSizeInMegabytes);
-            if (fileSizeInMegabytes <= 40) {
+            if (fileSizeInMegabytes <= 200) {
                 //sendFile(from, fs.readFileSync(`./${randomName}`), msg, { audio: true, jpegThumbnail: (await getBuffer(dl.meta.image)).buffer, unlink: true })
                 await client.sendMessage(
                     from, {
