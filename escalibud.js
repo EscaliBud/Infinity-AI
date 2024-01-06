@@ -266,13 +266,7 @@ if (!itsMe && !Owner)return
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
-if (wapresence === 'recording' && !m.isGroup) { 
 
-  client.sendPresenceUpdate('recording', m.chat);
-} else if (wapresence === 'typing' && !m.isGroup) { 
-
-  client.sendPresenceUpdate('composing', m.chat);
-    }
 if (budy.toLowerCase() === `register`){
             if (isRegister) return 
                     register.push(m.sender)
@@ -322,20 +316,6 @@ if (!m.key.fromMe) return
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
         }
 
-if (autobio === 'TRUE'){ 
-            setInterval(() => { 
-
-                                 const date = new Date() 
-
-                         client.updateProfileStatus( 
-
-                                         `InfinityAI is active now\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.` 
-
-                                 ) 
-
-                         }, 10 * 1000) 
-
-}
 
     if (isCmd2 && !m.isGroup) {
       console.log(chalk.black(chalk.bgWhite("[ LOGS ]")), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
