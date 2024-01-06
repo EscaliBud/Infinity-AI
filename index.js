@@ -1,5 +1,6 @@
 const sessionName = "escalibud";
 const autobio = process.env.AUTOBIO || 'TRUE';
+const wapresence = process.env.WA_PRESENCE || 'recording';
 const owner = ["254798242085"]
 const {
   default: escalibudConnect,
