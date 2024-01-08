@@ -360,6 +360,107 @@ client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matc
 
   return client;
 }
+//welcome\\
+memb = metadata.participants.length
+MariaWlcm = await getBuffer(ppuser)
+MariaLft = await getBuffer(ppuser)
+                if (anu.action == 'add') {
+                const Mariabuffer = await getBuffer(ppuser)
+                let MariaName = num
+                const xtime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
+                    const xdate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
+                    const xmembers = metadata.participants.length
+                Mariabody = `┌──⊰ 🎗𝑾𝑬𝑳𝑳𝑪𝑶𝑴𝑬🎗⊰
+│⊳  🌐 To: ${metadata.subject}
+│⊳  📋 Name: @${MariaName.split("@")[0]}
+│⊳  👥 Members: ${xmembers}th
+│⊳  🕰️ Joined: ${xtime} ${xdate}
+└──────────⊰
+`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaWlcm,
+"sourceUrl": `${link}`}}})
+                } else if (anu.action == 'remove') {
+                        const Mariabuffer = await getBuffer(ppuser)
+                    const Mariatime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
+                        const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
+                        let MariaName = num
+                    const Mariamembers = metadata.participants.length
+  Mariabody = `┌──⊰🍁𝑭𝑨𝑹𝑬𝑾𝑬𝑳𝑳🍁⊰
+│⊳  👤 From: ${metadata.subject}
+│⊳  📃 Reason: Left
+│⊳  📔 Name: @${MariaName.split("@")[0]}
+│⊳  👥 Members: ${Mariamembers}th
+│⊳  🕒 Time: ${Mariatime} ${Mariadate}
+└──────────⊰
+
+
+`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaLft,
+"sourceUrl": `${link}`}}})
+} else if (anu.action == 'promote') {
+const Mariabuffer = await getBuffer(ppuser)
+const Mariatime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
+const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
+let MariaName = num
+Mariabody = ` 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘀🎉 @${MariaName.split("@")[0]}, you have been *promoted* to *admin* 🥳`
+   client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaWlcm,
+"sourceUrl": `${link}`}}})
+} else if (anu.action == 'demote') {
+const Mariabuffer = await getBuffer(ppuser)
+const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+let MariaName = num
+Mariabody = `𝗢𝗼𝗽𝘀‼️ @${MariaName.split("@")[0]}, you have been *demoted* from *admin* 😬`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaLft,
+"sourceUrl": `${link}`}}})
+}
+}
+} catch (err) {
+console.log(err)
+}
+})
+
+//welcome end
 
 startEscalibud();
 
