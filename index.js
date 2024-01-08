@@ -382,7 +382,7 @@ client.on("group-participants-update", async (anu) => {
         pp_grup =
           "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60";
       }
-}
+
 //welcome\\
 memb = metadata.participants.length
 infinitywlc = await getBuffer(pp_user)
@@ -464,6 +464,7 @@ client.sendMessage(anu.id,
 "thumbnailUrl": ``,
 "thumbnail": MariaLft,
 "sourceUrl": `${link}`}}})
+}
 }
 }
 } catch (err) {
