@@ -360,12 +360,35 @@ client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matc
 
   return client;
 }
+
+
+client.on("group-participants-update", async (anu) => {
+    try {
+      groupMet = await client.groupMetadata(anu.jid);
+      groupMembers = groupMet.participants;
+      groupAdmins = getGroupAdmins(groupMembers);
+      mem = anu.participants[0];
+
+      console.log(anu);
+      try {
+        pp_user = await client.getProfilePicture(mem);
+      } catch (e) {
+        pp_user =
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60";
+      }
+      try {
+        pp_grup = await client.getProfilePicture(anu.jid);
+      } catch (e) {
+        pp_grup =
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60";
+      }
+}
 //welcome\\
 memb = metadata.participants.length
-infinitywlc = await getBuffer(ppuser)
-infinityleft = await getBuffer(ppuser)
+infinitywlc = await getBuffer(pp_user)
+infinityleft = await getBuffer(pp_user)
                 if (anu.action == 'add') {
-                const Mariabuffer = await getBuffer(ppuser)
+                const Mariabuffer = await getBuffer(pp_user)
                 let MariaName = num
                 const xtime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
                     const xdate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
@@ -385,7 +408,7 @@ client.sendMessage(anu.id,
 "thumbnail": infinitywlc,
 "sourceUrl": `${link}`}}})
                 } else if (anu.action == 'remove') {
-                        const Mariabuffer = await getBuffer(ppuser)
+                        const Mariabuffer = await getBuffer(pp_user)
                     const Mariatime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
                         const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
                         let MariaName = num
@@ -406,7 +429,7 @@ client.sendMessage(anu.id,
 "thumbnail": infinitylft,
 "sourceUrl": `${link}`}}})
 } else if (anu.action == 'promote') {
-const Mariabuffer = await getBuffer(ppuser)
+const Mariabuffer = await getBuffer(pp_user)
 const Mariatime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
 const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
 let MariaName = num
@@ -424,9 +447,9 @@ Mariabody = ` 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘀🎉 @${MariaName.split("@")[0]}, 
 "thumbnail": MariaWlcm,
 "sourceUrl": `${link}`}}})
 } else if (anu.action == 'demote') {
-const Mariabuffer = await getBuffer(ppuser)
-const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+const Mariabuffer = await getBuffer(pp_user)
+const Mariatime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
+const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
 let MariaName = num
 Mariabody = `𝗢𝗼𝗽𝘀‼️ @${MariaName.split("@")[0]}, you have been *demoted* from *admin* 😬`
 client.sendMessage(anu.id,
@@ -447,7 +470,6 @@ client.sendMessage(anu.id,
 console.log(err)
 }
 })
-
 //welcome end
 
 startEscalibud();
