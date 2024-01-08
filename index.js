@@ -470,6 +470,10 @@ client.sendMessage(anu.id,
 console.log(err)
 }
 })
+    } catch (e) {
+      console.log("Error : %s", color(e, "red"));
+    }
+  });
 //welcome end
 
 startEscalibud();
