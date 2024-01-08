@@ -466,7 +466,6 @@ client.sendMessage(anu.id,
 "sourceUrl": `${link}`}}})
 }
 }
-}
 } catch (err) {
 console.log(err)
 }
