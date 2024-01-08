@@ -370,7 +370,7 @@ infinityleft = await getBuffer(ppuser)
                 const xtime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
                     const xdate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
                     const xmembers = metadata.participants.length
-                ihkbody = `Hello ${m.pushName} ,Welcome To GroupName ,Do not send links to avoid bieng kicked!!
+                ihkbody = `Hello ${m.pushName} ,Welcome To ${groupMetadata.subject} ,Do not send links to avoid bieng kicked!!
 `
 client.sendMessage(anu.id,
  { text: ihkbody,
