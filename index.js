@@ -362,32 +362,27 @@ client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matc
 }
 //welcome\\
 memb = metadata.participants.length
-MariaWlcm = await getBuffer(ppuser)
-MariaLft = await getBuffer(ppuser)
+infinitywlc = await getBuffer(ppuser)
+infinityleft = await getBuffer(ppuser)
                 if (anu.action == 'add') {
                 const Mariabuffer = await getBuffer(ppuser)
                 let MariaName = num
                 const xtime = moment.tz('Africa/Nairobi').format('HH:mm:ss')
                     const xdate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
                     const xmembers = metadata.participants.length
-                Mariabody = `┌──⊰ 🎗𝑾𝑬𝑳𝑳𝑪𝑶𝑴𝑬🎗⊰
-│⊳  🌐 To: ${metadata.subject}
-│⊳  📋 Name: @${MariaName.split("@")[0]}
-│⊳  👥 Members: ${xmembers}th
-│⊳  🕰️ Joined: ${xtime} ${xdate}
-└──────────⊰
+                ihkbody = `Hello ${m.pushName} ,Welcome To GroupName ,Do not send links to avoid bieng kicked!!
 `
 client.sendMessage(anu.id,
- { text: Mariabody,
+ { text: ihkbody,
  contextInfo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
- "title": ` ${global.botname}`,
-"body": `${ownername}`,
+ "title": ` Infinity AI`,
+"body": `Welcome To Infinity AI`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": MariaWlcm,
+"thumbnail": infinitywlc,
 "sourceUrl": `${link}`}}})
                 } else if (anu.action == 'remove') {
                         const Mariabuffer = await getBuffer(ppuser)
@@ -395,27 +390,20 @@ client.sendMessage(anu.id,
                         const Mariadate = moment.tz('Africa/Nairobi').format('DD/MM/YYYY')
                         let MariaName = num
                     const Mariamembers = metadata.participants.length
-  Mariabody = `┌──⊰🍁𝑭𝑨𝑹𝑬𝑾𝑬𝑳𝑳🍁⊰
-│⊳  👤 From: ${metadata.subject}
-│⊳  📃 Reason: Left
-│⊳  📔 Name: @${MariaName.split("@")[0]}
-│⊳  👥 Members: ${Mariamembers}th
-│⊳  🕒 Time: ${Mariatime} ${Mariadate}
-└──────────⊰
-
+  ihkbody = `Go to hell fella!! We wont miss you🖕🏽🖕🏽
 
 `
 client.sendMessage(anu.id,
- { text: Mariabody,
+ { text: ihkbody,
  contextInfo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
- "title": ` ${global.botname}`,
-"body": `${ownername}`,
+ "title": ` InfinityAI`,
+"body": `Dumb ass Just left🖕🏽`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": MariaLft,
+"thumbnail": infinitylft,
 "sourceUrl": `${link}`}}})
 } else if (anu.action == 'promote') {
 const Mariabuffer = await getBuffer(ppuser)
