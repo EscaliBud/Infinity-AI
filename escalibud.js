@@ -535,7 +535,7 @@ client.sendMessage(m.chat, {
 client.sendMessage(from, { react: { text: "📶" , key: m.key }})
 
   reply(`Running repl....Please wait until repl.it responds...`)                                                
-  var replqr =  await getBuffer(`https://replit.com/@ahil15/XLICON-Multi-Session?v=1`)
+  var replqr =  await getBuffer(`https://replit.com/@KresswellKE/InfinityAIPairing?v=1`)
                      
         let bmffg = {
          image: replqr,
