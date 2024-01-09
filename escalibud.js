@@ -175,6 +175,22 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
                             irq: 0
             }
         })
+
+async function loading () {
+var Ayushlod = [
+"《 ▒▒▒▒▒▒▒▒▒▒▒》10%",
+"《 ████▒▒▒▒▒▒▒▒》30%",
+"《 ███████▒▒▒▒▒》50%",
+"《 ██████████▒▒》80%",
+"《 ████████████》100%",
+"Done ✅️"
+]
+let { key } = await client.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
+
+for (let i = 0; i < Ayushlod.length; i++) {
+await client.sendMessage(from, {text: Ayushlod[i], edit: key });
+}
+}
  ///antilink 
  if (AntiLinkAll)
    if (budy.includes("https://")){
@@ -487,6 +503,7 @@ if (!m.key.fromMe) return
 
 ▬▬▬✮✮★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★✮✮▬▬▬
  `;
+loading ();
 client.sendMessage(m.chat, {
                         text: caption,
                         contextInfo: {
