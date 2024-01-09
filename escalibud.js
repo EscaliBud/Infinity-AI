@@ -422,6 +422,7 @@ if (!m.key.fromMe) return
 *┃➥Closein*
 *┃➥Openin*
 *┃➥Nsfw*
+*┃➥Antilink*
 *┗━───────────────╯*
 
 
@@ -451,6 +452,14 @@ if (!m.key.fromMe) return
 *┃➥Runtime*
 *┃➥Speed*
 *┃➥Link*
+*┗━───────────────╯*
+
+
+*⌜ AI Commands ⌟*
+
+*┏━───────────────╮*
+*┃➥Gpt*
+*┃➥Dalle*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
