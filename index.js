@@ -475,7 +475,7 @@ console.log(err)
     }
   });*/
 
-client.on('group-participants.update', async (anu) => {
+client.ev.on('group-participants.update', async (anu) => {
 console.log(anu)
 try {
 let metadata = await client.groupMetadata(anu.id)
