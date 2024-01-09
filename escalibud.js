@@ -178,12 +178,21 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
 
 async function loading () {
 var Ayushlod = [
-"《 ▒▒▒▒▒▒▒▒▒▒▒》10%",
-"《 ████▒▒▒▒▒▒▒▒》30%",
-"《 ███████▒▒▒▒▒》50%",
-"《 ██████████▒▒》80%",
-"《 ████████████》100%",
-"Ｉｎｆｉｎｉｔｙ ＡＩ"
+"`I`",
+"`IN`",
+"`INF`",
+"`INFI`",
+"`INFIN`",
+"`INFINI`",
+"`INFINIT`",
+"`INFINITY`",
+"`INFINITY-`",
+"`INFINITY-A`",
+"`INFINITY-AI`",
+"`INFINITY-AI  LOADING MENU......`",
+"`PLEASE WAIT......`",
+"`SUCCESSFULLY LINKED TO INFINITYLABS`",
+"`HERE IS YOUR MENU!! ××Enjoy××`",
 ]
 let { key } = await client.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
 
