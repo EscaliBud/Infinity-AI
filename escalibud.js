@@ -530,6 +530,22 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+    case 'qr': case 'scanner': case 'qrcode':
+      if (!m.isGroup) return reply('This is to be used only in groups');
+client.sendMessage(from, { react: { text: "📶" , key: m.key }})
+
+  reply(`Running repl....Please wait until repl.it responds...`)                                                
+  var replqr =  await getBuffer(`https://replit.com/@ahil15/XLICON-Multi-Session?v=1`)
+                     
+        let bmffg = {
+         image: replqr,
+         caption:  `Scan the qr within 10-15 seconds...`,
+   
+        }     
+              await client.sendMessage(m.chat, bmffg,{ quoted:m }).catch(err => {
+                      return('Error!')
+                  })
+  break;
 case 'hacked':{
   if (!mek.key.fromMe) return;
               if (!isGroup) return reply('this feature is only for groups')
