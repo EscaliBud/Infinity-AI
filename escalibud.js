@@ -528,6 +528,15 @@ client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : j
 }
 break;
 
+case 'apk':
+case 'apkdl':{
+if (!text) return reply("What apk u wanna download?")
+let resMaria = await fetch(`https://vihangayt.me/download/apk?id=${text}`)
+let jsonMaria = await resMaria.json()
+client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : jsonMaria.data.name, mimetype: 'application/vnd.android.package-archive'}, {quoted:m})
+.catch(console.error)
+}
+break;
 
 //owner commands
 case 'listpc': {
@@ -542,7 +551,7 @@ case 'listpc': {
              break;
                 case 'listgc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-                 let teks = `⬣ *LIST OF GROUP CHATS*\n\nTotal Group : ${anu.length} Group\n\n`
+                let teks = `⬣ *LIST OF GROUP CHATS*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
                      let metadata = await client.groupMetadata(i)
                      teks += `⬡ *Name :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Created on :* ${moment(metadata.creation * 1000).tz('Africa/Nairobi').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Members :* ${metadata.participants.length}\n\n────────────────────────\n\n`
