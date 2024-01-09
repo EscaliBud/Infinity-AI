@@ -22,6 +22,7 @@ let register = JSON.parse(fs.readFileSync('./database/registered.json'));
 const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
 const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
 const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
+let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
     const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
