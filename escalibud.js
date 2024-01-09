@@ -509,24 +509,6 @@ const rel = await quote(xf, pushname, pppuser)
             }
 
 break;
-case 'apk':
-case 'apkdl':{
-if (!text) return reply("What apk u wanna download?")
-let resMaria = await fetch(`https://vihangayt.me/download/apk?id=${text}`)
-let jsonMaria = await resMaria.json()
-client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : jsonMaria.data.name, mimetype: 'application/vnd.android.package-archive'}, {quoted:m})
-.catch(console.error)
-}
-break;
-case 'apk':
-case 'apkdl':{
-if (!text) return reply("What apk u wanna download?")
-let resMaria = await fetch(`https://vihangayt.me/download/apk?id=${text}`)
-let jsonMaria = await resMaria.json()
-client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : jsonMaria.data.name, mimetype: 'application/vnd.android.package-archive'}, {quoted:m})
-.catch(console.error)
-}
-break;
 
 case 'apk':
 case 'apkdl':{
