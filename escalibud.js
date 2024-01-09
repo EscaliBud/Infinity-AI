@@ -1,4 +1,4 @@
-
+l
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const util = require("util");
@@ -1945,6 +1945,34 @@ maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", 
   .catch((err) => console.log(err));
 }
    break;*/
+            case 'antilink': {
+                            if (!m.isGroup) return reply('Group command ')
+                if (!isAdmin && !Owner) return reply('Admin Command)
+                if (!isBotAdmin) return reply('You need a medical check!')
+if (args[0] === "on") {
+if (AntiLinkAll) return reply('Already activated')
+ntilinkall.push(from)
+fs.writeFileSync('./database/antilink.json', JSON.stringify(ntilinkall))
+reply('Success in turning on all antilink in this group')
+var groupe = await client.groupMetadata(from)
+var members = groupe['participants']
+var mems = []
+members.map(async adm => {
+mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+client.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send any link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+} else if (args[0] === "off") {
+if (!AntiLinkAll) return reply('Already deactivated')
+let off = ntilinkall.indexOf(from)
+ntilinkall.splice(off, 1)
+fs.writeFileSync('./database/antilinkall.json', JSON.stringify(ntilinkall))
+reply('Success in turning off all antilink in this group')
+} else {
+  await reply(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  }
+  }
+  break;
+
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
