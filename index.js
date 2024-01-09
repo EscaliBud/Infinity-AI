@@ -362,7 +362,7 @@ client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matc
 }
 
 
-client.on("group-participants-update", async (anu) => {
+/*client.on("group-participants-update", async (anu) => {
     try {
       groupMet = await client.groupMetadata(anu.jid);
       groupMembers = groupMet.participants;
@@ -473,7 +473,123 @@ console.log(err)
     } catch (e) {
       console.log("Error : %s", color(e, "red"));
     }
-  });
+  });*/
+
+client.on('group-participants.update', async (anu) => {
+console.log(anu)
+try {
+let metadata = await client.groupMetadata(anu.id)
+let participants = anu.participants
+for (let num of participants) {
+try {
+ppuser = await client.profilePictureUrl(num, 'image')
+} catch (err) {
+ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
+}
+try {
+ppgroup = await client.profilePictureUrl(anu.id, 'image')
+} catch (err) {
+ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+}
+//welcome\\
+memb = metadata.participants.length
+MariaWlcm = await getBuffer(ppuser)
+MariaLft = await getBuffer(ppuser)
+                if (anu.action == 'add') {
+                const Mariabuffer = await getBuffer(ppuser)
+                let MariaName = num
+                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                    const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                    const xmembers = metadata.participants.length
+                Mariabody = `┌──⊰ 🎗𝑾𝑬𝑳𝑳𝑪𝑶𝑴𝑬🎗⊰
+│⊳  🌐 To: ${metadata.subject}
+│⊳  📋 Name: @${MariaName.split("@")[0]}
+│⊳  👥 Members: ${xmembers}th
+│⊳  🕰️ Joined: ${xtime} ${xdate}
+└──────────⊰
+`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaWlcm,
+"sourceUrl": `${link}`}}})
+                } else if (anu.action == 'remove') {
+                        const Mariabuffer = await getBuffer(ppuser)
+                    const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                        const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                        let MariaName = num
+                    const Mariamembers = metadata.participants.length
+  Mariabody = `┌──⊰🍁𝑭𝑨𝑹𝑬𝑾𝑬𝑳𝑳🍁⊰
+│⊳  👤 From: ${metadata.subject}
+│⊳  📃 Reason: Left
+│⊳  📔 Name: @${MariaName.split("@")[0]}
+│⊳  👥 Members: ${Mariamembers}th
+│⊳  🕒 Time: ${Mariatime} ${Mariadate}
+└──────────⊰
+
+
+`
+clientsendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaLft,
+"sourceUrl": `${link}`}}})
+} else if (anu.action == 'promote') {
+const Mariabuffer = await getBuffer(ppuser)
+const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+let MariaName = num
+Mariabody = ` 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘀🎉 @${MariaName.split("@")[0]}, you have been *promoted* to *admin* 🥳`
+   client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaWlcm,
+"sourceUrl": `${link}`}}})
+} else if (anu.action == 'demote') {
+const Mariabuffer = await getBuffer(ppuser)
+const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+let MariaName = num
+Mariabody = `𝗢𝗼𝗽𝘀‼️ @${MariaName.split("@")[0]}, you have been *demoted* from *admin* 😬`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` ${global.botname}`,
+"body": `${ownername}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaLft,
+"sourceUrl": `${link}`}}})
+}
+}
+} catch (err) {
+console.log(err)
+}
+})
 //welcome end
 
 startEscalibud();
