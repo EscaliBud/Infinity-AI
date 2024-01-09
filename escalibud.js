@@ -142,6 +142,7 @@ const runtime = function (seconds) {
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
     const isBanchat = m.isGroup ? bancht.includes(from) : false;
     const isNsfw = m.isGroup ? nsfw.includes(from) : false;
+      const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false;
 const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
@@ -173,6 +174,28 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
                             irq: 0
             }
         })
+ ///antilink 
+ if (AntiLinkAll)
+   if (budy.includes("https://")){
+if (!isBotAdmin) return
+bvl = `\`\`\`「 Link Detected 」\`\`\`\n\nyou are a group admin thats why i wont kick you, but remember from next time`
+if (isAdmin) return reply(bvl)
+if (m.key.fromMe) return reply(bvl)
+if (Owner) return reply(bvl)
+        await client.sendMessage(m.chat,
+                            {
+                                delete: {
+                                    remoteJid: m.chat,
+                                    fromMe: false,
+                                    id: m.key.id,
+                                    participant: m.key.participant
+                                }
+                            })
+                        client.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+client.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+} else {
+}
+  let smallinput = budy.toLowerCase()
 
         //TicTacToe
             this.game = this.game ? this.game : {}
@@ -416,6 +439,7 @@ if (!m.key.fromMe) return
 *┃➥Github*
 *┃➥Tovv*
 *┃➥Qoutely*
+*┃➥APK*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
