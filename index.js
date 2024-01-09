@@ -355,12 +355,11 @@ MariaLft = await getBuffer(ppuser)
                 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
                     const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                     const xmembers = metadata.participants.length
-                Mariabody = `┌──⊰ 🎗𝑾𝑬𝑳𝑳𝑪𝑶𝑴𝑬🎗⊰
-│⊳  🌐 To: ${metadata.subject}
-│⊳  📋 Name: @${MariaName.split("@")[0]}
-│⊳  👥 Members: ${xmembers}th
-│⊳  🕰️ Joined: ${xtime} ${xdate}
-└──────────⊰
+                Mariabody = `Hello ${m.pushName} ,Welcome To ${groupMetadata.subject}. Don't Sending links to avoid bieng kicked!!.
+
+Enjoy 🍷🍷
+
+InfinityAI By Infinity Hackers Kenya 
 `
 client.sendMessage(anu.id,
  { text: Mariabody,
@@ -368,8 +367,8 @@ client.sendMessage(anu.id,
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
- "title": ` ${global.botname}`,
-"body": `${ownername}`,
+ "title": ` INFINITY-AI `,
+"body": `Karibu Mgeni`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
 "thumbnail": MariaWlcm,
@@ -380,14 +379,7 @@ client.sendMessage(anu.id,
                         const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
                         let MariaName = num
                     const Mariamembers = metadata.participants.length
-  Mariabody = `┌──⊰🍁𝑭𝑨𝑹𝑬𝑾𝑬𝑳𝑳🍁⊰
-│⊳  👤 From: ${metadata.subject}
-│⊳  📃 Reason: Left
-│⊳  📔 Name: @${MariaName.split("@")[0]}
-│⊳  👥 Members: ${Mariamembers}th
-│⊳  🕒 Time: ${Mariatime} ${Mariadate}
-└──────────⊰
-
+  Mariabody = `A Mf just left😂💀 We won't miss you!! Biatch!!🚮
 
 `
 clientsendMessage(anu.id,
@@ -396,8 +388,8 @@ clientsendMessage(anu.id,
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
- "title": ` ${global.botname}`,
-"body": `${ownername}`,
+ "title": ` INFINITY-AI `,
+"body": `Mf Just Left`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
 "thumbnail": MariaLft,
