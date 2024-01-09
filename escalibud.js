@@ -1948,7 +1948,7 @@ maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", 
    break;*/
             case 'antilink': {
                             if (!m.isGroup) return reply('Group command ')
-                if (!isAdmin && !Owner) return reply('Admin Command)
+                if (!isAdmin && !Owner) return reply('Admin Command')
                 if (!isBotAdmin) return reply('You need a medical check!')
 if (args[0] === "on") {
 if (AntiLinkAll) return reply('Already activated')
