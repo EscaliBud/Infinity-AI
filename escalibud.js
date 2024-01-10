@@ -5,6 +5,7 @@ const util = require("util");
 const speed = require("performance-now");
 const os = require('os');
 const chalk = require("chalk");
+const { exec, spawn, execSync } = require("child_process");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
