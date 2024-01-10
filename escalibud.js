@@ -1978,6 +1978,35 @@ break;
          reply(`Broadcasted to ${res.length} Groups.`) 
      } 
  break;
+            case 'bcgc':
+            case 'bcgroup': {
+                if (!Owner) return reply('You are not my Owner')
+                if (!text) return reply(`Which text?\n\nExample : ${prefix + command} It's holiday tomorrow `)
+                let getGroups = await client.groupFetchAllParticipating()
+                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+                let anu = groups.map(v => v.id)
+                reply(`Send Broadcast To ${anu.length} Group Chat, End Time ${anu.length * 1.5} second`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    let a = '```' + `ʙʀᴏᴀᴅᴄᴀsᴛ ᴍᴇssᴀɢᴇ\n\n${text}\n\n` + '```' + '\n\n\nɪɴғɪɴɪᴛʏ ᴀɪ ʙʏ ɪɴғɪɴɪᴛʏ ʜᴀᴄᴋᴇʀs'
+                    client.sendMessage(i, {
+                        text: a,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: '□Paid BroadCast□',
+                                body: `Sent ${i.length} Group`,
+                                thumbnailUrl: '/escalibud.jpg',
+                                sourceUrl: global.link,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    })
+                }
+                reply(`Successfully Sent Broadcast To ${anu.length} Group`)
+            }
+            break;
           case "leave": { 
                  if (!isAdmin) throw admin; 
  await client.sendText(m.chat, 'GoodBye Everyone.\n\n *InfinityAI is leaving this chat. . .*'); 
@@ -2022,109 +2051,6 @@ break;
     client.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } }); 
   } 
  break;
-//logo Commands
-/*
-case 'pornhub':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} ajg | ea')
-reply ('Please Wait')
-  inilogo4 = args.join(" ")
-inilogo9 = args.join(" ")
-   var logo4 = inilogo4.split('|')[0]
-var logo9 = inilogo9.split('|')[1]
-    let anuphub = await textpro2("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [${logo4},${logo9}])
-console.log(anuphub)
-client.sendMessage(from,{image:{url:anuphub}, caption:"Here you go!"},{quoted:m})
-}
-break;
-case 'retro':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} ajg | ea')
-reply ('Please Wait')
-  inilogo4 = args.join(" ")
-inilogo9 = args.join(" ")
-   var logo4 = inilogo4.split('|')[0]
-var logo9 = inilogo9.split('|')[1]
-    let anutro2 = await textpro2("https://textpro.me/create-3d-retro-text-effect-online-free-1065.html", [${logo4},${logo9}])
-console.log(anutro2)
-client.sendMessage(from,{image:{url:anutro2}, caption:"Here you go!"},{quoted:m})
-}
-break;
-case '8bit':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return replygcxeon('Example: ${prefix + command} ajg | ea')
-reply ('Please Wait')
-  inilogo4 = args.join(" ")
-inilogo9 = args.join(" ")
-   var logo4 = inilogo4.split('|')[0]
-var logo9 = inilogo9.split('|')[1]
-    let anubit8 = await textpro2("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [${logo4},${logo9}])
-console.log(anubit8)
-client.sendMessage(from,{image:{url:anubit8}, caption:"Here you go!"},{quoted:m})
-}
-break;
-case 'batman':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} 
-ajg')
-reply ('Please Wait')
-maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
-    ${q},])
-  .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-  .catch((err) => console.log(err))
-}
-   break;
-case '3dbox':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} ea')
-reply ('Please Wait')
-maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
-    ${q},])
-.then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-.catch((err) => console.log(err));
-}
-break
-case 'lion':{
-if (!isPrem) return reply('This is a premium command')
-  if(!q) return reply('Example: ${prefix + command} ajg')
-reply ('Please Wait')
-  maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
-      ${q},])
-     .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-     .catch((err) => console.log(err));
-     break
-case '3davengers':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return replygcxeon('Example: ${prefix + command} ajg')
-reply ('Please Wait')
-maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
-    ${q},])
-  .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-  .catch((err) => console.log(err));
-}
-   break ;
-case 'window':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} ajg')
-reply ('Please Wait')
-maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
-    ${q},])
-  .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-  .catch((err) => console.log(err));
-}
-   break;
-case '3dspace':{
-if (!isPrem) return reply('This is a premium command')
-if(!q) return reply('Example: ${prefix + command} ajg | ea')
-XeonStickWait()
-teks1 = q.split("|")[0]
-teks2 = q.split("|")[1]
-maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", [
-    ${teks1},${teks2}])
-  .then((data) => client.sendMessage(m.chat, { image: { url: data }, caption: Made by ${global.botname} }, { quoted: m }))
-  .catch((err) => console.log(err));
-}
-   break;*/
             case 'antilink': {
                             if (!m.isGroup) return reply('Group command ')
                 if (!isAdmin && !Owner) return reply('Admin Command')
