@@ -1455,8 +1455,35 @@ if (!isPrem) return reply('This is a premium command')
    fs.unlinkSync(`./${randomName}`); 
     } 
         
-          case "sc": case "script": case "scbot":
-           m.reply("I am not yet on github. Maybe my owner will publish my source soon...");
+              case "script": case "repo":
+           let scmess= `
+╭─❒ SCRIPT
+│◦➛Owner : Kresswell
+│◦➺Co-Owner : Spider953
+│∞ *INFINITY HACKERS KENYA*
+└──────[ GITHUB ]──────❒
+  │◦➛Script Link :
+  │◦➛https://github.com/EscaliBud/InfinityAI
+  │◦➛Telegram Channel: 
+  │◦➛https://InfinityHackersKE.t.me 
+  └──────────────────❒`;
+client.sendMessage(m.chat, {
+                        text: scmess,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: `INFINITY-AI`,
+                                body: `INFINITY HACKERS KENYA ◇.`,
+                                thumbnail: fs.readFileSync('./escalibud.jpg'),
+                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    }, {
+                        quoted: m
+                    })
+          break;
 case "enc":
 let forq = m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
 var JavaScriptObfuscator = require('javascript-obfuscator');
@@ -1949,35 +1976,7 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let url = `https://api.github.com/repos/${user}/${repo}/zipball`
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
     client.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => reply('An error occured'))
-break;
-
-          case 'broadcast': { 
-         if (!Owner) { 
-             throw NotOwner
-             return; 
-         } 
-         if (!text) { 
-             reply("*❌ No broadcast message provided!*") 
-             return; 
-         } 
-         let getGroups = await client.groupFetchAllParticipating() 
-         let groups = Object.entries(getGroups) 
-             .slice(0) 
-             .map(entry => entry[1]) 
-         let res = groups.map(v => v.id) 
-         reply(` Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`) 
-         for (let i of res) { 
-             let txt = `*➥INFINITYAI BROADCAST*:\n\n*MESSAGE*:  _${text}_\n\n*Author*: ${pushname}` 
-             await client.sendMessage(i, { 
-                 image: { 
-                     url: "https://te.legra.ph/file/5b3c55eb8f214b2006c06.jpg" 
-                 }, 
-                 caption: `${txt}` 
-             }) 
-         } 
-         reply(`Broadcasted to ${res.length} Groups.`) 
-     } 
- break;
+break
             case 'bcgc':
             case 'bcgroup': {
                 if (!Owner) return reply('You are not my Owner')
@@ -1996,7 +1995,7 @@ break;
                                 showAdAttribution: true,
                                 title: '□Paid BroadCast□',
                                 body: `Sent ${i.length} Group`,
-                                thumbnailUrl: '/escalibud.jpg',
+                                thumbnailUrl: 'https://i.imgur.com/pFHxvfE.jpeg',
                                 sourceUrl: global.link,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
