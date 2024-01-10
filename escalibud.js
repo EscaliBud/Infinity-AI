@@ -13,6 +13,7 @@ const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
+let { TelegraPh, UploadFileUgu, webp2mp4File } = require('./lib/uploader');
 const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
 const commandsDB = JSON.parse(fs.readFileSync('./database/commands.json'));
 const { addCommands, checkCommands, deleteCommands } = require('./lib/autoresp')
