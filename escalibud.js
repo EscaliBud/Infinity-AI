@@ -395,7 +395,7 @@ if (smallinput=='why are you gay') {
     reply ('You should ask your father that question😂😂💀')
 }
 if (smallinput=='infinity ai') {
-    reply('Hey,That's me,Do you have a crush on me or what do you want??')
+    reply('Hey,Thats me,Do you have a crush on me or what do you want??')
 }
 if (smallinput=='infinity hackers') {
     reply ('That is my Home,I belong to Infinity Hackers,Led By Spider and Kresswell🥳2 Giants. You can also be part by Joining us on Telegram. Click this Link. https://t.me/InfinityHackersKE')
