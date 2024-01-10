@@ -60,12 +60,15 @@ module.exports = escalibud = async (client, m, chatUpdate, store) => {
         : "";
     var budy = typeof m.text == "string" ? m.text : "";
     // var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/"
-    var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
+    //var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
+    const prefix = process.env.PREFIX || '';
     const isCmd2 = body.startsWith(prefix);
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
 const Heroku = require("heroku-client");  
  const appname = process.env.APP_NAME || '';
- const herokuapi = process.env.HEROKU_API;
+ const herokuapi = process.env.HEROKU_API;    
+const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
+    const packname = process.env.STICKER_PACKNAME || 'InfinityAI';
 
     const kress = (m.quoted || m); 
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
@@ -583,6 +586,23 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
                       return('Error!')
                   })
   break;*/
+                    case "sticker": case "s": { 
+            if (/image/.test(mime)) { 
+
+                 let media = await client.downloadMediaMessage(qmsg); 
+                 let encmedia = await client.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author }); 
+                 await fs.unlinkSync(encmedia); 
+             } else if (/video/.test(mime)) { 
+             m.reply("wait a moment"); 
+                 if (qmsg.seconds > 11) return m.reply('Video is too long for conversion!'); 
+                 let media = await client.downloadMediaMessage(qmsg); 
+                 let encmedia = await client.sendVideoAsSticker(m.chat, media, m, { packname: packname, author: author }); 
+                 await fs.unlinkSync(encmedia); 
+             } else { 
+                 m.reply(`Send an image or short video with the caption ${prefix + command}`); 
+                 } 
+          }
+          break;
          case 'pinterest':
       case 'pin': {
       if (!args.join(" ")) return reply(`${pushname} Please provide a search term!`);
