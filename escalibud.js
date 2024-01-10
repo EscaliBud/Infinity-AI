@@ -388,13 +388,13 @@ const isRegistered = checkRegisteredUser(sender)
 if (!client.public) {
 if (!m.key.fromMe) return
 }
-if (smallinput=='Kresswell') {
+if (smallinput=='kresswell') {
     reply ('Kresswell is my Father!!')
 }
-if (smallinput=='Love') {
+if (smallinput=='love') {
     reply ('Lemme Ask for permission from Kresswell🤭')
 }
-if (smallinput.includes('Thanks')|| smallinput.includes('arigatou') || smallinput.includes('Cute')) {
+if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
   reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
 }
 //chat counter (console log)
