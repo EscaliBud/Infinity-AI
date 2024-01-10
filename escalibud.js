@@ -94,6 +94,7 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
     const arg = budy.trim().substring(budy.indexOf(" ") + 1);
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
 const wapresence = process.env.WA_PRESENCE || 'recording';
+    const autoread = process.env.AUTOREAD || 'TRUE';
 const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
@@ -342,6 +343,10 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
+    if (autoread === 'TRUE' && !m.isGroup) { 
+             client.readMessages([m.key])
+    }
+
     // Push Message To Console
     let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
 
