@@ -400,6 +400,12 @@ if (smallinput=='infinity ai') {
 if (smallinput=='infinity hackers') {
     reply ('That is my Home,I belong to Infinity Hackers,Led By Spider and Kresswell🥳2 Giants. You can also be part by Joining us on Telegram. Click this Link. https://t.me/InfinityHackersKE')
 }
+if (smallinput=='sorry') {
+    reply ('I knew you were weak ,Just like your father😂😂💀')
+}
+if (smallinput=='umbwa') {
+    reply ('rudia bila kulia sasa😂😂')
+}
 if (smallinput=='love') {
     reply ('Lemme Ask for permission from Kresswell🤭')
 }
