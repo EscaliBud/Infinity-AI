@@ -311,6 +311,20 @@ if (autobio === 'TRUE'){
     return await client.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted });
   };
  
+        client.sendImageAsSticker = async (jid, path, quoted, options = {}) => { 
+         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0); 
+         // let buffer 
+         if (options && (options.packname || options.author)) { 
+             buffer = await writeExifImg(buff, options) 
+         } else { 
+             buffer = await imageToWebp(buff); 
+         } 
+
+         await client.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted }); 
+         return buffer 
+     }; 
+
+
  client.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => { 
          let quoted = message.msg ? message.msg : message; 
          let mime = (message.msg || message).mimetype || ''; 
