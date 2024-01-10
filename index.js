@@ -437,6 +437,18 @@ console.log(err)
 }
 })
 //welcome end
+client.downloadMediaMessage = async (message) => { 
+         let mime = (message.msg || message).mimetype || ''; 
+         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]; 
+         const stream = await downloadContentFromMessage(message, messageType); 
+         let buffer = Buffer.from([]); 
+         for await(const chunk of stream) { 
+             buffer = Buffer.concat([buffer, chunk]) 
+         } 
+
+         return buffer 
+      }; 
+
 
 
 client.sendTextWithMentions = async (jid, text, quoted, options = {}) => 
@@ -587,19 +599,7 @@ console.log(err)
       console.log("Error : %s", color(e, "red"));
     }
   });*/
- client.downloadMediaMessage = async (message) => { 
-         let mime = (message.msg || message).mimetype || ''; 
-         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]; 
-         const stream = await downloadContentFromMessage(message, messageType); 
-         let buffer = Buffer.from([]); 
-         for await(const chunk of stream) { 
-             buffer = Buffer.concat([buffer, chunk]) 
-         } 
-
-         return buffer 
-      }; 
-
-
+ 
 startEscalibud();
 
 let file = require.resolve(__filename);
