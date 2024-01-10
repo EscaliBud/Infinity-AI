@@ -566,6 +566,44 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
                       return('Error!')
                   })
   break;
+         case 'pinterest':
+      case 'pin': {
+      if (!args.join(" ")) return reply(`${pushname} Please provide a search term!`);
+        reply('Please wait')
+        let { pinterest } = require('./lib/scraper');
+        let anutrest = await pinterest(text);
+        let results = [];
+
+        // Get multiple random images (let's say 5 images)
+        const numImages = 5;
+        for (let i = 0; i < numImages && i < anutrest.length; i++) {
+          results.push(anutrest[Math.floor(Math.random() * anutrest.length)]);
+        }
+
+        // Send each image without any caption
+        for (let i = 0; i < results.length; i++) {
+         client.sendMessage(m.chat, { image: { url: results[i] } }, { quoted: m });
+        }
+      }
+        break;
+case 'welcome': {
+if (/on/.test(text)) {
+ if (global.welcome) {
+   m.reply("Already activated");
+ } else {
+ global.welcome = true;
+m.reply("Activated welcome message");
+}
+} else if (/off/.test(text)) {
+if (!global.welcome) {
+   m.reply("Already deactivated");
+ } else {
+ global.welcome = false;
+m.reply("Deactivated welcome message");
+}
+} else m.reply(`Type ${prefix+command} on|off`);
+}
+break;  
 case 'hacked':{
   if (!mek.key.fromMe) return;
               if (!isGroup) return reply('this feature is only for groups')
