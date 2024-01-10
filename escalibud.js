@@ -499,6 +499,15 @@ if (!m.key.fromMe) return
 *┃➥APK*
 *┗━───────────────╯*
 
+*⌜ Sticker Menu ⌟*
+
+*┏━───────────────╮*
+*┃➥Sticker*
+*┃➥Take*
+*┃➥Smeme*
+*┃➥Quotely*
+*┗━───────────────╯*
+
 *⌜ Utilities ⌟*
 
 *┏━───────────────╮*
