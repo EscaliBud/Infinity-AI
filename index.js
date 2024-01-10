@@ -377,8 +377,8 @@ client.sendMessage(anu.id,
                         const Mariabuffer = await getBuffer(ppuser)
                     const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
                         const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-                        let MariaName = num
-                    const Mariamembers = metadata.participants.length
+                       
+                   
   Mariabody = `A Mf just left😂💀 We won't miss you!! Biatch!!🚮
 
 `
