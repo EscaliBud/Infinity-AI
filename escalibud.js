@@ -550,7 +550,24 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
-    case 'qr': case 'scanner': case 'qrcode':
+case 'tgs':{
+                if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
+                let mariaresources = await Telesticker(args[0])
+                await reply(`Sending ${mariaresources.length} stickers...`)
+                if (m.isGroup && mariaresources.length > 30) {
+                        await reply('Number of stickers more than 30, bot will send it in private chat.')
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                client.sendMessage(m.sender, { sticker: { url: mariaresources[i].url }})
+                        }
+                } else {
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                client.sendMessage(m.chat, { sticker: { url: mariaresources[i].url }})
+                        }
+                }
+        } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
+}
+break;
+   /* case 'qr': case 'scanner': case 'qrcode':
       if (!m.isGroup) return reply('This is to be used only in groups');
 client.sendMessage(from, { react: { text: "📶" , key: m.key }})
 
@@ -565,7 +582,7 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
               await client.sendMessage(m.chat, bmffg,{ quoted:m }).catch(err => {
                       return('Error!')
                   })
-  break;
+  break;*/
          case 'pinterest':
       case 'pin': {
       if (!args.join(" ")) return reply(`${pushname} Please provide a search term!`);
