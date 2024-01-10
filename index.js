@@ -25,6 +25,7 @@ const PhoneNumber = require("awesome-phonenumber");
 const FileType = require("file-type");
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/kressexif'); 
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
+    const autoviewstatus = process.env.AUTOVIEW_STATUS || 'TRUE';
 
 const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
