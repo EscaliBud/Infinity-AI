@@ -506,6 +506,7 @@ if (!m.key.fromMe) return
 *┃➥Take*
 *┃➥Smeme*
 *┃➥Quotely*
+*┃➥Tgs*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -705,6 +706,7 @@ case 'hacked':{
                 client.sendMessage(from, 'Succes Hacked', text, {quoted: fyt})
 }
 break;
+  
   case 'quotely': {
 try {
 if (!m.quoted.text) throw 'Tag a text';
@@ -720,7 +722,7 @@ const rel = await quote(xf, pushname, pppuser)
 
                 client.sendImageAsSticker(m.chat, rel.result, m, {
                     packname: pushname,
-                    author: `InfinityAI`
+                    author: `𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟`
                 })
 
 } catch (errr) { 
@@ -729,7 +731,6 @@ const rel = await quote(xf, pushname, pppuser)
             }
 
 break;
-
 case 'apk':
 case 'apkdl':{
 if (!text) return reply("What apk u wanna download?")
@@ -901,29 +902,7 @@ teks += `❏ *Creator:* ${commandsDB[i].creator}\n\n`
 }
 reply(teks)
 break 
-case "ihkgpt":{
-if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
- 
-    let userQuery = text.slice(7).trim(); // Extract user's query after '/ihkgpt'
 
-    let chatGPTUrl =" https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(userQuery)}";
-
-    // Make a request to the ChatGPT API
-    fetch(chatGPTUrl)
-        .then(response => response.json())
-        .then(data => {
-            let gptResponse = data.answer;
-
-            // Send the GPT response back to the user
-            client.sendMessage(m.chat, gptResponse, { quoted: m });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle error response
-            reply('An error occurred. Please try again later.');
-        });
-} 
-break;
         // banchat fixed by xeon
 case 'banchat':
 if (!m.isGroup) return reply('this feature is only for groups')
@@ -1371,7 +1350,7 @@ break;
 
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
-            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+            if (infoYt.videoDetails.lengthSeconds >= 2400) {
                 reply(`Video file too big!`);
                 return;
             }
@@ -1395,7 +1374,7 @@ break;
             // Convert the file size to megabytes (optional)
             let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
             console.log("Video downloaded ! Size: " + fileSizeInMegabytes);
-            if (fileSizeInMegabytes <= 100) {
+            if (fileSizeInMegabytes <= 1024) {
                 client.sendMessage(
                     from, {
                         video: fs.readFileSync(`./${randomName}`),
