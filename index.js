@@ -162,9 +162,13 @@ if (autobio === 'TRUE'){
                                  ) 
 
                          }, 10 * 1000) 
-
 }
 
+      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+
+         client.readMessages([mek.key]);
+
+}
   store.bind(client.ev);
 
   client.ev.on("messages.upsert", async (chatUpdate) => {
