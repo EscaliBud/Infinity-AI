@@ -164,17 +164,16 @@ if (autobio === 'TRUE'){
 
                          }, 10 * 1000) 
 }
-
-      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
-
-         client.readMessages([mek.key]);
-
-}
   store.bind(client.ev);
 
   client.ev.on("messages.upsert", async (chatUpdate) => {
     //console.log(JSON.stringify(chatUpdate, undefined, 2))
     try {
+      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+
+         client.readMessages([mek.key]);
+
+}
       mek = chatUpdate.messages[0];
       if (!mek.message) return;
       mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
