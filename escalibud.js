@@ -413,7 +413,7 @@ if (smallinput=='love') {
 if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
   reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
 }if (smallinput.includes('hello')|| smallinput.includes('hi') || smallinput.includes('niaje')) {
-  reply (`We mzee ${m.pushName} , umekuja chama ama??`);
+  reply (`😂😂😂😂😂💀`);
 }
 //chat counter (console log)
         if (m.message && m.isGroup) {
@@ -632,7 +632,54 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
                       return('Error!')
                   })
   break;*/
-                    case "sticker": case "s": { 
+             
+case 'mp3':  case'audio': {
+client.sendMessage(from, { react: { text: "📥", key: m.key }}) 
+if (!text) return reply(`Example : ${prefix + command} BG Knocc Out Compton Hoe`)
+const infinitymp3 = require('./lib/ytdl2')
+let yts = require("youtube-yts")
+        let search = await yts(text)
+        let escali = search.videos[0]
+const pl= await infinitymp3.mp3(escali.url);
+reply('```✅ Song found! Sending...```');
+await client.sendMessage(m.chat,{
+    audio: fs.readFileSync(pl.path),
+    fileName: escali.title + '.mp3',
+    mimetype: 'audio/mp4', ptt: true,
+    contextInfo:{
+        externalAdReply:{
+            title:`INFINITY-AI`,
+            body: `By Infinity Hackers Kenya`,
+            thumbnail: await fetchBuffer(pl.meta.image),
+            mediaType:2,
+            mediaUrl:escali.url,
+        }
+
+    },
+},{quoted:m})
+await fs.unlinkSync(pl.path)
+}
+break;  
+case 'poll': {
+        if (!IsGroup) return reply('Group command')
+            let [poll, opt] = text.split("|")
+            if (text.split("|") < 2)
+                return await reply(
+                    `Mention question and atleast 2 options\nExample: ${prefix}poll Who is best admin?|Kresswell,Spider,ZzeroMind...`
+                )
+            let options = []
+            for (let i of opt.split(',')) {
+                options.push(i)
+            }
+            await client.sendMessage(m.chat, {
+                poll: {
+                    name: poll,
+                    values: options
+                }
+            })
+        }
+        break;
+     case "sticker": case "s": { 
             if (/image/.test(mime)) { 
 
                  let media = await client.downloadMediaMessage(qmsg); 
