@@ -487,7 +487,7 @@ client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matc
 }
 
 
-/*
+
  
 startEscalibud();
 
