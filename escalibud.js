@@ -1128,6 +1128,66 @@ break;
              } 
 
  break;
+case 'igvideo':
+case 'igvid':{
+if (!q) return  reply("🧩Link?")
+let igmess = `By InfinityAI`;
+let res = await fetch(`https://vihangayt.me/download/instagram?url=${q}`)
+let json = await res.json()
+client.sendMessage(m.chat, { video: { url: json.data.data[0].url }, caption: igmess}, {quoted: m})
+.catch(console.error)
+}
+break;
+case 'google': {
+client.sendMessage(from, { react: { text: "🔎", key: m.key }}) 
+if (!q) return reply(`Example : ${prefix + command} Who is Kresswell`)
+let google = require('google-it')
+google({'query': text}).then(res => {
+let teks = `「🏮 *Google Search Engine*🏮」 \n\n
+`
+for (let g of res) {
+teks += `🧧 *Title* : ${g.title}\n`
+teks += `🔮 *Description* : ${g.snippet}\n`
+teks += `📎 *Link* : ${g.link}\n\n────────────────────\n\n`
+} 
+reply(teks)
+})
+}
+break;
+case "couple":
+        {
+          if (!m.isGroup) return reply('Use this in a group');
+          let member = participants.map((u) => u.id);
+          let orang = member[Math.floor(Math.random() * member.length)];
+          let jodoh = member[Math.floor(Math.random() * member.length)];
+          client.sendMessage(
+            m.chat,
+            {
+              text: `@${orang.split("@")[0]} ❤️ @${jodoh.split("@")[0]}
+Cieeee, What's Going On❤️💖👀`,
+              contextInfo: {
+                mentionedJid: [orang, jodoh],
+                forwardingScore: 9999999,
+                isForwarded: true,
+                externalAdReply: {
+                  showAdAttribution: true,
+                  containsAutoReply: true,
+                  title: ` INFINITY-AI `,
+                  body: `Just for fun`,
+                  previewType: "PHOTO",
+                  thumbnailUrl: ``,
+                  thumbnail: fs.readFileSync(
+                    `./escalibud.jpg`
+                  ),
+                  sourceUrl: `${link}`,
+                },
+              },
+            },
+            { quoted: m }
+          );
+        }
+        break;
+            
           case "subject": case "changesubject": { 
                  if (!m.isGroup) throw group; 
                  if (!isBotAdmin) throw botAdmin; 
