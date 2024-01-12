@@ -278,7 +278,12 @@ if (autobio === 'TRUE'){
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
                   let startmsg =`INFINITY-AI HAS SUCCESSFULLY STARTED!!
-FOR ANY ASSISTANCE, HOLLA THE DEV . REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
+FOR ANY ASSISTANCE, HOLLA THE DEV . 
+Contact Dev Here: https://wa.me/254798242085?text=hello
+
+Join Us On Telegram: HTTPS://INFINITYHACKERSKE.T.ME 
+
+REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
 client.sendMessage(owner + "@s.whatsapp.net",
  { text: startmsg,
  contextInfo:{
