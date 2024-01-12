@@ -9,6 +9,7 @@ const { exec, spawn, execSync } = require("child_process");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
+const advice = require("badadvice");
 const moment = require('moment-timezone');
 const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
@@ -643,6 +644,12 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
                  } 
           }
           break;
+case "advice":
+reply(advice());
+console.log(advice());
+
+break;
+
             case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Tag a sticker with the caption *${prefix + command}*`
