@@ -584,7 +584,7 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 
 ▬▬▬✮✮★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★✮✮▬▬▬
  `;
-loading ();
+//loading ();
 client.sendMessage(m.chat, {
                         text: caption,
                         contextInfo: {
