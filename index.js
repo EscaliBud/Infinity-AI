@@ -289,7 +289,7 @@ client.sendMessage(owner + "@s.whatsapp.net",
 "body": `By Infinity Hackers Kenya `,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": fs.readFileSync('./escalibud. Jpg'),
+"thumbnail": fs.readFileSync('./escalibud.jpg'),
 "sourceUrl": `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`}}})
     }
     // console.log('Connected...', update)
