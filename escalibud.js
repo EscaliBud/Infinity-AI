@@ -661,7 +661,7 @@ await fs.unlinkSync(pl.path)
 }
 break;  
 case 'poll': {
-        if (!IsGroup) return reply('Group command')
+        if (!m.IsGroup) return reply('Group command')
             let [poll, opt] = text.split("|")
             if (text.split("|") < 2)
                 return await reply(
