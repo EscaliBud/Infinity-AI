@@ -99,7 +99,6 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
 const wapresence = process.env.WA_PRESENCE || 'recording';
     const autoread = process.env.AUTOREAD || 'TRUE';
 const autobio = process.env.AUTOBIO || 'TRUE';
-	      const autoread = process.env.AUTOREAD || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
