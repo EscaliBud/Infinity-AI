@@ -454,7 +454,7 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥ Platform : ${os.platform()}*
 *┃➥ Bot Name : InfinityAI*
 *┃➥ Owner : 𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟*
-*┃➥ Advice: advice()*
+*┃➥ Advice: ${advice()}*
 *┗━──────────────*
 
 ▬▬▬✮✮★𓆩Ｕｓｅｒ Ｉｎｆｏ𓆪★✮✮▬▬▬
