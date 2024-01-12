@@ -279,22 +279,18 @@ if (autobio === 'TRUE'){
       console.log(color("Type /menu to see menu"));
                   let startmsg =`INFINITY-AI HAS SUCCESSFULLY STARTED!!
 FOR ANY ASSISTANCE, HOLLA THE DEV . REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
-client.sendMessage(owner + "@s.whatsapp.net", {
-                        text: startmsg,
-                        contextInfo: {
-                            externalAdReply: {
-                                showAdAttribution: true,
-                                title: `INFINITY-AI`,
-                                body: `Ni God Manzee!! ◇.`,
-                                thumbnail: fs.readFileSync('./escalibud.jpg'),
-                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
-                                mediaType: 1,
-                                renderLargerThumbnail: true
-                            }
-                        }
-                    }, {
-                        quoted: m
-                    })
+client.sendMessage(owner + "@s.whatsapp.net",
+ { text: startmsg,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` INFINITY-AI `,
+"body": `By Infinity Hackers Kenya `,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": fs.readFileSync('./escalibud. Jpg'),
+"sourceUrl": `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`}}})
     }
     // console.log('Connected...', update)
   });
