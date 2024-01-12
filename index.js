@@ -282,7 +282,7 @@ FOR ANY ASSISTANCE, HOLLA THE DEV . REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT
 client.sendMessage(owner + "@s.whatsapp.net",
  { text: startmsg,
  contextInfo:{
- mentionedJid:[num],
+ mentionedJid:[owner + "@s.whatsapp.net"],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
  "title": ` INFINITY-AI `,
