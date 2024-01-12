@@ -277,7 +277,21 @@ if (autobio === 'TRUE'){
       console.log(color("Bot success conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
-                  client.sendMessage(owner + "@s.whatsapp.net", { text: `INFINITY-AI Has successfully started. Type  .menu for full command list.☆Enjoy☆ ` });
+                  let startmsg =`INFINITY-AI HAS SUCCESSFULLY STARTED!!
+FOR ANY ASSISTANCE, HOLLA THE DEV . REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
+client.sendMessage(owner + "@s.whatsapp.net", {
+                        text: startmsg,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: `INFINITY-AI`,
+                                body: `INFINITY HACKERS KENYA ◇.`,
+                                thumbnail: fs.readFileSync('./escalibud.jpg'),
+                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
     }
     // console.log('Connected...', update)
   });
