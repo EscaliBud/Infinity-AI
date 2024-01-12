@@ -73,12 +73,8 @@
  "STICKER_PACKNAME": {
       "description": "Input sticker data for packname",
       "required": false
-},
- "GPT_INBOX": {
-      "description": "Input TRUE if you want bot to autoreply inbox messages using openai API.",
-      "required": false
 }
-  },
+},
   "buildpacks": [
     {
       "url": "heroku/nodejs"
