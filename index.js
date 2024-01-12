@@ -285,13 +285,16 @@ client.sendMessage(owner + "@s.whatsapp.net", {
                             externalAdReply: {
                                 showAdAttribution: true,
                                 title: `INFINITY-AI`,
-                                body: `INFINITY HACKERS KENYA ◇.`,
-                                thumbnail: fs.readFileSync('./escalibud.jpg'),
+                                body: `Ni God Manzee!! ◇.`,
+                                thumbnail: fs.readFileSync('./infinity.jpg'),
                                 sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
                             }
                         }
+                    }, {
+                        quoted: m
+                    })
     }
     // console.log('Connected...', update)
   });
