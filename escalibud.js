@@ -1181,7 +1181,7 @@ Cieeee, What's Going On❤️💖👀`,
                   thumbnail: fs.readFileSync(
                     `./escalibud.jpg`
                   ),
-                  sourceUrl: `${link}`,
+                  sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
                 },
               },
             },
