@@ -362,7 +362,7 @@ client.sendMessage(owner + "@s.whatsapp.net", {
 
 //welcome Begin
 
-client.ev.on('group-participants.update', async (anu) => {
+/*client.ev.on('group-participants.update', async (anu) => {
 console.log(anu)
 try {
 let metadata = await client.groupMetadata(anu.id)
@@ -432,7 +432,7 @@ clientsendMessage(anu.id,
 } catch (err) {
 console.log(err)
 }
-})
+})*/
 //welcome end
 client.downloadMediaMessage = async (message) => { 
          let mime = (message.msg || message).mimetype || ''; 
