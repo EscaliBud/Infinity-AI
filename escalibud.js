@@ -518,9 +518,9 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥Lyrics*
 *┃➥Song*
 *┃➥Gitclone*
-*┃➥Github*
 *┃➥Tovv*
 *┃➥Qoutely*
+*┃➥Igvideo*
 *┃➥APK*
 *┗━───────────────╯*
 
@@ -545,11 +545,13 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┗━───────────────╯*
 
 
-*⌜ AI Commands ⌟*
+*⌜ AI & Search Commands ⌟*
 
 *┏━───────────────╮*
 *┃➥Gpt*
 *┃➥Dalle*
+*┃➥Google*
+*┃➥Github*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
