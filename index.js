@@ -286,7 +286,7 @@ client.sendMessage(owner + "@s.whatsapp.net", {
                                 showAdAttribution: true,
                                 title: `INFINITY-AI`,
                                 body: `Ni God Manzee!! ◇.`,
-                                thumbnail: fs.readFileSync('./infinity.jpg'),
+                                thumbnail: fs.readFileSync('./escalibud.jpg'),
                                 sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
                                 mediaType: 1,
                                 renderLargerThumbnail: true
