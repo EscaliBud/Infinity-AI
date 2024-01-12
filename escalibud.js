@@ -5,13 +5,17 @@ const util = require("util");
 const speed = require("performance-now");
 const os = require('os');
 const chalk = require("chalk");
+const { exec, spawn, execSync } = require("child_process");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
 const ytdl = require("ytdl-core");
+const advice = require("badadvice");
+const moment = require('moment-timezone');
 const {c, cpp, node, python, java} = require('compile-run');
 const githubstalk = require('./lib/githubstalk');
 const axios = require('axios');
 const { getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc');
+let { TelegraPh, UploadFileUgu, webp2mp4File } = require('./lib/uploader');
 const prem = JSON.parse(fs.readFileSync('./database/premium.json'));
 const commandsDB = JSON.parse(fs.readFileSync('./database/commands.json'));
 const { addCommands, checkCommands, deleteCommands } = require('./lib/autoresp')
@@ -21,6 +25,7 @@ let register = JSON.parse(fs.readFileSync('./database/registered.json'));
 const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
 const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
 const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
+let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
     const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
@@ -36,7 +41,7 @@ chats: {},
 ...(global.db || {})
 }
 
-module.exports = escalibud = async (client, m, chatUpdate) => {
+module.exports = escalibud = async (client, m, chatUpdate, store) => {
   try {
     var body =
       m.mtype === "conversation"
@@ -58,12 +63,15 @@ module.exports = escalibud = async (client, m, chatUpdate) => {
         : "";
     var budy = typeof m.text == "string" ? m.text : "";
     // var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/"
-    var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
+    //var prefix = /^[\\/!#.]/gi.test(body) ? body.match(/^[\\/!#.]/gi) : "/";
+    const prefix = process.env.PREFIX || '';
     const isCmd2 = body.startsWith(prefix);
     const command = body.replace(prefix, "").trim().split(/ +/).shift().toLowerCase();
 const Heroku = require("heroku-client");  
  const appname = process.env.APP_NAME || '';
- const herokuapi = process.env.HEROKU_API;
+ const herokuapi = process.env.HEROKU_API;    
+const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
+    const packname = process.env.STICKER_PACKNAME || 'InfinityAI';
 
     const kress = (m.quoted || m); 
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
@@ -89,6 +97,7 @@ const Heroku = require("heroku-client");
     const arg = budy.trim().substring(budy.indexOf(" ") + 1);
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
 const wapresence = process.env.WA_PRESENCE || 'recording';
+    const autoread = process.env.AUTOREAD || 'TRUE';
 const autobio = process.env.AUTOBIO || 'TRUE';
 	      const autoread = process.env.AUTOREAD || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
@@ -142,6 +151,7 @@ const runtime = function (seconds) {
      const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
     const isBanchat = m.isGroup ? bancht.includes(from) : false;
     const isNsfw = m.isGroup ? nsfw.includes(from) : false;
+      const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false;
 const admin = process.env.ADMIN_MSG || 'Admin Command Only';
     const group = process.env.GROUP_ONLY_MSG || 'Use this command only in groups!!';
     const botAdmin = process.env.BOT_ADMIN_MSG || 'I need to be admin to perform that task'
@@ -174,6 +184,73 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
             }
         })
 
+async function loading () {
+var Ayushlod = [
+"`I`",
+"`IN`",
+"`INF`",
+"`INFI`",
+"`INFIN`",
+"`INFINI`",
+"`INFINIT`",
+"`INFINITY`",
+"`INFINITY-`",
+"`INFINITY-A`",
+"`INFINITY-AI`",
+"`INFINITY-AI  LOADING MENU......`",
+"`PLEASE WAIT......`",
+"`SUCCESSFULLY LINKED TO INFINITYLABS`",
+"`HERE IS YOUR MENU!! ××Enjoy××`",
+]
+let { key } = await client.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
+
+for (let i = 0; i < Ayushlod.length; i++) {
+await client.sendMessage(from, {text: Ayushlod[i], edit: key });
+}
+}
+ ///antilink 
+ if (AntiLinkAll)
+   if (budy.includes("https://")){
+if (!isBotAdmin) return
+bvl = `\`\`\`「 Link Detected 」\`\`\`\n\nyou are a group admin thats why i wont kick you, but remember from next time`
+if (isAdmin) return reply(bvl)
+if (m.key.fromMe) return reply(bvl)
+if (Owner) return reply(bvl)
+        await client.sendMessage(m.chat,
+                            {
+                                delete: {
+                                    remoteJid: m.chat,
+                                    fromMe: false,
+                                    id: m.key.id,
+                                    participant: m.key.participant
+                                }
+                            })
+                        client.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+client.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+} else {
+}
+  let smallinput = budy.toLowerCase()
+
+
+async function Telesticker(url) {
+    return new Promise(async (resolve, reject) => {
+        if (!url.match(/(https:\/\/t.me\/addstickers\/)/gi)) return reply('Enter your url telegram sticker link')
+        packName = url.replace("https://t.me/addstickers/", "")
+        data = await axios(`https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getStickerSet?name=${encodeURIComponent(packName)}`, {method: "GET",headers: {"User-Agent": "GoogleBot"}})
+        const mariayresult = []
+        for (let i = 0; i < data.data.result.stickers.length; i++) {
+            fileId = data.data.result.stickers[i].thumb.file_id
+            data2 = await axios(`https://api.telegram.org/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/getFile?file_id=${fileId}`)
+            result = {
+            status: 200,
+            author: '𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟',
+            url: "https://api.telegram.org/file/bot891038791:AAHWB1dQd-vi0IbH2NjKYUk-hqQ8rQuzPD4/" + data2.data.result.file_path
+            }
+            mariayresult.push(result)
+        }
+    resolve(mariayresult)
+    })
+}
         //TicTacToe
             this.game = this.game ? this.game : {}
             let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
@@ -263,10 +340,6 @@ for (let anji of setik){
 if (isBanchat){
 if (!itsMe && !Owner)return 
 }
-
-    // Push Message To Console
-    let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
-
 if (wapresence === 'recording' && !m.isGroup) { 
 
   client.sendPresenceUpdate('recording', m.chat);
@@ -274,6 +347,14 @@ if (wapresence === 'recording' && !m.isGroup) {
 
   client.sendPresenceUpdate('composing', m.chat);
     }
+    if (autoread === 'TRUE' && !m.isGroup) { 
+             client.readMessages([m.key])
+    }
+
+    // Push Message To Console
+    let argsLog = budy.length > 30 ? `${q.substring(0, 30)}...` : budy;
+
+
 if (budy.toLowerCase() === `register`){
             if (isRegister) return 
                     register.push(m.sender)
@@ -309,7 +390,32 @@ const isRegistered = checkRegisteredUser(sender)
 if (!client.public) {
 if (!m.key.fromMe) return
 }
-
+if (smallinput=='kresswell') {
+    reply ('Kresswell is my Father!!')
+}
+if (smallinput=='why are you gay') {
+    reply ('You should ask your father that question😂😂💀')
+}
+if (smallinput=='infinity ai') {
+    reply('Hey,Thats me,Do you have a crush on me or what do you want??')
+}
+if (smallinput=='infinity hackers') {
+    reply ('That is my Home,I belong to Infinity Hackers,Led By Spider and Kresswell🥳2 Giants. You can also be part by Joining us on Telegram. Click this Link. https://t.me/InfinityHackersKE')
+}
+if (smallinput=='sorry') {
+    reply ('I knew you were weak ,Just like your father😂😂💀')
+}
+if (smallinput=='umbwa') {
+    reply ('rudia bila kulia sasa😂😂')
+}
+if (smallinput=='love') {
+    reply ('Lemme Ask for permission from Kresswell🤭')
+}
+if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
+  reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
+}if (smallinput.includes('hello')|| smallinput.includes('hi') || smallinput.includes('niaje')) {
+  reply (`We mzee ${m.pushName} , umekuja chama ama??`);
+}
 //chat counter (console log)
         if (m.message && m.isGroup) {
             client.readMessages([m.key])
@@ -326,20 +432,6 @@ if (!m.key.fromMe) return
              client.readMessages([m.key])
     }
 
-if (autobio === 'TRUE'){ 
-            setInterval(() => { 
-
-                                 const date = new Date() 
-
-                         client.updateProfileStatus( 
-
-                                         `InfinityAI is active now\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi'})}.` 
-
-                                 ) 
-
-                         }, 10 * 1000) 
-
-}
 
     if (isCmd2 && !m.isGroup) {
       console.log(chalk.black(chalk.bgWhite("[ LOGS ]")), color(argsLog, "turquoise"), chalk.magenta("From"), chalk.green(pushname), chalk.yellow(`[ ${m.sender.replace("@s.whatsapp.net", "")} ]`));
@@ -361,15 +453,22 @@ if (autobio === 'TRUE'){
           let caption= `
 
 *┏━──●★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★●───*
-*┃➥ Hello ${m.pushName}*
+*┃➥ Howdy ${m.pushName}*
 *┃➥ Runtime: ${runtime(process.uptime())}*
 *┃➥ Library : Baileys*
 *┃➥ Host Name : ${os.hostname()}*
 *┃➥ Platform : ${os.platform()}*
 *┃➥ Bot Name : InfinityAI*
-*┃➥ Whatsapp Bot Ver : 2.12.0*
-*┃➥ Creator : Kresswell*
+*┃➥ Owner : 𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟*
+*┃➥ Advice: ${advice()}*
 *┗━──────────────*
+
+▬▬▬✮✮★𓆩Ｕｓｅｒ Ｉｎｆｏ𓆪★✮✮▬▬▬
+
+*┏━───────────────╮*
+*┃Name :${m.pushName}*
+*│Premium : ${isPrem ? '✅' : `❌`}*
+*┗━───────────────╯*
 
 *⌜ Owner Commands ⌟*
 *┏━───────────────╮*
@@ -394,10 +493,11 @@ if (autobio === 'TRUE'){
 *⌜ Admin Commands ⌟*
 
 *┏━───────────────╮*
-*┃➥Register*
 *┃➥Promote*
 *┃➥Demote*
 *┃➥Kick*
+*┃➥Add*
+*┃➥revoke*
 *┃➥Delete*
 *┃➥Gpp*
 *┃➥Subject*
@@ -408,6 +508,7 @@ if (autobio === 'TRUE'){
 *┃➥Closein*
 *┃➥Openin*
 *┃➥Nsfw*
+*┃➥Antilink*
 *┗━───────────────╯*
 
 
@@ -423,8 +524,20 @@ if (autobio === 'TRUE'){
 *┃➥Lyrics*
 *┃➥Song*
 *┃➥Gitclone*
-*┃➥Github*
 *┃➥Tovv*
+*┃➥Qoutely*
+*┃➥Igvideo*
+*┃➥APK*
+*┗━───────────────╯*
+
+*⌜ Sticker Menu ⌟*
+
+*┏━───────────────╮*
+*┃➥Sticker*
+*┃➥Take*
+*┃➥Smeme*
+*┃➥Quotely*
+*┃➥Tgs*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -435,6 +548,16 @@ if (autobio === 'TRUE'){
 *┃➥Runtime*
 *┃➥Speed*
 *┃➥Link*
+*┗━───────────────╯*
+
+
+*⌜ AI & Search Commands ⌟*
+
+*┏━───────────────╮*
+*┃➥Gpt*
+*┃➥Dalle*
+*┃➥Google*
+*┃➥Github*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
@@ -462,6 +585,7 @@ if (autobio === 'TRUE'){
 
 ▬▬▬✮✮★𓆩ᗴᏕᑕᗩᒪI ᗷᑌᗪ𓆪★✮✮▬▬▬
  `;
+loading ();
 client.sendMessage(m.chat, {
                         text: caption,
                         contextInfo: {
@@ -479,6 +603,233 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
+case 'tgs':{
+                if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
+                let mariaresources = await Telesticker(args[0])
+                await reply(`Sending ${mariaresources.length} stickers...`)
+                if (m.isGroup && mariaresources.length > 30) {
+                        await reply('Number of stickers more than 30, bot will send it in private chat.')
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                client.sendMessage(m.sender, { sticker: { url: mariaresources[i].url }})
+                        }
+                } else {
+                        for (let i = 0; i < mariaresources.length; i++) {
+                                client.sendMessage(m.chat, { sticker: { url: mariaresources[i].url }})
+                        }
+                }
+        } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
+}
+break;
+   /* case 'qr': case 'scanner': case 'qrcode':
+      if (!m.isGroup) return reply('This is to be used only in groups');
+client.sendMessage(from, { react: { text: "📶" , key: m.key }})
+
+  reply(`Running repl....Please wait until repl.it responds...`)                                                
+  var replqr =  await getBuffer(`https://replit.com/@KresswellKE/InfinityAIPairing?v=1`)
+                     
+        let bmffg = {
+         image: replqr,
+         caption:  `Scan the qr within 10-15 seconds...`,
+   
+        }     
+              await client.sendMessage(m.chat, bmffg,{ quoted:m }).catch(err => {
+                      return('Error!')
+                  })
+  break;*/
+                    case "sticker": case "s": { 
+            if (/image/.test(mime)) { 
+
+                 let media = await client.downloadMediaMessage(qmsg); 
+                 let encmedia = await client.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author }); 
+                 await fs.unlinkSync(encmedia); 
+             } else if (/video/.test(mime)) { 
+             m.reply("wait a moment"); 
+                 if (qmsg.seconds > 11) return m.reply('Video is too long for conversion!'); 
+                 let media = await client.downloadMediaMessage(qmsg); 
+                 let encmedia = await client.sendVideoAsSticker(m.chat, media, m, { packname: packname, author: author }); 
+                 await fs.unlinkSync(encmedia); 
+             } else { 
+                 m.reply(`Send an image or short video with the caption ${prefix + command}`); 
+                 } 
+          }
+          break;
+case "advice":
+reply(advice());
+console.log(advice());
+
+break;
+
+            case 'toimage': case 'toimg': {
+                if (!quoted) throw 'Reply Image'
+                if (!/webp/.test(mime)) throw `Tag a sticker with the caption *${prefix + command}*`
+                m.reply('Please wait......')
+                let media = await client.downloadAndSaveMediaMessage(quoted)
+                let ran = await getRandom('.png')
+                exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+                    fs.unlinkSync(media)
+                    if (err) throw err
+                    let buffer = fs.readFileSync(ran)
+                    client.sendMessage(m.chat, { image: buffer }, { quoted: m })
+                    fs.unlinkSync(ran)
+                })
+            }
+            break;
+            case 'smeme': {
+                let responnd = `Quote an image or sticker with the 2 texts separated with |`
+                if (!/image/.test(mime)) return reply(responnd)
+                if (!text) return reply(responnd)
+
+                atas = text.split('|')[0] ? text.split('|')[0] : '-'
+                bawah = text.split('|')[1] ? text.split('|')[1] : '-'
+                let dwnld = await client.downloadAndSaveMediaMessage(qmsg)
+                let fatGans = await TelegraPh(dwnld)
+                let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(bawah)}/${encodeURIComponent(atas)}.png?background=${fatGans}`
+                let pop = await client.sendImageAsSticker(m.chat, smeme, m, {
+                    packname: packname,
+
+                })
+                fs.unlinkSync(pop)
+            }
+
+break;
+         case 'pinterest':
+      case 'pin': {
+      if (!args.join(" ")) return reply(`${pushname} Please provide a search term!`);
+        reply('Please wait')
+        let { pinterest } = require('./lib/scraper');
+        let anutrest = await pinterest(text);
+        let results = [];
+
+        // Get multiple random images (let's say 5 images)
+        const numImages = 5;
+        for (let i = 0; i < numImages && i < anutrest.length; i++) {
+          results.push(anutrest[Math.floor(Math.random() * anutrest.length)]);
+        }
+
+        // Send each image without any caption
+        for (let i = 0; i < results.length; i++) {
+         client.sendMessage(m.chat, { image: { url: results[i] } }, { quoted: m });
+        }
+      }
+        break;
+case 'welcome': {
+if (/on/.test(text)) {
+ if (global.welcome) {
+   m.reply("Already activated");
+ } else {
+ global.welcome = true;
+m.reply("Activated welcome message");
+}
+} else if (/off/.test(text)) {
+if (!global.welcome) {
+   m.reply("Already deactivated");
+ } else {
+ global.welcome = false;
+m.reply("Deactivated welcome message");
+}
+} else m.reply(`Type ${prefix+command} on|off`);
+}
+break;  
+case 'hacked':{
+  if (!mek.key.fromMe) return;
+              if (!isGroup) return reply('this feature is only for groups')
+              if (args.length < 1) return reply('The text?')
+              reply('Hacking')
+                tessgc = await getBuffer(`https://i.ibb.co/m4Qx3JG/20210319-204838.jpg`)
+                   client.updateProfilePicture (from, tessgc)
+                   await sleep(1000)
+              client.groupUpdateSubject(from, `HACKED BY ${body.slice(8)}`)
+                await sleep(1000)
+                client.groupUpdateDescription(from, `_${pushname} hacked this group_`)             
+                await sleep(1000)
+                client.sendMessage(from, 'Succes Hacked', text, {quoted: fyt})
+}
+break;
+  
+  case 'quotely': {
+try {
+if (!m.quoted.text) throw 'Tag a text';
+let xf = m.quoted.text;
+
+                const {
+                    quote
+                } = require('./lib/infinityquotely.js')
+
+                let pppuser = await client.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/75272825615a4dcb69526.png')
+
+const rel = await quote(xf, pushname, pppuser)
+
+                client.sendImageAsSticker(m.chat, rel.result, m, {
+                    packname: pushname,
+                    author: `𓄂ᴋ͟ʀ͟ᴇͥ͟sͣ͟sͫ͟ᴡ͟ᴇ͟ʟ͟ʟ͟`
+                })
+
+} catch (errr) { 
+ await reply("Tag some text for quotely")}
+
+            }
+
+break;
+case 'apk':
+case 'apkdl':{
+if (!text) return reply("What apk u wanna download?")
+let resMaria = await fetch(`https://vihangayt.me/download/apk?id=${text}`)
+let jsonMaria = await resMaria.json()
+client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : jsonMaria.data.name, mimetype: 'application/vnd.android.package-archive'}, {quoted:m})
+.catch(console.error)
+}
+break;
+
+//owner commands
+case 'listpc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+                 let teks = `⬣ *LIST OF PERSONAL CHATS*\n\nTotal Chat : ${anu.length} Chats\n\n`
+                 for (let i of anu) {
+                     let nama = store.messages[i].array[0].pushName
+                     teks += `⬡ *Name :* ${nama}\n⬡ *User :* @${i.split('@')[0]}\n⬡ *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
+                 }
+                 client.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+                case 'listgc': {
+                 let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+                let teks = `⬣ *LIST OF GROUP CHATS*\n\nTotal Group : ${anu.length} Group\n\n`
+                 for (let i of anu) {
+                     let metadata = await client.groupMetadata(i)
+                     teks += `⬡ *Name :* ${metadata.subject}\n⬡ *Owner :* @${metadata.owner.split('@')[0]}\n⬡ *ID :* ${metadata.id}\n⬡ *Created on :* ${moment(metadata.creation * 1000).tz('Africa/Nairobi').format('DD/MM/YYYY HH:mm:ss')}\n⬡ *Members :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                 }
+                 client.sendTextWithMentions(m.chat, teks, m)
+             }
+             break;
+             case 'listonline': case 'liston': {
+                    let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
+                    let online = [...Object.keys(store.presences[id]), botNumber]
+                    client.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+             }
+             break;
+case 'add': {
+                if (!m.isGroup) throw group
+                if (!isBotAdmin) throw botAdmin
+                if (!isAdmin) throw admin
+                let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+                await client.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+        }
+        break;
+          case "revoke": 
+ case "newlink": 
+ case "reset": { 
+   if (!m.isGroup) throw group; // add "new Error" to create a new Error object 
+   if (!isAdmin) throw admin; // add "new Error" to create a new Error object 
+   if (!isBotAdmin) throw botAdmin; // add "new Error" to create a new Error object 
+   await client.groupRevokeInvite(m.chat); 
+   await client.sendText(m.chat, 'Group link revoked!', m); // use "client.sendText" instead of "m.reply" to ensure message is sent 
+   let response = await client.groupInviteCode(m.chat); 
+ client.sendText(m.sender, `https://chat.whatsapp.com/${response}\n\nHere is the new group link for ${groupMetadata.subject}`, m, { detectLink: true }); 
+ client.sendText(m.chat, `Sent  the new group link to your inbox!`, m); 
+   // use "client.sendTextWithMentions" instead of "client.sendText" to include group name in message 
+ }
+
+  break;
 case 'addprem':
 if (!Owner) return reply('You are not my Owner')
 if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 254754046165`)
@@ -510,6 +861,59 @@ case 'public': {
                 reply('*Successful in Changing To Self Usage*')
             }
             break;
+case 'chatgpt': case 'gpt':{
+client.sendMessage(from, { react: { text: "🤖", key: m.key }}) 
+              if (!q) return reply(`Please provide a text query. Example: ${prefix + command} Hello, ChatGPT!`);
+
+              const apiUrl1 = `https://vihangayt.me/tools/chatgpt?q=${encodeURIComponent(q)}`;
+              const apiUrl2 = `https://gurugpt.cyclic.app/gpt4?prompt=${encodeURIComponent(q)}&model=llama`;
+
+              try {
+
+                const response1 = await fetch(apiUrl1);
+                const responseData1 = await response1.json();
+
+                if (response1.status === 200 && responseData1 && responseData1.status === true && responseData1.data) {
+
+                  const message = responseData1.data;
+                  const me = m.sender;
+                  await client.sendMessage(m.chat, { text: message, mentions: [me] }, { quoted: m });
+                } else {
+
+                  const response2 = await fetch(apiUrl2);
+                  const responseData2 = await response2.json();
+
+                  if (response2.status === 200 && responseData2 && responseData2.data) {
+
+                    const message = responseData2.data;
+                    const me = m.sender;
+                    await client.sendMessage(m.chat, { text: message, mentions: [me] }, { quoted: m });
+                  } else {
+                    reply("Sorry, I couldn't fetch a response from both APIs at the moment.");
+                  }
+                }
+              } catch (error) {
+                console.error(error);
+                reply("An error occurred while fetching the response from both APIs.");
+              }
+            }
+              break;
+             case 'dalle': {
+
+
+        if (!q) return reply(`Please provide a query to generate an image. Example: ${prefix + command} Beautiful landscape`);
+
+        const apiUrl = `https://gurugpt.cyclic.app/dalle?prompt=${encodeURIComponent(q)}`;
+
+        try {
+          await client.sendMessage(m.chat, { image: { url: apiUrl } }, { quoted: m });
+        } catch (error) {
+          console.error(error);
+          reply("An error occurred while generating the image.");
+        }
+      }
+        break;
+
                                         // add respond
                                         case 'addresponse':
                         if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
@@ -537,29 +941,7 @@ teks += `❏ *Creator:* ${commandsDB[i].creator}\n\n`
 }
 reply(teks)
 break 
-case "ihkgpt":{
-if(!text) return reply('Please provide a query. Example: ihkgpt Hello world in Java')
- 
-    let userQuery = text.slice(7).trim(); // Extract user's query after '/ihkgpt'
 
-    let chatGPTUrl =" https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(userQuery)}";
-
-    // Make a request to the ChatGPT API
-    fetch(chatGPTUrl)
-        .then(response => response.json())
-        .then(data => {
-            let gptResponse = data.answer;
-
-            // Send the GPT response back to the user
-            client.sendMessage(m.chat, gptResponse, { quoted: m });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle error response
-            reply('An error occurred. Please try again later.');
-        });
-} 
-break;
         // banchat fixed by xeon
 case 'banchat':
 if (!m.isGroup) return reply('this feature is only for groups')
@@ -754,6 +1136,66 @@ break;
              } 
 
  break;
+case 'igvideo':
+case 'igvid':{
+if (!q) return  reply("🧩Link?")
+let igmess = `By InfinityAI`;
+let res = await fetch(`https://vihangayt.me/download/instagram?url=${q}`)
+let json = await res.json()
+client.sendMessage(m.chat, { video: { url: json.data.data[0].url }, caption: igmess}, {quoted: m})
+.catch(console.error)
+}
+break;
+case 'google': {
+client.sendMessage(from, { react: { text: "🔎", key: m.key }}) 
+if (!q) return reply(`Example : ${prefix + command} Who is Kresswell`)
+let google = require('google-it')
+google({'query': text}).then(res => {
+let teks = `「🏮 *Google Search Engine*🏮」 \n\n
+`
+for (let g of res) {
+teks += `🧧 *Title* : ${g.title}\n`
+teks += `🔮 *Description* : ${g.snippet}\n`
+teks += `📎 *Link* : ${g.link}\n\n────────────────────\n\n`
+} 
+reply(teks)
+})
+}
+break;
+case "couple":
+        {
+          if (!m.isGroup) return reply('Use this in a group');
+          let member = participants.map((u) => u.id);
+          let orang = member[Math.floor(Math.random() * member.length)];
+          let jodoh = member[Math.floor(Math.random() * member.length)];
+          client.sendMessage(
+            m.chat,
+            {
+              text: `@${orang.split("@")[0]} ❤️ @${jodoh.split("@")[0]}
+Cieeee, What's Going On❤️💖👀`,
+              contextInfo: {
+                mentionedJid: [orang, jodoh],
+                forwardingScore: 9999999,
+                isForwarded: true,
+                externalAdReply: {
+                  showAdAttribution: true,
+                  containsAutoReply: true,
+                  title: ` INFINITY-AI `,
+                  body: `Just for fun`,
+                  previewType: "PHOTO",
+                  thumbnailUrl: ``,
+                  thumbnail: fs.readFileSync(
+                    `./escalibud.jpg`
+                  ),
+                  sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
+                },
+              },
+            },
+            { quoted: m }
+          );
+        }
+        break;
+            
           case "subject": case "changesubject": { 
                  if (!m.isGroup) throw group; 
                  if (!isBotAdmin) throw botAdmin; 
@@ -873,7 +1315,7 @@ case 'play':
             let urlYt = videos[0].url
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
-            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+            if (infoYt.videoDetails.lengthSeconds >= 7200) {
                 reply(`File is too big for me to download`);
                 return;
             }
@@ -899,7 +1341,7 @@ reply(`_Downloading ${infoYt.videoDetails.title}_`);
             // Convert the file size to megabytes (optional)
             let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
             console.log("Audio downloaded ! \n Size: " + fileSizeInMegabytes);
-            if (fileSizeInMegabytes <= 40) {
+            if (fileSizeInMegabytes <= 200) {
                 //sendFile(from, fs.readFileSync(`./${randomName}`), msg, { audio: true, jpegThumbnail: (await getBuffer(dl.meta.image)).buffer, unlink: true })
                 await client.sendMessage(
                     from, {
@@ -1007,7 +1449,7 @@ break;
 
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
-            if (infoYt.videoDetails.lengthSeconds >= 1800) {
+            if (infoYt.videoDetails.lengthSeconds >= 2400) {
                 reply(`Video file too big!`);
                 return;
             }
@@ -1031,7 +1473,7 @@ break;
             // Convert the file size to megabytes (optional)
             let fileSizeInMegabytes = fileSizeInBytes / (1024 * 1024);
             console.log("Video downloaded ! Size: " + fileSizeInMegabytes);
-            if (fileSizeInMegabytes <= 100) {
+            if (fileSizeInMegabytes <= 1024) {
                 client.sendMessage(
                     from, {
                         video: fs.readFileSync(`./${randomName}`),
@@ -1160,8 +1602,35 @@ if (!isPrem) return reply('This is a premium command')
    fs.unlinkSync(`./${randomName}`); 
     } 
         
-          case "sc": case "script": case "scbot":
-           m.reply("I am not yet on github. Maybe my owner will publish my source soon...");
+              case "script": case "repo":
+           let scmess= `
+╭─❒ SCRIPT
+│◦➛Owner : Kresswell
+│◦➺Co-Owner : Spider953
+│∞ *INFINITY HACKERS KENYA*
+└──────[ GITHUB ]──────❒
+  │◦➛Script Link :
+  │◦➛https://github.com/EscaliBud/InfinityAI
+  │◦➛Telegram Channel: 
+  │◦➛https://InfinityHackersKE.t.me 
+  └──────────────────❒`;
+client.sendMessage(m.chat, {
+                        text: scmess,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: `INFINITY-AI`,
+                                body: `INFINITY HACKERS KENYA ◇.`,
+                                thumbnail: fs.readFileSync('./escalibud.jpg'),
+                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    }, {
+                        quoted: m
+                    })
+          break;
 case "enc":
 let forq = m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
 var JavaScriptObfuscator = require('javascript-obfuscator');
@@ -1654,35 +2123,36 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let url = `https://api.github.com/repos/${user}/${repo}/zipball`
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
     client.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => reply('An error occured'))
-break;
-
-          case 'broadcast': { 
-         if (!Owner) { 
-             throw NotOwner
-             return; 
-         } 
-         if (!text) { 
-             reply("*❌ No broadcast message provided!*") 
-             return; 
-         } 
-         let getGroups = await client.groupFetchAllParticipating() 
-         let groups = Object.entries(getGroups) 
-             .slice(0) 
-             .map(entry => entry[1]) 
-         let res = groups.map(v => v.id) 
-         reply(` Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`) 
-         for (let i of res) { 
-             let txt = `*➥INFINITYAI BROADCAST*:\n\n*MESSAGE*:  _${text}_\n\n*Author*: ${pushname}` 
-             await client.sendMessage(i, { 
-                 image: { 
-                     url: "https://te.legra.ph/file/5b3c55eb8f214b2006c06.jpg" 
-                 }, 
-                 caption: `${txt}` 
-             }) 
-         } 
-         reply(`Broadcasted to ${res.length} Groups.`) 
-     } 
- break;
+break
+            case 'bcgc':
+            case 'bcgroup': {
+                if (!Owner) return reply('You are not my Owner')
+                if (!text) return reply(`Which text?\n\nExample : ${prefix + command} It's holiday tomorrow `)
+                let getGroups = await client.groupFetchAllParticipating()
+                let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
+                let anu = groups.map(v => v.id)
+                reply(`Send Broadcast To ${anu.length} Group Chat, End Time ${anu.length * 1.5} second`)
+                for (let i of anu) {
+                    await sleep(1500)
+                    let a = '```' + `ʙʀᴏᴀᴅᴄᴀsᴛ ᴍᴇssᴀɢᴇ\n\n${text}\n\n` + '```' + '\n\n\nɪɴғɪɴɪᴛʏ ᴀɪ ʙʏ ɪɴғɪɴɪᴛʏ ʜᴀᴄᴋᴇʀs'
+                    client.sendMessage(i, {
+                        text: a,
+                        contextInfo: {
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: '□Paid BroadCast□',
+                                body: `Sent ${i.length} Group`,
+                                thumbnailUrl: 'https://i.imgur.com/pFHxvfE.jpeg',
+                                sourceUrl: global.link,
+                                mediaType: 1,
+                                renderLargerThumbnail: true
+                            }
+                        }
+                    })
+                }
+                reply(`Successfully Sent Broadcast To ${anu.length} Group`)
+            }
+            break;
           case "leave": { 
                  if (!isAdmin) throw admin; 
  await client.sendText(m.chat, 'GoodBye Everyone.\n\n *InfinityAI is leaving this chat. . .*'); 
@@ -1727,7 +2197,68 @@ break;
     client.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } }); 
   } 
  break;
+            case 'antilink': {
+                            if (!m.isGroup) return reply('Group command ')
+                if (!isAdmin && !Owner) return reply('Admin Command')
+                if (!isBotAdmin) return reply('You need a medical check!')
+if (args[0] === "on") {
+if (AntiLinkAll) return reply('Already activated')
+ntilinkall.push(from)
+fs.writeFileSync('./database/antilink.json', JSON.stringify(ntilinkall))
+reply('Success in turning on all antilink in this group')
+var groupe = await client.groupMetadata(from)
+var members = groupe['participants']
+var mems = []
+members.map(async adm => {
+mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+client.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send any link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+} else if (args[0] === "off") {
+if (!AntiLinkAll) return reply('Already deactivated')
+let off = ntilinkall.indexOf(from)
+ntilinkall.splice(off, 1)
+fs.writeFileSync('./database/antilinkall.json', JSON.stringify(ntilinkall))
+reply('Success in turning off all antilink in this group')
+} else {
+  await reply(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  }
+  }
+  break;
+
         default: {
+      if(isCmd2){
+          client.sendMessage(from, { react: { text: "❌", key: m.key }}) 
+          reply (`🗿Kresswell Has not programmed me with such a Command!!, *${pushname}* .Type ${prefix} owner to contact my owner. Type *${prefix}help* to get my full command list!`)
+
+      }                                 
+
+
+  if (budy.startsWith('=>')) {
+  if (!Owner) return reply('You are not my Owner')
+  function Return(sul) {
+  sat = JSON.stringify(sul, null, 2)
+  bang = util.format(sat)
+  if (sat == undefined) {
+  bang = util.format(sul)
+  }
+  return reply(bang)
+  }
+  try {
+  reply(util.format(eval(`(async () => { ${budy.slice(3)} })()`)))
+  } catch (e) {
+  client.sendMessage(from, {image:ErrorPic, caption:String(e)}, {quoted:m})
+  }
+  }
+  if (budy.startsWith('>')) {
+  if (!Owner) return reply('You are not my owner')
+  try {
+  let evaled = await eval(budy.slice(2))
+  if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+  await reply(evaled)
+  } catch (err) {
+  await client.sendMessage(from, {image:ErrorPic, caption:String(err)}, {quoted:m})
+  }
+  }
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
             if (m.isBaileys) return;

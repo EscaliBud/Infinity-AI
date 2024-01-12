@@ -1,0 +1,89 @@
+{
+  "name": "InfinityAI",
+  "description": "This is a whatsapp bot built with nodejs and baileys with MD support.",
+  "keywords": [
+    "bot",
+    "whatsapp",
+    "dreaded",
+    "whatsapp-stickers",
+    "anime",
+    "whatsapp-bot",
+    "whatsapp-sticker-bot",
+    "whatsapp-botto",
+    "baileys",
+    "baileys-md",
+    "md-bot"
+  ],
+  "website": "https://github.com/EscaliBud/InfinityAI#readme",
+  "repository": "https://github.com/EscaliBud/InfinityAI.git",
+  "logo": "https://telegra.ph/file/1d0fb63c857138f5bee51.jpg",
+  "success_url": "/",
+  "env": {
+    "PREFIX": {
+      "description": "Prefix For InfinityAI Ex: . , / , # , & etc. Put any symbol",
+      "required": true
+
+    },
+    "OWNER": {
+      "description": "Put ONLY ONE number that will be receiving notifications when InfinityAI Starts eg 254798242085 ",
+      "required": true
+    },
+    "NOT_OWNER_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires only owner user is violated. Example: Owner only",
+      "required": true
+    },
+
+
+    "BOT_ADMIN_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires bot to be admin is violated. Example: Bot is not admin!",
+      "required": true
+    },
+    "ADMIN_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires only owner user is violated. Example: Only admins are allowed to use this command",
+      "required": true
+    },
+    "GROUP_ONLY_MSG": {
+      "description": "Put a message that the bot will send if a parameter that works in group chats only is violated. Example: This command will work in groups only",
+      "required": true
+    },
+      "AUTOREAD": {
+      "description": "Put here TRUE if you want bot to automatically bluetick messages in private chats",
+      "required": true
+},
+ "AUTOVIEW": {
+      "description": "Input true if you want bot to automatically read status update",
+      "required": false
+},
+ "WA_PRESENCE": {
+      "description": "Input either recording or typing. This enables bot to simulate typing or recording.",
+      "required": false
+}
+ "AUTOBIO": {
+      "description": "Input TRUE if you want bot to autoupdate its about with current time and date.",
+      "required": false
+},
+ "APP_NAME": {
+      "description": "Input your app name that you put above.",
+      "required": true
+},
+ "STICKER_AUTHOR": {
+      "description": "Input sticker data for author",
+      "required": false
+},
+ "STICKER_PACKNAME": {
+      "description": "Input sticker data for packname",
+      "required": false
+}
+},
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    }
+  ]
+    }

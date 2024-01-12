@@ -23,8 +23,9 @@ const figlet = require("figlet");
 const _ = require("lodash");
 const PhoneNumber = require("awesome-phonenumber");
 const FileType = require("file-type");
-
+const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/kressexif'); 
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
+    const autoviewstatus = process.env.AUTOVIEW_STATUS || 'TRUE';
 
 const color = (text, color) => {
   return !color ? chalk.green(text) : chalk.keyword(color)(text);
@@ -162,14 +163,18 @@ if (autobio === 'TRUE'){
                                  ) 
 
                          }, 10 * 1000) 
-
 }
-
   store.bind(client.ev);
 
   client.ev.on("messages.upsert", async (chatUpdate) => {
     //console.log(JSON.stringify(chatUpdate, undefined, 2))
     try {
+    mek = chatUpdate.messages[0];
+      if (autoviewstatus === 'TRUE' && mek.key && mek.key.remoteJid === "status@broadcast") {
+
+         client.readMessages([mek.key]);
+
+}
       mek = chatUpdate.messages[0];
       if (!mek.message) return;
       mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
@@ -272,7 +277,25 @@ if (autobio === 'TRUE'){
       console.log(color("Bot success conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
       console.log(color("Type /menu to see menu"));
-                  client.sendMessage(owner + "@s.whatsapp.net", { text: `INFINITY-AI Has successfully started. Type ${prefix} menu for full command list.☆Enjoy☆ ` });
+                  let startmsg =`INFINITY-AI HAS SUCCESSFULLY STARTED!!
+FOR ANY ASSISTANCE, HOLLA THE DEV . 
+Contact Dev Here: https://wa.me/254798242085?text=hello
+
+Join Us On Telegram: HTTPS://INFINITYHACKERSKE.T.ME 
+
+REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
+client.sendMessage(owner + "@s.whatsapp.net",
+ { text: startmsg,
+ contextInfo:{
+ mentionedJid:[owner + "@s.whatsapp.net"],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` INFINITY-AI `,
+"body": `By Infinity Hackers Kenya `,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": fs.readFileSync('./escalibud.jpg'),
+"sourceUrl": `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`}}})
     }
     // console.log('Connected...', update)
   });
@@ -310,6 +333,21 @@ if (autobio === 'TRUE'){
       : Buffer.alloc(0);
     return await client.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted });
   };
+ 
+        client.sendImageAsSticker = async (jid, path, quoted, options = {}) => { 
+         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0); 
+         // let buffer 
+         if (options && (options.packname || options.author)) { 
+             buffer = await writeExifImg(buff, options) 
+         } else { 
+             buffer = await imageToWebp(buff); 
+         } 
+
+         await client.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted }); 
+         return buffer 
+     }; 
+
+
  client.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => { 
          let quoted = message.msg ? message.msg : message; 
          let mime = (message.msg || message).mimetype || ''; 
@@ -326,6 +364,96 @@ if (autobio === 'TRUE'){
          return trueFileName; 
      };
 
+//welcome Begin
+
+/*client.ev.on('group-participants.update', async (anu) => {
+console.log(anu)
+try {
+let metadata = await client.groupMetadata(anu.id)
+let participants = anu.participants
+for (let num of participants) {
+try {
+ppuser = await client.profilePictureUrl(num, 'image')
+} catch (err) {
+ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
+}
+try {
+ppgroup = await client.profilePictureUrl(anu.id, 'image')
+} catch (err) {
+ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
+}
+//welcome\\
+memb = metadata.participants.length
+MariaWlcm = await getBuffer(ppuser)
+MariaLft = await getBuffer(ppuser)
+                if (anu.action == 'add') {
+                const Mariabuffer = await getBuffer(ppuser)
+                let MariaName = num
+                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                    const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                    const xmembers = metadata.participants.length
+                Mariabody = `Hello ${m.pushName} ,Welcome To ${groupMetadata.subject}. Don't Sending links to avoid bieng kicked!!.
+
+Enjoy 🍷🍷
+
+InfinityAI By Infinity Hackers Kenya 
+`
+client.sendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` INFINITY-AI `,
+"body": `Karibu Mgeni`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaWlcm,
+"sourceUrl": `${link}`}}})
+                } else if (anu.action == 'remove') {
+                        const Mariabuffer = await getBuffer(ppuser)
+                    const Mariatime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                        const Mariadate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                       
+                   
+  Mariabody = `A Mf just left😂💀 We won't miss you!! Biatch!!🚮
+
+`
+clientsendMessage(anu.id,
+ { text: Mariabody,
+ contextInfo:{
+ mentionedJid:[num],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": ` INFINITY-AI `,
+"body": `Mf Just Left`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": MariaLft,
+"sourceUrl": `${link}`}}})
+}
+}
+} catch (err) {
+console.log(err)
+}
+})*/
+//welcome end
+client.downloadMediaMessage = async (message) => { 
+         let mime = (message.msg || message).mimetype || ''; 
+         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]; 
+         const stream = await downloadContentFromMessage(message, messageType); 
+         let buffer = Buffer.from([]); 
+         for await(const chunk of stream) { 
+             buffer = Buffer.concat([buffer, chunk]) 
+         } 
+
+         return buffer 
+      }; 
+
+
+
+client.sendTextWithMentions = async (jid, text, quoted, options = {}) => 
+client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
   client.sendText = (jid, text, quoted = "", options) => client.sendMessage(jid, { text: text, ...options }, { quoted });
 
@@ -359,6 +487,9 @@ if (autobio === 'TRUE'){
   return client;
 }
 
+
+
+ 
 startEscalibud();
 
 let file = require.resolve(__filename);
