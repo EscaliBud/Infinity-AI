@@ -88,7 +88,7 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
       ? xeon.user.jid
       : mek.key.remoteJid.endsWith("@g.us")
       ? mek.participant
-      : mek.key.remoteJid;*/
+      : mek.key.remoteJid;
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
