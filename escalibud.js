@@ -25,6 +25,7 @@ let register = JSON.parse(fs.readFileSync('./database/registered.json'));
 const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
 const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
 const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
+let owner = JSON.parse(fs.readFileSync('./database/owner.json'))
 let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
     const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
