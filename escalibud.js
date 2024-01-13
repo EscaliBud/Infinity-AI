@@ -77,7 +77,7 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
     const kress = (m.quoted || m); 
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
     const mime = (quoted.msg || quoted).mimetype || "";
-            const qmsg = (quoted.msg || quoted);*/
+            const qmsg = (quoted.msg || quoted);
   const checkRegisteredUser = (m.sender) => {
             let status = false
             Object.keys(_registered).forEach((i) => {
