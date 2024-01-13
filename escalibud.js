@@ -413,8 +413,6 @@ if (smallinput=='love') {
 }
 if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
   reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
-}if (smallinput.includes('hello')|| smallinput.includes('hi') || smallinput.includes('niaje')) {
-  reply (`😂😂😂😂😂💀`);
 }
 //chat counter (console log)
         if (m.message && m.isGroup) {
