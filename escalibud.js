@@ -351,7 +351,7 @@ if (budy.toLowerCase() === `register`){
                     register.push(sender)
                    
                     fs.writeFileSync('./database/registered.json', JSON.stringify(register))
-                    teks = `Verification success\n\nPlease send *!menu* to view menu`
+                    teks = `Verification success\n\nPlease send *!menu* to view menu`;
                     client.sendMessage(from, teks, text, {quoted: fkontak })
 }          /*if (!mek.key.fromMe && banChats === false) return*/
 
