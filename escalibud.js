@@ -2278,6 +2278,41 @@ reply('Success in turning off all antilink in this group')
   break;
 
         default: {
+                if (budy.startsWith('=>')) {
+                    if (!Owner) return reply('Owner command')
+                    function Return(sul) {
+                        sat = JSON.stringify(sul, null, 2)
+                        bang = util.format(sat)
+                            if (sat == undefined) {
+                                bang = util.format(sul)
+                            }
+                            return reply(bang)
+                    }
+                    try {
+                        m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+                    } catch (e) {
+                        reply(String(e))
+                    }
+                }
+
+                if (budy.startsWith('>')) {
+                     if (!Owner) return reply('Owner command')
+                    try {
+                        let evaled = await eval(budy.slice(2))
+                        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+                        await m.reply(evaled)
+                    } catch (err) {
+                        await reply(String(err))
+                    }
+                }
+
+                 if (budy.startsWith('$'))   { 
+if (!Owner) return reply('Owner command')
+                    exec(budy.slice(2), (err, stdout) => {
+                        if(err) return m.reply(err)
+                        if (stdout) return reply(stdout)
+                    })
+                }
       if(isCmd2){
           client.sendMessage(from, { react: { text: "❌", key: m.key }}) 
           reply (`🗿Kresswell Has not programmed me with such a Command!!, *${pushname}* .Type ${prefix} owner to contact my owner. Type *${prefix}help* to get my full command list!`)
@@ -2285,32 +2320,6 @@ reply('Success in turning off all antilink in this group')
       }                                 
 
 
-  if (budy.startsWith('=>')) {
-  if (!Owner) return reply('You are not my Owner')
-  function Return(sul) {
-  sat = JSON.stringify(sul, null, 2)
-  bang = util.format(sat)
-  if (sat == undefined) {
-  bang = util.format(sul)
-  }
-  return reply(bang)
-  }
-  try {
-  reply(util.format(eval(`(async () => { ${budy.slice(3)} })()`)))
-  } catch (e) {
-  client.sendMessage(from, {image:ErrorPic, caption:String(e)}, {quoted:m})
-  }
-  }
-  if (budy.startsWith('>')) {
-  if (!Owner) return reply('You are not my owner')
-  try {
-  let evaled = await eval(budy.slice(2))
-  if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
-  await reply(evaled)
-  } catch (err) {
-  await client.sendMessage(from, {image:ErrorPic, caption:String(err)}, {quoted:m})
-  }
-  }
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
             if (m.isBaileys) return;
