@@ -2067,6 +2067,25 @@ Type *surrender* to give up and admit defeat`
             }
             }
             break;
+case 'addowner':
+                if (!Owner) return reply('Owner Command')
+if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 923166234989`)
+bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
+let ceknye = await client.onWhatsApp(bnnd)
+if (ceknye.length == 0) return reply(`Enter A Valid And Registered Number On WhatsApp!!!`)
+owner.push(bnnd)
+fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+reply(`Number ${bnnd} Has Become An owner!!!`)
+break;
+case 'delowner':
+                if (!isCreator) return reply('This Is A owner Command')
+if (!args[0]) return reply(`Use ${prefix+command} nomor\nExample ${prefix+command} 923166234989`)
+ya = q.split("|")[0].replace(/[^0-9]/g, '')
+unp = owner.indexOf(ya)
+owner.splice(unp, 1)
+fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+reply(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
+break;
 case "owner":
 const _0x48c7ba = _0x3605;
 (function (_0x3166c4, _0x90c7ee) {
