@@ -78,16 +78,7 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
          const quoted = (kress.mtype == 'buttonsMessage') ? kress[Object.keys(kress)[1]] : (kress.mtype == 'templateMessage') ? kress.hydratedTemplate[Object.keys(kress.hydratedTemplate)[1]] : (kress.mtype == 'product') ? kress[Object.keys(kress)[0]] : m.quoted ? m.quoted : m; 
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
-  const checkRegisteredUser = (m.sender) => {
-            let status = false
-            Object.keys(_registered).forEach((i) => {
-                if (_registered[i].id === m.sender) {
-                    status = true
-                }
-            })
-            return status
-        }
-
+  
       const sender = mek.key.fromMe
       ? xeon.user.jid
       : isGroup
@@ -111,7 +102,6 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
-       const isRegistered = checkRegisteredUser(m.sender)
    const isRegister = register.includes(m.sender);
 const isPrem = prem.includes(m.sender);
     	const isUser = verifieduser.includes(m.sender);
@@ -376,24 +366,24 @@ if (budy.toLowerCase() === `register`){
 const getRegisteredRandomId = () => {
             return _registered[Math.floor(Math.random() * _registered.length)].id
         }
-        const addRegisteredUser = (userid, sender, age, time, serials) => {
-            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
+        const addRegisteredUser = (userid, m.sender, age, time, serials) => {
+            const obj = { id: userid, name: m.sender, age: age, time: time, serial: serials }
             _registered.push(obj)
             fs.writeFileSync('./database/user/registered.json', JSON.stringify(_registered))
         }
 
-/*const checkRegisteredUser = (sender) => {
+const checkRegisteredUser = (m.sender) => {
 let status = false
 Object.keys(_registered).forEach((i) => {
-if (_registered[i].id === sender) {
+if (_registered[i].id === m.sender) {
 status = true
 }
 })
 return status
 }
 
-const isRegistered = checkRegisteredUser(sender)
-*/
+const isRegistered = checkRegisteredUser(m.sender)
+
 
 if (!client.public) {
 if (!m.key.fromMe) return
