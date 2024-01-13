@@ -346,7 +346,7 @@ if (wapresence === 'recording' && !m.isGroup) {
 
 if (budy.toLowerCase() === `register`){
             if (isRegister) return 
-                    register.push(m.sender)
+                    register.push(sender)
                    
                     fs.writeFileSync('./database/registered.json', JSON.stringify(register))
                     teks = `Verification success\n\nPlease send *!menu* to view menu`
@@ -357,23 +357,23 @@ if (budy.toLowerCase() === `register`){
 const getRegisteredRandomId = () => {
             return _registered[Math.floor(Math.random() * _registered.length)].id
         }
-        const addRegisteredUser = (userid, m.sender, age, time, serials) => {
-            const obj = { id: userid, name: m.sender, age: age, time: time, serial: serials }
+        const addRegisteredUser = (userid, sender, age, time, serials) => {
+            const obj = { id: userid, name: sender, age: age, time: time, serial: serials }
             _registered.push(obj)
             fs.writeFileSync('./database/user/registered.json', JSON.stringify(_registered))
         }
 
-const checkRegisteredUser = (m.sender) => {
+const checkRegisteredUser = (sender) => {
 let status = false
 Object.keys(_registered).forEach((i) => {
-if (_registered[i].id === m.sender) {
+if (_registered[i].id === sender) {
 status = true
 }
 })
 return status
 }
 
-const isRegistered = checkRegisteredUser(m.sender)
+const isRegistered = checkRegisteredUser(sender)
 
 
 if (!client.public) {
