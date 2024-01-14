@@ -28,6 +28,39 @@
     "description": "If you want to autoview status updates.",
     "value": "TRUE"
   },
+    "OWNER": {
+      "description": "Put ONLY ONE number that will be receiving notifications when InfinityAI Starts eg 254798242085 ",
+      "required": true
+    },
+    "NOT_OWNER_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires only owner user is violated. Example: Owner only",
+      "required": false
+    },
+"BOT_ADMIN_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires bot to be admin is violated. Example: Bot is not admin!",
+      "required": false
+    },
+    "ADMIN_MSG": {
+      "description": "Put a message that the bot will send if a parameter that requires only owner user is violated. Example: Only admins are allowed to use this command",
+      "required": false
+    },
+    "GROUP_ONLY_MSG": {
+      "description": "Put a message that the bot will send if a parameter that works in group chats only is violated. Example: This command will work in groups only",
+      "required": false
+    },
+ "WA_PRESENCE": {
+      "description": "Input either recording or typing. This enables bot to simulate typing or recording.",
+      "required": false
+      "value": "recording"
+}
+ "STICKER_AUTHOR": {
+      "description": "Input sticker data for author",
+      "required": false
+},
+ "STICKER_PACKNAME": {
+      "description": "Input sticker data for packname",
+      "required": false
+},
   "AUTOREAD": {
     "description": "If you want to blue tick all messages sent to you.",
     "value": "FALSE"
