@@ -917,7 +917,7 @@ case 'tempmail': case 'mail': {
     m.reply('Failed to fetch temporary email addresses.');
   }
   break;
-case 'checkmail': {
+/*case 'checkmail': {
   if (!text) {
     m.reply('Please provide an email address to read the most recent message.');
     break;
@@ -971,7 +971,7 @@ case 'checkmail': {
     console.error('Error:', error);
     m.reply(`Failed to read the most recent message in ${text}.`);
   }
-  break;
+  break;*/
             case 'self': {
                 if (!Owner) return reply('You are not my Owner')
                  client.public = false
