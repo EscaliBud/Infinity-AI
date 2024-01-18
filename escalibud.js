@@ -709,7 +709,7 @@ client.sendMessage(m.chat, {
             },
             mimetype: 'audio/mp4',
             ptt: true,
-            fileName: `NaughtyKress.mp3`,
+            fileName: `${text}.mp3`,
           }, {
             quoted: m,
           });
