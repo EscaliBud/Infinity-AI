@@ -451,6 +451,7 @@ client.downloadMediaMessage = async (message) => {
       }; 
 
 
+    client.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return client.sendMessage(jid, { poll: { name, values, selectableCount }}) }
 
 client.sendTextWithMentions = async (jid, text, quoted, options = {}) => 
 client.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
