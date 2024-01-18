@@ -543,6 +543,12 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┗━───────────────╯*
 
 
+*⌜ Temp Mails⌟*
+*┏━───────────────╮*
+*┃➥Mail*
+*┃➥checkmail*
+*┗━───────────────╯*
+
 *⌜ AI & Search Commands ⌟*
 
 *┏━───────────────╮*
@@ -550,6 +556,7 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥Dalle*
 *┃➥Google*
 *┃➥Github*
+*┃➥Truecaller*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
@@ -557,6 +564,7 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┏━───────────────╮*
 *┃➥ttt*
 *┃➥delttt*
+*┃➥Styletext*
 *┗━───────────────╯*
 
 *⌜ Programming ⌟*
@@ -733,6 +741,39 @@ case 'whatmusic': case 'find': case 'shazam':
         }
     }
     break;
+case 'imagine': case 'aiimage':
+  if (!text) throw `*You can generate images From text using this command*\n\n*𝙴xample usage*\n*◉ ${prefix} imagine Beautiful animegirl*\n*◉ ${prefix} imagine Elon musk with Iron man*`; 
+
+async function fetchImageData() {
+  let thingMsg = await client.sendMessage(m.chat, { text: 'Generating Images Please wait...' });
+  const texti = text;
+  try {
+    const response = await axios.get(`https://v2-guru-indratensei.cloud.okteto.net/scrape?query=${texti}`);
+    const data = response.data;
+
+    const images = data.image_links;
+    const timeforgen = data.execution_time;
+    const genetd =  `✅ Sucsessfully generated in ${timeforgen}`
+    const randomImageIndex = Math.floor(Math.random() * images.length);
+    const randomImageLink = images[randomImageIndex];
+    console.log(randomImageLink);
+    await gss.sendMessage(m.chat, {
+        image: {
+          url: randomImageLink,
+        },
+        caption: genetd,
+      }, {
+        quoted: m,
+      });
+  } catch (error) {
+    console.error('Error fetching image data:', error);
+  }
+}
+
+fetchImageData();
+
+break;
+
             case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Tag a sticker with the caption *${prefix + command}*`
