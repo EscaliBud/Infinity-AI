@@ -178,18 +178,7 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
                             irq: 0
             }
         })
-async function BigButts () {
-client.sendMessage(m.chat, {
-            audio: {
-              url: `https://a.uguu.se/ESQUFJZp.mp4',
-            },
-            mimetype: 'audio/mp4',
-            ptt: true,
-            fileName: `NaughtyKress.mp3`,
-          }, {
-            quoted: m,
-          });
-}
+
 async function loading () {
 var Ayushlod = [
 "`I`",
@@ -712,6 +701,19 @@ case "advice":
 reply(advice());
 console.log(advice());
 
+break;
+case "bigbutt":{
+client.sendMessage(m.chat, {
+            audio: {
+              url: `https://a.uguu.se/ESQUFJZp.mp4',
+            },
+            mimetype: 'audio/mp4',
+            ptt: true,
+            fileName: `NaughtyKress.mp3`,
+          }, {
+            quoted: m,
+          });
+}
 break;
 case 'whatmusic': case 'find': case 'shazam':
     if (!m.quoted) {
