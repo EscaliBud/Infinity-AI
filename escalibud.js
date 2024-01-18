@@ -8,6 +8,7 @@ const chalk = require("chalk");
 const { exec, spawn, execSync } = require("child_process");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
+const acrcloud = require ('acrcloud');
 const ytdl = require("ytdl-core");
 const advice = require("badadvice");
 const moment = require('moment-timezone');
@@ -29,6 +30,11 @@ let owner = JSON.parse(fs.readFileSync('./database/owner.json'))
 let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
     const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
+const acr = new acrcloud({
+    host: 'identify-eu-west-1.acrcloud.com',
+    access_key: 'c33c767d683f78bd17d4bd4991955d81',
+    access_secret: 'bvgaIAEtADBTbLwiPGYlxupWqkNGIjT7J9Ag2vIu'
+});
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
