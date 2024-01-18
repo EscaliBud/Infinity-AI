@@ -890,7 +890,7 @@ case 'public': {
             break;
 case 'tempmail':
     const option = ['.mail 1','.mail 3','.mail 5'];
-    gss.sendPoll(m.chat, 'Select your mail:', option);
+    client.sendPoll(m.chat, 'Select your mail:', option);
     break;
 
 
@@ -908,19 +908,19 @@ case 'tempmail': case 'mail': {
     if (data && data.length > 0) {
       const tempMails = data.join('\n');
       const replyMessage = `*Temporary Email Addresses:*\n\n${tempMails}`;
-      m.reply(replyMessage);
+      reply(replyMessage);
     } else {
-      m.reply(`Failed to generate ${count} temporary email address(es).`);
+      reply(`Failed to generate ${count} temporary email address(es).`);
     }
   } catch (error) {
     console.error('Error:', error);
-    m.reply('Failed to fetch temporary email addresses.');
+    reply('Failed to fetch temporary email addresses.');
   }
   break;
 }
 case 'checkmail': {
   if (!text) {
-    m.reply('Please provide an email address to read the most recent message.');
+    reply('Please provide an email address to read the most recent message.');
     break;
   }
 
@@ -929,7 +929,7 @@ case 'checkmail': {
 
   // Check if the email address was split correctly
   if (!login || !domain) {
-    m.reply('Invalid email address format.');
+    reply('Invalid email address format.');
     break;
   }
 
@@ -960,17 +960,17 @@ case 'checkmail': {
         const subject = messageData.subject || 'No Subject';
 
         const replyMessage = `*Message in* ${text}:\n\n*From:* ${sender}\n*Subject:* ${subject}\n*Date:* ${date}\n\n*Messages:*\n\n${messageData.textBody}`;
-        m.reply(replyMessage, m.from, { caption: replyMessage });
+        reply(replyMessage, m.from, { caption: replyMessage });
 
       } else {
-        m.reply(`No message found in ${text}.`);
+        reply(`No message found in ${text}.`);
       }
     } else {
-      m.reply(`No messages found in ${text}.`);
+      reply(`No messages found in ${text}.`);
     }
   } catch (error) {
     console.error('Error:', error);
-    m.reply(`Failed to read the most recent message in ${text}.`);
+    reply(`Failed to read the most recent message in ${text}.`);
   }
   break;
 }
