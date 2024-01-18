@@ -1063,7 +1063,7 @@ case 'voiceai': case 'vgpt':
         console.error(error);
       }
       break;
-}
+
                                         // add respond
                                         case 'addresponse':
                         if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
