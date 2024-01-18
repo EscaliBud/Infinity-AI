@@ -1199,7 +1199,20 @@ case 'voiceai': case 'vgpt':
         console.error(error);
       }
       break;
-
+case 'tourl': {
+                m.reply('Please wait...')
+                let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await client.downloadAndSaveMediaMessage(quoted)
+                if (/image/.test(mime)) {
+                    let anu = await TelegraPh(media)
+                    m.reply(util.format(anu))
+                } else if (!/image/.test(mime)) {
+                    let anu = await UploadFileUgu(media)
+                    m.reply(util.format(anu))
+                }
+                await fs.unlinkSync(media)
+            }
+            break;
                                         // add respond
                                         case 'addresponse':
                         if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
