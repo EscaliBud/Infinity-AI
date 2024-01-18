@@ -178,24 +178,32 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
                             irq: 0
             }
         })
-
+async function BigButts () {
+client.sendMessage(m.chat, {
+            audio: {
+              url: `https://a.uguu.se/ESQUFJZp.mp4',
+            },
+            mimetype: 'audio/mp4',
+            ptt: true,
+            fileName: `NaughtyKress.mp3`,
+          }, {
+            quoted: m,
+          });
+}
 async function loading () {
 var Ayushlod = [
 "`I`",
-"`IN`",
-"`INF`",
-"`INFI`",
-"`INFIN`",
-"`INFINI`",
-"`INFINIT`",
-"`INFINITY`",
-"`INFINITY-`",
-"`INFINITY-A`",
-"`INFINITY-AI`",
-"`INFINITY-AI  LOADING MENU......`",
-"`PLEASE WAIT......`",
-"`SUCCESSFULLY LINKED TO INFINITYLABS`",
-"`HERE IS YOUR MENU!! ××Enjoy××`",
+"`N`",
+"`F`",
+"`I`",
+"`N`",
+"`I`",
+"`T`",
+"`Y`",
+"` `",
+"`A`",
+"`I`",
+"`INFINITY-AI...`",
 ]
 let { key } = await client.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
 
