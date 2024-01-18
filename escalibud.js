@@ -702,19 +702,7 @@ reply(advice());
 console.log(advice());
 
 break;
-case "bigbutt":{
-client.sendMessage(m.chat, {
-            audio: {
-              url: `https://a.uguu.se/ESQUFJZp.mp4',
-            },
-            mimetype: 'audio/mp4',
-            ptt: true,
-            fileName: `${text}.mp3`,
-          }, {
-            quoted: m,
-          });
-}
-break;
+
 case 'whatmusic': case 'find': case 'shazam':
     if (!m.quoted) {
         reply('You asked about music. Please provide a quoted audio or video message for identification.');
