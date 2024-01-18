@@ -691,7 +691,42 @@ reply(advice());
 console.log(advice());
 
 break;
+case 'whatmusic': case 'find': case 'shazam':
+    if (!m.quoted) {
+        reply('You asked about music. Please provide a quoted audio or video message for identification.');
+    } else if (/audio|video/.test(mime)) {
+        try {
+            let media = await m.quoted.download();
+            const ext = mime.split('/')[1];
+            fs.writeFileSync(`./tmp/${m.sender}.${ext}`, media);
 
+            reply('Infinity AI Shazam Is fetching data about the song,Please wait');
+
+            const res = await acr.identify(fs.readFileSync(`./tmp/${m.sender}.${ext}`));
+            const { code, msg } = res.status;
+
+            if (code !== 0) {
+                throw msg;
+            }
+
+            const { title, artists, album, genres, release_date } = res.metadata.music[0];
+            const txt = `
+                        𝚁𝙴𝚂𝚄𝙻𝚃
+                • 📌 *TITLE*: ${title}
+                • 👨‍🎤 𝙰𝚁𝚀𝚃𝙸𝚂𝚃: ${artists !== undefined ? artists.map(v => v.name).join(', ') : 'NOT FOUND'}
+                • 💾 𝙰𝙻𝙱𝚄𝙼: ${album.name || 'NOT FOUND'}
+                • 🌐 GENRE: ${genres !== undefined ? genres.map(v => v.name).join(', ') : 'NOT FOUND'}
+                • 📆 RELEASE DATE: ${release_date || 'NOT FOUND'}
+            `.trim();
+
+            fs.unlinkSync(`./tmp/${m.sender}.${ext}`);
+            reply(txt);
+        } catch (error) {
+            console.error(error);
+            reply('An error occurred during music identification.');
+        }
+    }
+    break;
             case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Tag a sticker with the caption *${prefix + command}*`
