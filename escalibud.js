@@ -973,6 +973,7 @@ case 'checkmail': {
     m.reply(`Failed to read the most recent message in ${text}.`);
   }
   break;
+}
             case 'self': {
                 if (!Owner) return reply('You are not my Owner')
                  client.public = false
@@ -980,7 +981,7 @@ case 'checkmail': {
             }
             break;
 case 'chatgpt': case 'gpt':{
-client.sendMessage(from, { react: { text: "🤖", key: m.key }}) 
+client.sendMessage(from, { react: { text: "🛸", key: m.key }}) 
               if (!q) return reply(`Please provide a text query. Example: ${prefix + command} Hello, ChatGPT!`);
 
               const apiUrl1 = `https://vihangayt.me/tools/chatgpt?q=${encodeURIComponent(q)}`;
