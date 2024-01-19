@@ -663,6 +663,42 @@ await client.sendMessage(m.chat,{
 await fs.unlinkSync(pl.path)
 }
 break;  
+case 'toqr': {
+                if (!q) return reply(' Please include link or text!')
+                const QrCode = require('qrcode-reader')
+                const qrcode = require('qrcode')
+                let qyuer = await qrcode.toDataURL(q, {
+                    scale: 35
+                })
+                let data = new Buffer.from(qyuer.replace('data:image/png;base64,', ''), 'base64')
+                let buff = getRandom('.jpg')
+                await fs.writeFileSync('./' + buff, data)
+let sakses = 'Successfully converted';
+                let medi = fs.readFileSync('./' + buff)
+                await client.sendMessage(m.chat, {
+                    image: medi,
+                    caption: sakses
+                }, {
+                    quoted: m
+                })
+                setTimeout(() => {
+                    fs.unlinkSync(buff)
+                }, 10000)
+            }
+            break;
+
+case "readqr": {
+try {
+mee = await client.downloadAndSaveMediaMessage(quoted)
+mem = await TelegraPh(mee)
+const res = await fetch(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${mem}`)
+const data = await res.json() 
+reply(util.format(data[0].symbol))
+} catch (err) {
+reply(`Reply Image That Has Qr`)
+}
+}
+break;
 case 'poll': {
            if (!m.isGroup) throw group
             let [poll, opt] = text.split("|")
