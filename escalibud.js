@@ -552,8 +552,10 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥Gpt*
 *┃➥Dalle*
 *┃➥Google*
+*┃➥Fetch*
 *┃➥Github*
 *┃➥Truecaller*
+*┃➥Weather*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
@@ -2254,7 +2256,7 @@ case 'gdrive': {
 break;
 case "xnxxdl": {
 if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
         if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
@@ -2271,7 +2273,7 @@ client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
 break;
 case 'xnxxsearch': {
 if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
         reply('Please wait')
@@ -2282,7 +2284,7 @@ if (!isPrem) return reply('This is a premium command')
               }
               break;
 case 'ttc': case 'ttt': case 'tictactoe': {
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
       
             let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
@@ -2567,6 +2569,16 @@ reply('Success in turning off all antilink in this group')
   }
   }
   break;
+case 'weather':
+       
+        client.sendMessage(from, { react: { text: "🛰", key: m.key }}) 
+        if (!args[0]) return reply("Enter your location to search weather.")
+        myweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args.join(" ")}&units=metric&appid=e409825a497a0c894d2dd975542234b0&language=tr`)
+
+        const weathertext = `           🌤 *Weather Report* 🌤  \n\n🔎 *Search Location:* ${myweather.data.name}\n*💮 Country:* ${myweather.data.sys.country}\n🌈 *Weather:* ${myweather.data.weather[0].description}\n🌡️ *Temperature:* ${myweather.data.main.temp}°C\n❄️ *Minimum Temperature:* ${myweather.data.main.temp_min}°C\n📛 *Maximum Temperature:* ${myweather.data.main.temp_max}°C\n💦 *Humidity:* ${myweather.data.main.humidity}%\n🎐 *Wind:* ${myweather.data.wind.speed} km/h\n`
+        client.sendMessage(from, { video: { url: 'https://media.tenor.com/bC57J4v11UcAAAPo/weather-sunny.mp4' }, gifPlayback: true, caption: weathertext }, { quoted: m })
+
+        break;
 
         default: {
                 if (budy.startsWith('=>')) {
