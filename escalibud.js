@@ -892,6 +892,33 @@ client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : j
 .catch(console.error)
 }
 break;
+case 'fetch':
+case 'get':
+  if (!/^https?:\/\//.test(text)) throw 'Start the *URL* with http:// or https://';
+  const _url = new URL(text);
+  const url = `${_url.origin}${_url.pathname}?${_url.searchParams.toString()}`;
+  const res = await fetch(url);
+
+  if (res.headers.get('content-length') > 100 * 1024 * 1024 * 1024) {
+    throw `Content-Length exceeds the limit: ${res.headers.get('content-length')}`;
+  }
+
+  if (!/text|json/.test(res.headers.get('content-type'))) {
+    return client.sendMedia(m.chat, url, 'file', 'API FETCHED FROM INFINITY-AI', m);
+  }
+
+  let content = Buffer.from(await res.arrayBuffer());
+
+  try {
+    console.log('Parsed JSON:', JSON.parse(content));
+    content = JSON.stringify(JSON.parse(content));
+  } catch (e) {
+    console.error('Error parsing JSON:', e);
+    content = content + '';
+  } finally {
+    m.reply(content.slice(0, 65536) + '');
+  }
+  break;
 
 //owner commands
 case 'listpc': {
