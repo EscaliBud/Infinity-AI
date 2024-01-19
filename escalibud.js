@@ -1490,7 +1490,7 @@ break;
 break;
           case "lyrics": 
  try { 
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
  if (!text) return reply("Provide a song name!"); 
  const searches = await Client.songs.search(text); 
  const firstSong = searches[0]; 
