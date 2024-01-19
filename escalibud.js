@@ -896,15 +896,15 @@ case 'fetch':
 case 'get':
   if (!/^https?:\/\//.test(text)) throw 'Start the *URL* with http:// or https://';
   const _url = new URL(text);
-  const url = `${_url.origin}${_url.pathname}?${_url.searchParams.toString()}`;
-  const res = await fetch(url);
+  const furl = `${_url.origin}${_url.pathname}?${_url.searchParams.toString()}`;
+  const res = await fetch(furl);
 
   if (res.headers.get('content-length') > 100 * 1024 * 1024 * 1024) {
     throw `Content-Length exceeds the limit: ${res.headers.get('content-length')}`;
   }
 
   if (!/text|json/.test(res.headers.get('content-type'))) {
-    return client.sendMedia(m.chat, url, 'file', 'API FETCHED FROM INFINITY-AI', m);
+    return client.sendMedia(m.chat, furl, 'file', 'API FETCHED FROM INFINITY-AI', m);
   }
 
   let content = Buffer.from(await res.arrayBuffer());
