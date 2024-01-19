@@ -704,7 +704,27 @@ reply(advice());
 console.log(advice());
 
 break;
+case 'fbdl': case 'fb': case 'facebook': case 'fbmp4': {                 
 
+        if (!text) return reply(`Please provide the link!\n\nExample: ${prefix}fbdl https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
+           if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
+       let bocil = require('@bochilteam/scraper')  
+           bocil.facebookdlv2(`${text}`).then(async (data) => {                   
+               let txt = `「 _Facebook Downloader_ 」\n\n`
+               txt += `*Title :* ${data.title}\n`
+               txt += `*Quality :* ${data.result[0].quality}\n`
+               txt += `*Description:* ${data.description}\n`
+               txt += `*URL :* ${text}\n\n`
+           buf = await getBuffer(data.thumbnail)    
+           client.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })         
+           for (let i of data.result) {     
+           client.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*Quality :* ${i.quality}`}, { quoted: m })
+           }          
+           }).catch((err) => {
+               reply('An error Occured')
+           })
+       }
+       break;
 case 'whatmusic': case 'find': case 'shazam':
     if (!m.quoted) {
         reply('You asked about music. Please provide a quoted audio or video message for identification.');
