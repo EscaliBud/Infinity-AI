@@ -356,6 +356,8 @@ client.sendMessage(owner + "@s.whatsapp.net",
          } 
 
          await client.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted }); 
+        return buffer
+      };
 
  client.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => { 
          let quoted = message.msg ? message.msg : message; 
