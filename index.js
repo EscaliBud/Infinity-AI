@@ -1,6 +1,6 @@
 const sessionName = "escalibud";
 const autobio = process.env.AUTOBIO || 'TRUE';
-const owner = process.env.OWNER || '';
+const owner = process.env.OWNER || '254798242085';
 const {
   default: escalibudConnect,
   useMultiFileAuthState,
