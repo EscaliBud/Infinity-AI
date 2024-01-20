@@ -1,6 +1,6 @@
 const sessionName = "escalibud";
 const autobio = process.env.AUTOBIO || 'TRUE';
-const owner = ["254798242085"]
+const owner = process.env.OWNER || '';
 const {
   default: escalibudConnect,
   useMultiFileAuthState,
@@ -346,7 +346,14 @@ client.sendMessage(owner + "@s.whatsapp.net",
          await client.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted }); 
          return buffer 
      }; 
-
+ client.sendVideoAsSticker = async (jid, path, quoted, options = {}) => { 
+         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0); 
+         //let buffer 
+         if (options && (options.packname || options.author)) { 
+             buffer = await writeExifVid(buff, options) 
+         } else { 
+             buffer = await videoToWebp(buff); 
+         } 
 
  client.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => { 
          let quoted = message.msg ? message.msg : message; 
