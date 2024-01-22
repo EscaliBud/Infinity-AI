@@ -638,34 +638,7 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
                       return('Error!')
                   })
   break;*/
-             
-case 'mp3':  case'audio': {
-client.sendMessage(from, { react: { text: "📥", key: m.key }}) 
-if (!text) return reply(`Example : ${prefix + command} BG Knocc Out Compton Hoe`)
-const infinitymp3 = require('./lib/ytdl2')
-let yts = require("youtube-yts")
-        let search = await yts(text)
-        let escali = search.videos[0]
-const pl= await infinitymp3.mp3(escali.url);
-reply('```✅ Song found! Sending...```');
-await client.sendMessage(m.chat,{
-    audio: fs.readFileSync(pl.path),
-    fileName: escali.title + '.mp3',
-    mimetype: 'audio/mp4', ptt: true,
-    contextInfo:{
-        externalAdReply:{
-            title:`INFINITY-AI`,
-            body: `By Infinity Hackers Kenya`,
-            thumbnail: await fetchBuffer(pl.meta.image),
-            mediaType:2,
-            mediaUrl:escali.url,
-        }
-
-    },
-},{quoted:m})
-await fs.unlinkSync(pl.path)
-}
-break;  
+               
 case 'toqr': {
                 if (!q) return reply(' Please include link or text!')
                 const QrCode = require('qrcode-reader')
