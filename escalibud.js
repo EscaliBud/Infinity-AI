@@ -489,7 +489,6 @@ function _0x2ae6(_0x177d32, _0x5203d7) {
         var _0x5668d8 = _0x550531[_0x39c216];
         return _0x5668d8;
     }, _0x2ae6(_0x177d32, _0x5203d7);
-=======
 if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
   reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
 
