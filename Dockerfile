@@ -10,8 +10,10 @@ RUN apt-get update && \
 
 COPY package.json .
 
-RUN npm install
+RUN npm install && npm install qrcode-terminal
 
 COPY . .
 
-CMD ["node", "."]
+EXPOSE 5000
+
+CMD ["npm", "start"]

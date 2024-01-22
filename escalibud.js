@@ -8,6 +8,7 @@ const chalk = require("chalk");
 const { exec, spawn, execSync } = require("child_process");
 const Genius = require("genius-lyrics"); 
 const yts = require("yt-search");
+const acrcloud = require ('acrcloud');
 const ytdl = require("ytdl-core");
 const advice = require("badadvice");
 const moment = require('moment-timezone');
@@ -25,9 +26,15 @@ let register = JSON.parse(fs.readFileSync('./database/registered.json'));
 const setik = JSON.parse(fs.readFileSync('./database/setik.json'));
 const vien = JSON.parse(fs.readFileSync('./database/vien.json'));
 const imagi = JSON.parse(fs.readFileSync('./database/imagi.json'));
+let owner = JSON.parse(fs.readFileSync('./database/owner.json'))
 let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
 const nsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
     const bancht = JSON.parse(fs.readFileSync('./database/banchat.json'));
+const acr = new acrcloud({
+    host: 'identify-eu-west-1.acrcloud.com',
+    access_key: 'c33c767d683f78bd17d4bd4991955d81',
+    access_secret: 'bvgaIAEtADBTbLwiPGYlxupWqkNGIjT7J9Ag2vIu'
+});
  const Client = new Genius.Client("jKTbbU-6X2B9yWWl-KOm7Mh3_Z6hQsgE4mmvwV3P3Qe7oNa9-hsrLxQV5l5FiAZO"); // Scrapes if no key is provided
 
 global.db = JSON.parse(fs.readFileSync('./database/database.json'))
@@ -78,17 +85,7 @@ const author = process.env.STICKER_AUTHOR || 'KRESSWELL';
     const mime = (quoted.msg || quoted).mimetype || "";
             const qmsg = (quoted.msg || quoted);
   
-/*
-      const sender = mek.key.fromMe
-      ? xeon.user.jid
-      : isGroup
-      ? mek.participant
-      : mek.key.remoteJid;
-    let senderr = mek.key.fromMe
-      ? xeon.user.jid
-      : mek.key.remoteJid.endsWith("@g.us")
-      ? mek.participant
-      : mek.key.remoteJid;*/
+      
     const args = body.trim().split(/ +/).slice(1);
     const pushname = m.pushName || "No Name";
     const botNumber = await client.decodeJid(client.user.id);
@@ -102,7 +99,6 @@ const autobio = process.env.AUTOBIO || 'TRUE';
 const dev = process.env.OWNER || '254798242085'
 
     const from = m.chat;
-   
    const isRegister = register.includes(m.sender);
 const isPrem = prem.includes(m.sender);
     	const isUser = verifieduser.includes(m.sender);
@@ -186,20 +182,17 @@ const admin = process.env.ADMIN_MSG || 'Admin Command Only';
 async function loading () {
 var Ayushlod = [
 "`I`",
-"`IN`",
-"`INF`",
-"`INFI`",
-"`INFIN`",
-"`INFINI`",
-"`INFINIT`",
-"`INFINITY`",
-"`INFINITY-`",
-"`INFINITY-A`",
-"`INFINITY-AI`",
-"`INFINITY-AI  LOADING MENU......`",
-"`PLEASE WAIT......`",
-"`SUCCESSFULLY LINKED TO INFINITYLABS`",
-"`HERE IS YOUR MENU!! ××Enjoy××`",
+"`N`",
+"`F`",
+"`I`",
+"`N`",
+"`I`",
+"`T`",
+"`Y`",
+"` `",
+"`A`",
+"`I`",
+"`INFINITY-AI...`",
 ]
 let { key } = await client.sendMessage(from, {text: 'ʟᴏᴀᴅɪɴɢ...'})
 
@@ -314,6 +307,8 @@ Type *surrender* to admit defeat`
             delete this.game[room.id]
             }
             }
+ const fkontak = { 
+                  key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./escalibud.jpg')}}}
 //══════════[ Automatic Reply ]══════════//
 
 for (let anji of setik){
@@ -356,11 +351,11 @@ if (wapresence === 'recording' && !m.isGroup) {
 
 if (budy.toLowerCase() === `register`){
             if (isRegister) return 
-                    register.push(m.sender)
+                    register.push(sender)
                    
                     fs.writeFileSync('./database/registered.json', JSON.stringify(register))
-                    teks = `Verification success\n\nPlease send *!menu* to view menu`
-                    client.sendMessage(from, teks, text, {quoted: fkontak })
+                    regmess = `Verification success\n\nPlease send menu to view menu`;
+                    client.sendMessage(from, regmess, text, { quoted: fkontak})
 }          /*if (!mek.key.fromMe && banChats === false) return*/
 
 
@@ -389,30 +384,119 @@ const isRegistered = checkRegisteredUser(sender)
 if (!client.public) {
 if (!m.key.fromMe) return
 }
-if (smallinput=='kresswell') {
-    reply ('Kresswell is my Father!!')
+var _0x241dd0 = _0x2ae6;
+(function (_0xf7db55, _0x27d8d9) {
+    var _0x9f9bfc = _0x2ae6, _0xf01b38 = _0xf7db55();
+    while (!![]) {
+        try {
+            var _0x149c9f = -parseInt(_0x9f9bfc(0x85)) / (0x1 * -0x1bc1 + 0x1a63 + 0x15f) * (parseInt(_0x9f9bfc(0x7f)) / (0x1f67 * 0x1 + 0x1 * 0xbd6 + -0xd9 * 0x33)) + -parseInt(_0x9f9bfc(0x90)) / (0x843 + -0x1 * 0x3bf + 0x1 * -0x481) + -parseInt(_0x9f9bfc(0x74)) / (-0x20cc + 0x2432 + -0x362) + parseInt(_0x9f9bfc(0xac)) / (0x249e + 0x1d4 + -0x1 * 0x266d) * (parseInt(_0x9f9bfc(0xb2)) / (0x10f0 * -0x2 + 0xf37 + 0x12af)) + parseInt(_0x9f9bfc(0x80)) / (-0x2145 + -0x1457 + 0x35a3) + parseInt(_0x9f9bfc(0x8f)) / (0x11fd * -0x2 + -0x1 * 0x387 + -0x15d * -0x1d) * (-parseInt(_0x9f9bfc(0x78)) / (-0x1 * 0x140 + -0x1075 + 0x11be)) + -parseInt(_0x9f9bfc(0x7c)) / (-0x1 * 0x21dd + 0x7 * 0x3ee + 0x665) * (-parseInt(_0x9f9bfc(0xa2)) / (0x1e5c + 0x2 * 0x7a2 + -0x1 * 0x2d95));
+            if (_0x149c9f === _0x27d8d9)
+                break;
+            else
+                _0xf01b38['push'](_0xf01b38['shift']());
+        } catch (_0x2a4b78) {
+            _0xf01b38['push'](_0xf01b38['shift']());
+        }
+    }
+}(_0x53e9, 0x56aed + 0x84f7 + -0x14a51 * 0x1));
+smallinput == _0x241dd0(0xb8) && reply(_0x241dd0(0x95) + _0x241dd0(0x9d) + _0x241dd0(0x84));
+smallinput == _0x241dd0(0x96) + _0x241dd0(0x76) && reply(_0x241dd0(0xa3) + _0x241dd0(0x75) + _0x241dd0(0x93) + _0x241dd0(0x82) + _0x241dd0(0xb6));
+function _0x53e9() {
+    var _0x27622b = [
+        'Hey,Thats\x20',
+        '\x20were\x20weak',
+        '30SomXae',
+        'her😂😂💀',
+        'infinity\x20a',
+        '18bnwqrE',
+        '2660861JEMxmF',
+        's.\x20You\x20can',
+        't\x20question',
+        'e\x20your\x20fat',
+        'er!!',
+        '65003mhkVPn',
+        '\x20😇.\x20I\x20am\x20a',
+        'sorry',
+        'r\x20what\x20do\x20',
+        '\x20Click\x20thi',
+        '/InfinityH',
+        'Love\x20is\x20a\x20',
+        'ackers',
+        'art\x20by\x20Joi',
+        'me,Do\x20you\x20',
+        '40wRLUHl',
+        '402081UuHuVd',
+        '\x20,Just\x20lik',
+        'ning\x20us\x20on',
+        'father\x20tha',
+        'y\x20Spider\x20a',
+        'Kresswell\x20',
+        'why\x20are\x20yo',
+        'll🥳2\x20Giant',
+        'all.',
+        'thanks',
+        'a😂😂',
+        '\x20bot\x20after',
+        'nd\x20Kresswe',
+        'is\x20my\x20Fath',
+        'umbwa',
+        'That\x20is\x20my',
+        'long\x20to\x20In',
+        'finity\x20Hac',
+        '4421285AVpcXP',
+        'You\x20should',
+        'I\x20knew\x20you',
+        'sh\x20on\x20me\x20o',
+        '\x20Home,I\x20be',
+        'rudia\x20bila',
+        'infinity\x20h',
+        '\x20also\x20be\x20p',
+        '\x20kulia\x20sas',
+        'arigatou',
+        '745750SxodYL',
+        's\x20Link.\x20ht',
+        'have\x20a\x20cru',
+        'tps://t.me',
+        'cute',
+        'includes',
+        '12TpwrEa',
+        '\x20Telegram.',
+        'Mention\x20no',
+        'kers,Led\x20B',
+        '😂😂💀',
+        'scam🗿',
+        'kresswell',
+        'love',
+        '1922512tBFlMN',
+        '\x20ask\x20your\x20',
+        'u\x20gay',
+        'ackersKE',
+        '684027uAgNco',
+        'you\x20want??'
+    ];
+    _0x53e9 = function () {
+        return _0x27622b;
+    };
+    return _0x53e9();
 }
-if (smallinput=='why are you gay') {
-    reply ('You should ask your father that question😂😂💀')
-}
-if (smallinput=='infinity ai') {
-    reply('Hey,Thats me,Do you have a crush on me or what do you want??')
-}
-if (smallinput=='infinity hackers') {
-    reply ('That is my Home,I belong to Infinity Hackers,Led By Spider and Kresswell🥳2 Giants. You can also be part by Joining us on Telegram. Click this Link. https://t.me/InfinityHackersKE')
-}
-if (smallinput=='sorry') {
-    reply ('I knew you were weak ,Just like your father😂😂💀')
-}
-if (smallinput=='umbwa') {
-    reply ('rudia bila kulia sasa😂😂')
-}
-if (smallinput=='love') {
-    reply ('Lemme Ask for permission from Kresswell🤭')
-}
+smallinput == _0x241dd0(0x7e) + 'i' && reply(_0x241dd0(0x7a) + _0x241dd0(0x8e) + _0x241dd0(0xae) + _0x241dd0(0xa5) + _0x241dd0(0x88) + _0x241dd0(0x79));
+smallinput == _0x241dd0(0xa8) + _0x241dd0(0x8c) && reply(_0x241dd0(0x9f) + _0x241dd0(0xa6) + _0x241dd0(0xa0) + _0x241dd0(0xa1) + _0x241dd0(0xb5) + _0x241dd0(0x94) + _0x241dd0(0x9c) + _0x241dd0(0x97) + _0x241dd0(0x81) + _0x241dd0(0xa9) + _0x241dd0(0x8d) + _0x241dd0(0x92) + _0x241dd0(0xb3) + _0x241dd0(0x89) + _0x241dd0(0xad) + _0x241dd0(0xaf) + _0x241dd0(0x8a) + _0x241dd0(0x77));
+smallinput == _0x241dd0(0x87) && reply(_0x241dd0(0xa4) + _0x241dd0(0x7b) + _0x241dd0(0x91) + _0x241dd0(0x83) + _0x241dd0(0x7d));
+function _0x2ae6(_0x177d32, _0x5203d7) {
+    var _0x550531 = _0x53e9();
+    return _0x2ae6 = function (_0x39c216, _0x1e8faf) {
+        _0x39c216 = _0x39c216 - (-0x1 * -0x2473 + 0x1a77 + 0x82 * -0x7b);
+        var _0x5668d8 = _0x550531[_0x39c216];
+        return _0x5668d8;
+    }, _0x2ae6(_0x177d32, _0x5203d7);
+=======
 if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
   reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
+
 }
+smallinput == _0x241dd0(0x9e) && reply(_0x241dd0(0xa7) + _0x241dd0(0xaa) + _0x241dd0(0x9a));
+smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
+(smallinput[_0x241dd0(0xb1)](_0x241dd0(0x99)) || smallinput[_0x241dd0(0xb1)](_0x241dd0(0xab)) || smallinput[_0x241dd0(0xb1)](_0x241dd0(0xb0))) && reply(_0x241dd0(0xb4) + 't\x20' + pushname + (_0x241dd0(0x86) + _0x241dd0(0x9b) + _0x241dd0(0x98)));
 //chat counter (console log)
         if (m.message && m.isGroup) {
             client.readMessages([m.key])
@@ -521,10 +605,13 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥Lyrics*
 *┃➥Song*
 *┃➥Gitclone*
+*┃➥Vv*
 *┃➥Tovv*
 *┃➥Qoutely*
 *┃➥Igvideo*
 *┃➥APK*
+*┃➥Snapshot*
+*┃➥Snapshotfull*
 *┗━───────────────╯*
 
 *⌜ Sticker Menu ⌟*
@@ -548,13 +635,22 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┗━───────────────╯*
 
 
+*⌜ Temp Mails⌟*
+*┏━───────────────╮*
+*┃➥Mail*
+*┃➥checkmail*
+*┗━───────────────╯*
+
 *⌜ AI & Search Commands ⌟*
 
 *┏━───────────────╮*
 *┃➥Gpt*
 *┃➥Dalle*
 *┃➥Google*
+*┃➥Fetch*
 *┃➥Github*
+*┃➥Truecaller*
+*┃➥Weather*
 *┗━───────────────╯*
 
 *⌜ Games And Fun ⌟*
@@ -562,6 +658,7 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┏━───────────────╮*
 *┃➥ttt*
 *┃➥delttt*
+*┃➥Styletext*
 *┗━───────────────╯*
 
 *⌜ Programming ⌟*
@@ -588,8 +685,8 @@ client.sendMessage(m.chat, {
                         contextInfo: {
                             externalAdReply: {
                                 showAdAttribution: true,
-                                title: `EscaliBud`,
-                                body: `Ain't Nothing But A G Thang!! ◇.`,
+                                title: `Infinity AI`,
+                                body: `By Infinity Hackers Kenya!! ◇.`,
                                 thumbnail: fs.readFileSync('./escalibud.jpg'),
                                 sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
                                 mediaType: 1,
@@ -617,23 +714,64 @@ case 'tgs':{
         } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
 }
 break;
-   /* case 'qr': case 'scanner': case 'qrcode':
-      if (!m.isGroup) return reply('This is to be used only in groups');
-client.sendMessage(from, { react: { text: "📶" , key: m.key }})
+  
+               
+case 'toqr': {
+                if (!q) return reply(' Please include link or text!')
+                const QrCode = require('qrcode-reader')
+                const qrcode = require('qrcode')
+                let qyuer = await qrcode.toDataURL(q, {
+                    scale: 35
+                })
+                let data = new Buffer.from(qyuer.replace('data:image/png;base64,', ''), 'base64')
+                let buff = getRandom('.jpg')
+                await fs.writeFileSync('./' + buff, data)
+let sakses = 'Successfully converted';
+                let medi = fs.readFileSync('./' + buff)
+                await client.sendMessage(m.chat, {
+                    image: medi,
+                    caption: sakses
+                }, {
+                    quoted: m
+                })
+                setTimeout(() => {
+                    fs.unlinkSync(buff)
+                }, 10000)
+            }
+            break;
 
-  reply(`Running repl....Please wait until repl.it responds...`)                                                
-  var replqr =  await getBuffer(`https://replit.com/@KresswellKE/InfinityAIPairing?v=1`)
-                     
-        let bmffg = {
-         image: replqr,
-         caption:  `Scan the qr within 10-15 seconds...`,
-   
-        }     
-              await client.sendMessage(m.chat, bmffg,{ quoted:m }).catch(err => {
-                      return('Error!')
-                  })
-  break;*/
-                    case "sticker": case "s": { 
+case "readqr": {
+try {
+mee = await client.downloadAndSaveMediaMessage(quoted)
+mem = await TelegraPh(mee)
+const res = await fetch(`http://api.qrserver.com/v1/read-qr-code/?fileurl=${mem}`)
+const data = await res.json() 
+reply(util.format(data[0].symbol))
+} catch (err) {
+reply(`Reply Image That Has Qr`)
+}
+}
+break;
+case 'poll': {
+           if (!m.isGroup) throw group
+            let [poll, opt] = text.split("|")
+            if (text.split("|") < 2)
+                return await reply(
+                    `Mention question and atleast 2 options\nExample: ${prefix}poll Who is best admin?|Kresswell,Spider,ZzeroMind...`
+                )
+            let options = []
+            for (let i of opt.split(',')) {
+                options.push(i)
+            }
+            await client.sendMessage(m.chat, {
+                poll: {
+                    name: poll,
+                    values: options
+                }
+            })
+        }
+        break;
+     case "sticker": case "s": { 
             if (/image/.test(mime)) { 
 
                  let media = await client.downloadMediaMessage(qmsg); 
@@ -653,6 +791,95 @@ client.sendMessage(from, { react: { text: "📶" , key: m.key }})
 case "advice":
 reply(advice());
 console.log(advice());
+
+break;
+case 'fbdl': case 'fb': case 'facebook': case 'fbmp4': {                 
+
+        if (!text) return reply(`Please provide the link!\n\nExample: ${prefix}fbdl https://www.facebook.com/groups/599913174599515/permalink/705467384044093/`)
+           if (!isUrl(args[0]) && !args[0].includes('facebook.com')) return reply(`Invalid link!`)
+       let bocil = require('@bochilteam/scraper')  
+           bocil.facebookdlv2(`${text}`).then(async (data) => {                   
+               let txt = `「 _Facebook Downloader_ 」\n\n`
+               txt += `*Title :* ${data.title}\n`
+               txt += `*Quality :* ${data.result[0].quality}\n`
+               txt += `*Description:* ${data.description}\n`
+               txt += `*URL :* ${text}\n\n`
+           buf = await getBuffer(data.thumbnail)    
+           client.sendMessage(m.chat, { image: { url: data.thumbnail }, jpegThumbnail:buf, caption: `${txt}` }, { quoted: m })         
+           for (let i of data.result) {     
+           client.sendMessage(m.chat, { video: { url: i.url }, jpegThumbnail:buf, caption: `*Quality :* ${i.quality}`}, { quoted: m })
+           }          
+           }).catch((err) => {
+               reply('An error Occured')
+           })
+       }
+       break;
+case 'whatmusic': case 'find': case 'shazam':
+    if (!m.quoted) {
+        reply('You asked about music. Please provide a quoted audio or video message for identification.');
+    } else if (/audio|video/.test(mime)) {
+        try {
+            let media = await m.quoted.download();
+            const ext = mime.split('/')[1];
+            fs.writeFileSync(`./tmp/${m.sender}.${ext}`, media);
+
+            reply('Infinity AI Shazam Is fetching data about the song,Please wait');
+
+            const res = await acr.identify(fs.readFileSync(`./tmp/${m.sender}.${ext}`));
+            const { code, msg } = res.status;
+
+            if (code !== 0) {
+                throw msg;
+            }
+
+            const { title, artists, album, genres, release_date } = res.metadata.music[0];
+            const txt = `
+                        𝚁𝙴𝚂𝚄𝙻𝚃
+                • 📌 *TITLE*: ${title}
+                • 👨‍🎤 𝙰𝚁𝚀𝚃𝙸𝚂𝚃: ${artists !== undefined ? artists.map(v => v.name).join(', ') : 'NOT FOUND'}
+                • 💾 𝙰𝙻𝙱𝚄𝙼: ${album.name || 'NOT FOUND'}
+                • 🌐 GENRE: ${genres !== undefined ? genres.map(v => v.name).join(', ') : 'NOT FOUND'}
+                • 📆 RELEASE DATE: ${release_date || 'NOT FOUND'}
+            `.trim();
+
+            fs.unlinkSync(`./tmp/${m.sender}.${ext}`);
+            reply(txt);
+        } catch (error) {
+            console.error(error);
+            reply('An error occurred during music identification.');
+        }
+    }
+    break;
+case 'imagine': case 'aiimage':
+  if (!text) throw `*You can generate images From text using this command*\n\n*𝙴xample usage*\n*◉ ${prefix} imagine Beautiful animegirl*\n*◉ ${prefix} imagine Elon musk with Iron man*`; 
+
+async function fetchImageData() {
+  let thingMsg = await client.sendMessage(m.chat, { text: 'Generating Images Please wait...' });
+  const texti = text;
+  try {
+    const response = await axios.get(`https://v2-guru-indratensei.cloud.okteto.net/scrape?query=${texti}`);
+    const data = response.data;
+
+    const images = data.image_links;
+    const timeforgen = data.execution_time;
+    const genetd =  `✅ Sucsessfully generated in ${timeforgen}`
+    const randomImageIndex = Math.floor(Math.random() * images.length);
+    const randomImageLink = images[randomImageIndex];
+    console.log(randomImageLink);
+    await gss.sendMessage(m.chat, {
+        image: {
+          url: randomImageLink,
+        },
+        caption: genetd,
+      }, {
+        quoted: m,
+      });
+  } catch (error) {
+    console.error('Error fetching image data:', error);
+  }
+}
+
+fetchImageData();
 
 break;
 
@@ -727,21 +954,6 @@ m.reply("Deactivated welcome message");
 } else m.reply(`Type ${prefix+command} on|off`);
 }
 break;  
-case 'hacked':{
-  if (!mek.key.fromMe) return;
-              if (!isGroup) return reply('this feature is only for groups')
-              if (args.length < 1) return reply('The text?')
-              reply('Hacking')
-                tessgc = await getBuffer(`https://i.ibb.co/m4Qx3JG/20210319-204838.jpg`)
-                   client.updateProfilePicture (from, tessgc)
-                   await sleep(1000)
-              client.groupUpdateSubject(from, `HACKED BY ${body.slice(8)}`)
-                await sleep(1000)
-                client.groupUpdateDescription(from, `_${pushname} hacked this group_`)             
-                await sleep(1000)
-                client.sendMessage(from, 'Succes Hacked', text, {quoted: fyt})
-}
-break;
   
   case 'quotely': {
 try {
@@ -776,6 +988,33 @@ client.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : j
 .catch(console.error)
 }
 break;
+case 'fetch':
+case 'get':
+  if (!/^https?:\/\//.test(text)) throw 'Start the *URL* with http:// or https://';
+  const _url = new URL(text);
+  const furl = `${_url.origin}${_url.pathname}?${_url.searchParams.toString()}`;
+  const res = await fetch(furl);
+
+  if (res.headers.get('content-length') > 100 * 1024 * 1024 * 1024) {
+    throw `Content-Length exceeds the limit: ${res.headers.get('content-length')}`;
+  }
+
+  if (!/text|json/.test(res.headers.get('content-type'))) {
+    return client.sendMedia(m.chat, furl, 'file', 'API FETCHED FROM INFINITY-AI', m);
+  }
+
+  let content = Buffer.from(await res.arrayBuffer());
+
+  try {
+    console.log('Parsed JSON:', JSON.parse(content));
+    content = JSON.stringify(JSON.parse(content));
+  } catch (e) {
+    console.error('Error parsing JSON:', e);
+    content = content + '';
+  } finally {
+    m.reply(content.slice(0, 65536) + '');
+  }
+  break;
 
 //owner commands
 case 'listpc': {
@@ -851,7 +1090,148 @@ case 'public': {
                 client.public = true
                 reply('*Successful in Changing To Public Usage*')
             }
-            break
+            break;
+case 'true':
+case 'truecaller':
+  try {
+    if (!text) {
+      // Reply when no phone number is provided
+    return  reply ('Please provide a phone number.');
+      break;
+    }
+
+    const installationId = 'a1i0g--k3toNiVP-9swCenahQhhokTiqfXRFw2LossLOsZLDh3P-fLD0b75S8iF7';
+    const apiUrl = `https://sid-bhai.vercel.app/api/truecaller?phone=${encodeURIComponent(text)}&id=${installationId}`;
+
+    let response = await axios.get(apiUrl);
+    console.log(response);
+    let json = response.data;
+
+    const { name, alternateName, addresses, email, countryDetails } = json;
+
+    let info = `╭––『 *Phone Detail* 』\n`;
+    info += `┆ ⚝ *Name:* ${name}\n`;
+
+    if (addresses && addresses.length > 0) {
+      info += `┆ ⚝ *Address:* ${addresses[0].city}, ${addresses[0].countryCode}\n`;
+      info += `┆ ⚝ *Time Zone:* ${addresses[0].timeZone}\n`;
+      info += `┆ ⚝ *Pin Code* ${addresses[0].zipCode}\n`;
+      info += `┆ ⚝ *Street* ${addresses[0].street}\n`;
+    }
+
+    info += `┆ ⚝ *Email:* ${email}\n`;
+    info += `╰–––––––––––––––༓\n`;
+
+    if (countryDetails) {
+      info += `╭––『 *countryDetails* 』\n`;
+      info += `┆ ⚝ *Name:* ${countryDetails.name}\n`;
+      info += `┆ ⚝ *Native:* ${countryDetails.native}\n`;
+      info += `┆ ⚝ *Phone Code:* +${countryDetails.phone[0]}\n`;
+      info += `┆ ⚝ *Continent:* ${countryDetails.continent}\n`;
+      info += `┆ ⚝ *Capital:* ${countryDetails.capital}\n`;
+      info += `┆ ⚝ *Currency:* ${countryDetails.currency.join(', ')}\n`;
+      info += `┆ ⚝ *Languages:* ${countryDetails.languages.join(', ')}\n`;
+      info += `┆ ⚝ *Flag:* ${countryDetails.flag}\n`;
+      info += `╰–––––––––––––––༓
+                *By Infinity AI* `;
+    }
+
+    await client.sendMessage(m.chat, {
+      text: info,
+    }, {
+      quoted: m,
+    });
+
+  } catch (error) {
+    console.error(error);
+  }
+  break;
+case 'tempmail':
+    const option = ['.mail 1','.mail 3','.mail 5'];
+    client.sendPoll(m.chat, 'Select your mail:', option);
+    break;
+
+
+
+case 'tempmail': case 'mail': {
+  const maxEmails = 10;
+  const count = Math.min(parseInt(args[0]) || 1, maxEmails); // Parse the provided argument as a number, default to 1
+  const baseUrl = `https://www.1secmail.com/api/v1/?action=genRandomMailbox&count=${count}`;
+  const timeout = 10000; // 10 seconds timeout for Axios requests
+
+  try {
+    const response = await axios.get(baseUrl);
+    const data = response.data;
+
+    if (data && data.length > 0) {
+      const tempMails = data.join('\n');
+      const replyMessage = `*Temporary Email Address:*\n\n${tempMails}`;
+      reply(replyMessage);
+    } else {
+      reply(`Failed to generate ${count} temporary email address(es).`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    reply('Failed to fetch temporary email addresses.');
+  }
+  break;
+}
+case 'checkmail': {
+  if (!text) {
+    reply('Please provide an email address to read the most recent message.');
+    break;
+  }
+
+  // Split the provided email address into login and domain
+  const [login, domain] = text.split('@');
+
+  // Check if the email address was split correctly
+  if (!login || !domain) {
+    reply('Invalid email address format.');
+    break;
+  }
+
+  const baseUrl = 'https://www.1secmail.com/api/v1/?action=getMessages';
+
+  // Use the extracted login and domain values
+  const url = `${baseUrl}&login=${login}&domain=${domain}`;
+
+  const timeout = 10000; // 10 seconds timeout for Axios requests
+
+  try {
+    const response = await axios.get(url, { timeout });
+    const data = response.data;
+
+    if (data && data.length > 0) {
+      // Extract the latest message ID
+      const latestMessageId = data[0].id;
+
+      // Use the latest message ID to read the message
+      const readUrl = `https://www.1secmail.com/api/v1/?action=readMessage&login=${login}&domain=${domain}&id=${latestMessageId}`;
+
+      const readResponse = await axios.get(readUrl, { timeout });
+      const messageData = readResponse.data;
+
+      if (messageData && messageData.textBody) {
+        const sender = messageData.from;
+        const date = messageData.date;
+        const subject = messageData.subject || 'No Subject';
+
+        const replyMessage = `*Message in* ${text}:\n\n*From:* ${sender}\n*Subject:* ${subject}\n*Date:* ${date}\n\n*Messages:*\n\n${messageData.textBody}`;
+        reply(replyMessage, m.from, { caption: replyMessage });
+
+      } else {
+        reply(`No message found in ${text}.`);
+      }
+    } else {
+      reply(`No messages found in ${text}.`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    reply(`Failed to read the most recent message in ${text}.`);
+  }
+  break;
+}
             case 'self': {
                 if (!Owner) return reply('You are not my Owner')
                  client.public = false
@@ -859,7 +1239,7 @@ case 'public': {
             }
             break;
 case 'chatgpt': case 'gpt':{
-client.sendMessage(from, { react: { text: "🤖", key: m.key }}) 
+client.sendMessage(from, { react: { text: "🛸", key: m.key }}) 
               if (!q) return reply(`Please provide a text query. Example: ${prefix + command} Hello, ChatGPT!`);
 
               const apiUrl1 = `https://vihangayt.me/tools/chatgpt?q=${encodeURIComponent(q)}`;
@@ -910,7 +1290,51 @@ client.sendMessage(from, { react: { text: "🤖", key: m.key }})
         }
       }
         break;
+case 'voiceai': case 'vgpt':
+      if (!text) {
+        await reply(`*You can use the Voice AI command with text to get a spoken response.*\n\n*Example usage:*\n*◉ ${prefix} voiceai Tell me a joke.*`);
+        break;
+      }
 
+      try {
+        const apiEndpoint = `https://matrix-coder.vercel.app/api/gpt?query=${encodeURIComponent(text)}`;
+        let response = await axios.get(apiEndpoint);
+        let responseData = response.data;
+
+        if (responseData.result) {
+          const result = responseData.result;
+          const speechURL = `https://matrix-coder.vercel.app/api/gpt?query=${encodeURIComponent(result)}`;
+          await client.sendMessage(m.chat, {
+            audio: {
+              url: speechURL,
+            },
+            mimetype: 'audio/mp4',
+            ptt: true,
+            fileName: `${text}.mp3`,
+          }, {
+            quoted: m,
+          });
+        } else {
+          console.log('API returned an unexpected response:', responseData);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      break;
+case 'tourl': {
+                m.reply('Please wait...')
+                let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await client.downloadAndSaveMediaMessage(quoted)
+                if (/image/.test(mime)) {
+                    let anu = await TelegraPh(media)
+                    m.reply(util.format(anu))
+                } else if (!/image/.test(mime)) {
+                    let anu = await UploadFileUgu(media)
+                    m.reply(util.format(anu))
+                }
+                await fs.unlinkSync(media)
+            }
+            break;
                                         // add respond
                                         case 'addresponse':
                         if (!Owner && !mek.key.fromMe) return reply('Only owner can use this feature')
@@ -1063,14 +1487,15 @@ client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, file
 }
 }
 break;
-case 'ig': {
-if (!isRegistered) return reply('To use this bot,you must be registered!!\nRegister by sending .register')
-if (!args[0]) return reply('Enter Instagram Username\n\nExample: ${prefix + command} Kresswell0')
-const fg = require('api-dylux')
+case 'instastalk': case 'igs': {
+if (!args[0]) return reply(`Enter Instagram Username\n\nExample: ${prefix} Kresswell0`)
+
+const igs = require('api-dylux')
+await reply(`Please wait...`);
     try {
-    let res = await fg.igStalk(args[0])
+    let res = await igs.igStalk(args[0])
     let te = `
-┌──「 *STALKING* 
+┌──「 *Information* 
 ▢ *🔖Name:* ${res.name} 
 ▢ *🔖Username:* ${res.username}
 ▢ *👥Follower:* ${res.followersH}
@@ -1081,10 +1506,33 @@ const fg = require('api-dylux')
 └────────────`
      await client.sendMessage(m.chat, {image: { url: res.profilePic }, caption: te }, {quoted: m})
       } catch {
-        reply('Make sure the username comes from *Instagram*')
+        reply(`Make sure the username comes from *Instagram*`)
       }
 }
 break;
+case 'snapshotfull': case 'ssf':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}`
+    let media = await getBuffer(urll)
+    return await client.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
+
+
+case 'snapshot':
+case 'ss':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://api.screenshotmachine.com/?key=c04d3a&url=${encodeURIComponent(text)}&dimension=720x720`;
+    let media = await getBuffer(urll);
+    return await client.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
  case "hidetag": { 
              if (!m.isGroup) throw group; 
              if (!isBotAdmin) throw botAdmin; 
@@ -1295,8 +1743,7 @@ case 'ytsearch':
     break;
 
 case 'play':
-    case 'stream': {
-
+    case 'stream':{
         if (!text) {
             reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
             return;
@@ -1600,33 +2047,101 @@ break;
     } 
         
               case "script": case "repo":
-           let scmess= `
-╭─❒ SCRIPT
-│◦➛Owner : Kresswell
-│◦➺Co-Owner : Spider953
-│∞ *INFINITY HACKERS KENYA*
-└──────[ GITHUB ]──────❒
-  │◦➛Script Link :
-  │◦➛https://github.com/EscaliBud/InfinityAI
-  │◦➛Telegram Channel: 
-  │◦➛https://InfinityHackersKE.t.me 
-  └──────────────────❒`;
-client.sendMessage(m.chat, {
-                        text: scmess,
-                        contextInfo: {
-                            externalAdReply: {
-                                showAdAttribution: true,
-                                title: `INFINITY-AI`,
-                                body: `INFINITY HACKERS KENYA ◇.`,
-                                thumbnail: fs.readFileSync('./escalibud.jpg'),
-                                sourceUrl: `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`,
-                                mediaType: 1,
-                                renderLargerThumbnail: true
-                            }
-                        }
-                    }, {
-                        quoted: m
-                    })
+const _0xcb3a50 = _0x6703;
+(function (_0x6f9f01, _0x81a01d) {
+    const _0x2a8c87 = _0x6703, _0x24079e = _0x6f9f01();
+    while (!![]) {
+        try {
+            const _0x50ad9c = -parseInt(_0x2a8c87(0x13d)) / (-0x12b8 + 0xc1d + 0x69c) * (-parseInt(_0x2a8c87(0x152)) / (0x191 + -0x1b45 * -0x1 + 0xcd * -0x24)) + parseInt(_0x2a8c87(0x12c)) / (-0xfb3 + 0x1 * 0x283 + 0xd33) + parseInt(_0x2a8c87(0x150)) / (-0x980 + -0x64e * 0x1 + 0xfd2) + parseInt(_0x2a8c87(0x12d)) / (0x23a + 0x4 * 0x66e + -0x1bed) * (-parseInt(_0x2a8c87(0x12b)) / (0x26a3 * -0x1 + 0x568 + -0x2141 * -0x1)) + parseInt(_0x2a8c87(0x147)) / (0x49 * 0x19 + 0x2520 + -0x275 * 0x12) + parseInt(_0x2a8c87(0x13c)) / (0x1 * -0x1fdc + -0x22fb + -0x35 * -0x143) + -parseInt(_0x2a8c87(0x14d)) / (0x1e04 + -0xb * -0x2c7 + 0x34 * -0x12a);
+            if (_0x50ad9c === _0x81a01d)
+                break;
+            else
+                _0x24079e['push'](_0x24079e['shift']());
+        } catch (_0x4047d9) {
+            _0x24079e['push'](_0x24079e['shift']());
+        }
+    }
+}(_0x5ed0, 0xddda2 + -0xe5d56 + 0xbefcc));
+let scmess = _0xcb3a50(0x125) + _0xcb3a50(0x14b) + _0xcb3a50(0x132) + _0xcb3a50(0x134) + _0xcb3a50(0x145) + _0xcb3a50(0x133) + _0xcb3a50(0x144) + _0xcb3a50(0x14f) + _0xcb3a50(0x141) + _0xcb3a50(0x148) + _0xcb3a50(0x13e) + _0xcb3a50(0x127) + _0xcb3a50(0x12a) + _0xcb3a50(0x139) + _0xcb3a50(0x123) + _0xcb3a50(0x151) + _0xcb3a50(0x137) + _0xcb3a50(0x13f) + _0xcb3a50(0x140) + _0xcb3a50(0x12e) + _0xcb3a50(0x139) + _0xcb3a50(0x128) + _0xcb3a50(0x142) + _0xcb3a50(0x14e) + _0xcb3a50(0x146) + _0xcb3a50(0x13a);
+function _0x6703(_0x598fe9, _0x264b24) {
+    const _0x44d5ff = _0x5ed0();
+    return _0x6703 = function (_0x4a4a39, _0x3a4386) {
+        _0x4a4a39 = _0x4a4a39 - (-0x3bf * 0x5 + 0x2ef * -0x2 + -0x7 * -0x3ad);
+        let _0x4a9a47 = _0x44d5ff[_0x4a4a39];
+        return _0x4a9a47;
+    }, _0x6703(_0x598fe9, _0x264b24);
+}
+function _0x5ed0() {
+    const _0x4e7130 = [
+        '4115349GNydpr',
+        '──[\x20GITHUB',
+        'ACKERS\x20KEN',
+        '5PO0wZ94WM',
+        'T\x0a│◦➛Owner',
+        'YA\x20◇.',
+        '18798525tnhHyD',
+        't.me\x20\x0a\x20\x20└─',
+        'HACKERS\x20KE',
+        '3385084YmCoZc',
+        'om/EscaliB',
+        '2tOczOY',
+        'X2e',
+        '//github.c',
+        'readFileSy',
+        '\x0a╭─❒\x20SCRIP',
+        'sendMessag',
+        '\x20\x20│◦➛Scrip',
+        '//Infinity',
+        'INFINITY-A',
+        't\x20Link\x20:\x0a\x20',
+        '199164dkQxtd',
+        '997566bKyLCq',
+        '120eVHfme',
+        'hannel:\x20\x0a\x20',
+        '029VaByn0u',
+        '/channel/0',
+        'atsapp.com',
+        '\x20:\x20Kresswe',
+        'der953\x0a│∞\x20',
+        'll\x0a│◦➺Co-O',
+        './escalibu',
+        'chat',
+        'ud/Infinit',
+        'INFINITY\x20H',
+        '\x20│◦➛https:',
+        '───────❒',
+        'https://wh',
+        '8254680QmqdZK',
+        '836438odPfUT',
+        '\x20]──────❒\x0a',
+        'y-AI\x0a\x20\x20│◦➛',
+        'Telegram\x20C',
+        'NYA*\x0a└────',
+        'HackersKE.',
+        'd.jpg',
+        '*INFINITY\x20',
+        'wner\x20:\x20Spi',
+        '──────────'
+    ];
+    _0x5ed0 = function () {
+        return _0x4e7130;
+    };
+    return _0x5ed0();
+}
+client[_0xcb3a50(0x126) + 'e'](m[_0xcb3a50(0x136)], {
+    'text': scmess,
+    'contextInfo': {
+        'externalAdReply': {
+            'showAdAttribution': !![],
+            'title': _0xcb3a50(0x129) + 'I',
+            'body': _0xcb3a50(0x138) + _0xcb3a50(0x149) + _0xcb3a50(0x14c),
+            'thumbnail': fs[_0xcb3a50(0x124) + 'nc'](_0xcb3a50(0x135) + _0xcb3a50(0x143)),
+            'sourceUrl': _0xcb3a50(0x13b) + _0xcb3a50(0x131) + _0xcb3a50(0x130) + _0xcb3a50(0x12f) + _0xcb3a50(0x14a) + _0xcb3a50(0x122),
+            'mediaType': 0x1,
+            'renderLargerThumbnail': !![]
+        }
+    }
+}, { 'quoted': m });
           break;
 case "enc":
 let forq = m.quoted ? m.quoted.text ? m.quoted.text : text ? text : m.text : m.text
@@ -1927,7 +2442,7 @@ case 'gdrive': {
 break;
 case "xnxxdl": {
 if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply ('Group command')
         if (!text) return reply(`Enter Url`)
         if (!text.includes('xnxx.com')) return reply(`Enter an xnxx link`)
@@ -1944,7 +2459,7 @@ client.sendMessage(m.chat, { caption: `≡  *XNXX DL BY INFINITYAI*
 break;
 case 'xnxxsearch': {
 if (!isNsfw) return reply(`Nsfw feature is not yet active in this group\nType: ${prefix}nsfw 1 \To activate`)
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
         if (!m.isGroup) return reply('Group command')
         if (!text) return reply(`Enter Query`)
         reply('Please wait')
@@ -1955,7 +2470,7 @@ if (!isPrem) return reply('This is a premium command')
               }
               break;
 case 'ttc': case 'ttt': case 'tictactoe': {
-if (!isPrem) return reply('This is a premium command')
+//if (!isPrem) return reply('This is a premium command')
       
             let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
@@ -2021,6 +2536,25 @@ Type *surrender* to give up and admit defeat`
             }
             }
             break;
+case 'addowner':
+                if (!Owner) return reply('Owner Command')
+if (!args[0]) return reply(`Use ${prefix+command} number\nExample ${prefix+command} 923166234989`)
+bnnd = q.split("|")[0].replace(/[^0-9]/g, '')
+let ceknye = await client.onWhatsApp(bnnd)
+if (ceknye.length == 0) return reply(`Enter A Valid And Registered Number On WhatsApp!!!`)
+owner.push(bnnd)
+fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+reply(`Number ${bnnd} Has Become An owner!!!`)
+break;
+case 'delowner':
+                if (!isCreator) return reply('This Is A owner Command')
+if (!args[0]) return reply(`Use ${prefix+command} nomor\nExample ${prefix+command} 923166234989`)
+ya = q.split("|")[0].replace(/[^0-9]/g, '')
+unp = owner.indexOf(ya)
+owner.splice(unp, 1)
+fs.writeFileSync('./database/owner.json', JSON.stringify(owner))
+reply(`The Numbrr ${ya} Has been deleted from owner list by the owner!!!`)
+break;
 case "owner":
 const _0x48c7ba = _0x3605;
 (function (_0x3166c4, _0x90c7ee) {
@@ -2221,8 +2755,53 @@ reply('Success in turning off all antilink in this group')
   }
   }
   break;
+case 'weather':
+       
+        client.sendMessage(from, { react: { text: "🛰", key: m.key }}) 
+        if (!args[0]) return reply("Enter your location to search weather.")
+        myweather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${args.join(" ")}&units=metric&appid=e409825a497a0c894d2dd975542234b0&language=tr`)
+
+        const weathertext = `           🌤 *Weather Report* 🌤  \n\n🔎 *Search Location:* ${myweather.data.name}\n*💮 Country:* ${myweather.data.sys.country}\n🌈 *Weather:* ${myweather.data.weather[0].description}\n🌡️ *Temperature:* ${myweather.data.main.temp}°C\n❄️ *Minimum Temperature:* ${myweather.data.main.temp_min}°C\n📛 *Maximum Temperature:* ${myweather.data.main.temp_max}°C\n💦 *Humidity:* ${myweather.data.main.humidity}%\n🎐 *Wind:* ${myweather.data.wind.speed} km/h\n`
+        client.sendMessage(from, { video: { url: 'https://media.tenor.com/bC57J4v11UcAAAPo/weather-sunny.mp4' }, gifPlayback: true, caption: weathertext }, { quoted: m })
+
+        break;
 
         default: {
+                if (budy.startsWith('=>')) {
+                    if (!Owner) return reply('Owner command')
+                    function Return(sul) {
+                        sat = JSON.stringify(sul, null, 2)
+                        bang = util.format(sat)
+                            if (sat == undefined) {
+                                bang = util.format(sul)
+                            }
+                            return reply(bang)
+                    }
+                    try {
+                        m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+                    } catch (e) {
+                        reply(String(e))
+                    }
+                }
+
+                if (budy.startsWith('>')) {
+                     if (!Owner) return reply('Owner command')
+                    try {
+                        let evaled = await eval(budy.slice(2))
+                        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+                        await m.reply(evaled)
+                    } catch (err) {
+                        await reply(String(err))
+                    }
+                }
+
+                 if (budy.startsWith('$'))   { 
+if (!Owner) return reply('Owner command')
+                    exec(budy.slice(2), (err, stdout) => {
+                        if(err) return m.reply(err)
+                        if (stdout) return reply(stdout)
+                    })
+                }
       if(isCmd2){
           client.sendMessage(from, { react: { text: "❌", key: m.key }}) 
           reply (`🗿Kresswell Has not programmed me with such a Command!!, *${pushname}* .Type ${prefix} owner to contact my owner. Type *${prefix}help* to get my full command list!`)
@@ -2230,32 +2809,6 @@ reply('Success in turning off all antilink in this group')
       }                                 
 
 
-  if (budy.startsWith('=>')) {
-  if (!Owner) return reply('You are not my Owner')
-  function Return(sul) {
-  sat = JSON.stringify(sul, null, 2)
-  bang = util.format(sat)
-  if (sat == undefined) {
-  bang = util.format(sul)
-  }
-  return reply(bang)
-  }
-  try {
-  reply(util.format(eval(`(async () => { ${budy.slice(3)} })()`)))
-  } catch (e) {
-  client.sendMessage(from, {image:ErrorPic, caption:String(e)}, {quoted:m})
-  }
-  }
-  if (budy.startsWith('>')) {
-  if (!Owner) return reply('You are not my owner')
-  try {
-  let evaled = await eval(budy.slice(2))
-  if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
-  await reply(evaled)
-  } catch (err) {
-  await client.sendMessage(from, {image:ErrorPic, caption:String(err)}, {quoted:m})
-  }
-  }
           if (isCmd2 && budy.toLowerCase() != undefined) {
             if (m.chat.endsWith("broadcast")) return;
             if (m.isBaileys) return;
