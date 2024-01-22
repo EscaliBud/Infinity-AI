@@ -224,7 +224,7 @@ client.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender
   let smallinput = budy.toLowerCase()
 
 
-async function Telesticker(url) {
+/*async function Telesticker(url) {
     return new Promise(async (resolve, reject) => {
         if (!url.match(/(https:\/\/t.me\/addstickers\/)/gi)) return reply('Enter your url telegram sticker link')
         packName = url.replace("https://t.me/addstickers/", "")
@@ -242,7 +242,7 @@ async function Telesticker(url) {
         }
     resolve(mariayresult)
     })
-}
+}*/
         //TicTacToe
             this.game = this.game ? this.game : {}
             let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'PLAYING')
@@ -620,7 +620,6 @@ smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
 *┃➥Take*
 *┃➥Smeme*
 *┃➥Quotely*
-*┃➥Tgs*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -696,7 +695,7 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
-case 'tgs':{
+/* case 'tgs':{
                 if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
                 let mariaresources = await Telesticker(args[0])
                 await reply(`Sending ${mariaresources.length} stickers...`)
@@ -712,7 +711,7 @@ case 'tgs':{
                 }
         } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
 }
-break;
+break; */
   
                
 case 'toqr': {
