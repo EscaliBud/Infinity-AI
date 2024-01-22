@@ -1,4 +1,4 @@
-
+ 
 const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require("@whiskeysockets/baileys");
 const fs = require("fs");
 const util = require("util");
@@ -489,6 +489,10 @@ function _0x2ae6(_0x177d32, _0x5203d7) {
         var _0x5668d8 = _0x550531[_0x39c216];
         return _0x5668d8;
     }, _0x2ae6(_0x177d32, _0x5203d7);
+=======
+if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
+  reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
+
 }
 smallinput == _0x241dd0(0x9e) && reply(_0x241dd0(0xa7) + _0x241dd0(0xaa) + _0x241dd0(0x9a));
 smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
@@ -505,6 +509,9 @@ smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
 			console.log(color(`Private Chat:`, 'green'))
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
         }
+    if (autoread === 'TRUE' && !m.isGroup) { 
+             client.readMessages([m.key])
+    }
 
 
     if (isCmd2 && !m.isGroup) {
@@ -1736,8 +1743,7 @@ case 'ytsearch':
     break;
 
 case 'play':
-    case 'stream': {
-//if (!isPrem) return reply('This is a premium command')
+    case 'stream':{
         if (!text) {
             reply('Provide a search term!\nE.g: play NWA Appetite for destruction. ')
             return;
