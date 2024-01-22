@@ -513,10 +513,13 @@ if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinpu
 *┃➥Lyrics*
 *┃➥Song*
 *┃➥Gitclone*
+*┃➥Vv*
 *┃➥Tovv*
 *┃➥Qoutely*
 *┃➥Igvideo*
 *┃➥APK*
+*┃➥Snapshot*
+*┃➥Snapshotfull*
 *┗━───────────────╯*
 
 *⌜ Sticker Menu ⌟*
@@ -1448,14 +1451,15 @@ client.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, file
 }
 }
 break;
-case 'ig': {
-if (!isRegistered) return reply('To use this bot,you must be registered!!\nRegister by sending .register')
-if (!args[0]) return reply('Enter Instagram Username\n\nExample: ${prefix + command} Kresswell0')
-const fg = require('api-dylux')
+case 'instastalk': case 'igs': {
+if (!args[0]) return reply(`Enter Instagram Username\n\nExample: ${prefix} Kresswell0`)
+
+const igs = require('api-dylux')
+await reply(`Please wait...`);
     try {
-    let res = await fg.igStalk(args[0])
+    let res = await igs.igStalk(args[0])
     let te = `
-┌──「 *STALKING* 
+┌──「 *Information* 
 ▢ *🔖Name:* ${res.name} 
 ▢ *🔖Username:* ${res.username}
 ▢ *👥Follower:* ${res.followersH}
@@ -1466,10 +1470,33 @@ const fg = require('api-dylux')
 └────────────`
      await client.sendMessage(m.chat, {image: { url: res.profilePic }, caption: te }, {quoted: m})
       } catch {
-        reply('Make sure the username comes from *Instagram*')
+        reply(`Make sure the username comes from *Instagram*`)
       }
 }
 break;
+case 'snapshotfull': case 'ssf':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://image.thum.io/get/fullpage/=${text.match(/\bhttps?:\/\/\S+/gi)[0]}`
+    let media = await getBuffer(urll)
+    return await client.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
+
+
+case 'snapshot':
+case 'ss':
+  try {
+    if (!text) return reply("```Uhh Please, Give me Url!```");
+    let urll = `https://api.screenshotmachine.com/?key=c04d3a&url=${encodeURIComponent(text)}&dimension=720x720`;
+    let media = await getBuffer(urll);
+    return await client.sendMessage(m.chat, { image: media }, { quoted: m });
+  } catch (err) {
+    return reply("```Error While Fetching Snapshot```");
+  }
+  break;
  case "hidetag": { 
              if (!m.isGroup) throw group; 
              if (!isBotAdmin) throw botAdmin; 
