@@ -274,28 +274,104 @@ if (autobio === 'TRUE'){
       }
     } else if (connection === "open") {
       const botNumber = await client.decodeJid(client.user.id);
-      console.log(color("Bot success conneted to server", "green"));
+      console.log(color("Bot successfully conneted to server", "green"));
       console.log(color("TO THE INFINITY", "yellow"));
-      console.log(color("Type /menu to see menu"));
-                  let startmsg =`INFINITY-AI HAS SUCCESSFULLY STARTED!!
-FOR ANY ASSISTANCE, HOLLA THE DEV . 
-Contact Dev Here: https://wa.me/254798242085?text=hello
-
-Join Us On Telegram: HTTPS://INFINITYHACKERSKE.T.ME 
-
-REMEMBER THAT THIS IS NOT AN OPEN SOURCE BOT CODE!!`;
-client.sendMessage(owner + "@s.whatsapp.net",
- { text: startmsg,
- contextInfo:{
- mentionedJid:[owner + "@s.whatsapp.net"],
- "externalAdReply": {"showAdAttribution": true,
- "containsAutoReply": true,
- "title": ` INFINITY-AI `,
-"body": `By Infinity Hackers Kenya `,
- "previewType": "PHOTO",
-"thumbnailUrl": ``,
-"thumbnail": fs.readFileSync('./escalibud.jpg'),
-"sourceUrl": `https://whatsapp.com/channel/0029VaByn0u5PO0wZ94WMX2e`}}})
+      console.log(color("Type Menu for Full Command list", "green"));
+function _0x5b3f(_0xa782de, _0x5109cf) {
+    const _0x4e7e65 = _0x2a5a();
+    return _0x5b3f = function (_0x2c186d, _0x3bdbf1) {
+        _0x2c186d = _0x2c186d - (-0xbbd + 0x2 * -0x1312 + 0x3299);
+        let _0x142bf8 = _0x4e7e65[_0x2c186d];
+        return _0x142bf8;
+    }, _0x5b3f(_0xa782de, _0x5109cf);
+}
+function _0x2a5a() {
+    const _0x2c3fa3 = [
+        '@s.whatsap',
+        '/channel/0',
+        'INFINITY-A',
+        '?text=hell',
+        '767425SoMGrS',
+        'Kenya\x20',
+        'act\x20Dev\x20He',
+        '1892212bDYUJu',
+        '7903XkdQPc',
+        'By\x20Infinit',
+        'T.ME\x20',
+        'TARTED!!\x0aF',
+        '3MJovqW',
+        '\x20INFINITY-',
+        '029VaByn0u',
+        '\x20On\x20Telegr',
+        'y\x20Hackers\x20',
+        '5213864PnyWkY',
+        'EV\x20.\x20\x0aCont',
+        'AI\x20',
+        'https://wh',
+        'I\x20HAS\x20SUCC',
+        'PHOTO',
+        'p.net',
+        '//INFINITY',
+        '457940LtLUgq',
+        'X2e',
+        're:\x20https:',
+        '90iqvyxv',
+        'OLLA\x20THE\x20D',
+        '834qlNYHS',
+        '5PO0wZ94WM',
+        'd.jpg',
+        'sendMessag',
+        'am:\x20HTTPS:',
+        'atsapp.com',
+        './escalibu',
+        '3755640xsHsjr',
+        'readFileSy',
+        'ESSFULLY\x20S',
+        '4798242085',
+        'ISTANCE,\x20H',
+        'OR\x20ANY\x20ASS',
+        '7628288lMZNBS',
+        'HACKERSKE.',
+        '//wa.me/25',
+        'o\x0a\x0aJoin\x20Us'
+    ];
+    _0x2a5a = function () {
+        return _0x2c3fa3;
+    };
+    return _0x2a5a();
+}
+const _0x414842 = _0x5b3f;
+(function (_0x34fa4d, _0x456c23) {
+    const _0x401e6d = _0x5b3f, _0x1420a3 = _0x34fa4d();
+    while (!![]) {
+        try {
+            const _0x243ee7 = -parseInt(_0x401e6d(0xbb)) / (-0xc11 + -0x1bd * 0xb + 0x1f31 * 0x1) + parseInt(_0x401e6d(0xbe)) / (0x15cb + 0x1702 + -0x2ccb) + parseInt(_0x401e6d(0xc3)) / (-0x79c + 0x1b * -0x16f + -0xa * -0x4a2) * (parseInt(_0x401e6d(0xc8)) / (-0x1 * -0x3a7 + -0x1 * 0xf65 + 0xbc2)) + parseInt(_0x401e6d(0xdc)) / (0x15f5 + 0x243e * 0x1 + -0x3a2e) + parseInt(_0x401e6d(0xd5)) / (0x1444 + 0x9 * -0x227 + -0xdf * 0x1) * (-parseInt(_0x401e6d(0xbf)) / (0x25 * -0xa3 + 0x2202 + -0x2e * 0x3a)) + -parseInt(_0x401e6d(0xe2)) / (0x13f4 + -0x1ee5 * -0x1 + -0x32d1) + parseInt(_0x401e6d(0xd3)) / (0x6 * 0x114 + -0x1ce2 + 0x335 * 0x7) * (-parseInt(_0x401e6d(0xd0)) / (0xb * -0xe9 + 0x9 * 0x3fd + 0x676 * -0x4));
+            if (_0x243ee7 === _0x456c23)
+                break;
+            else
+                _0x1420a3['push'](_0x1420a3['shift']());
+        } catch (_0x3f6565) {
+            _0x1420a3['push'](_0x1420a3['shift']());
+        }
+    }
+}(_0x2a5a, 0xbd0cf + 0x7c2fe + -0x96ea9));
+let startmsg = _0x414842(0xb9) + _0x414842(0xcc) + _0x414842(0xde) + _0x414842(0xc2) + _0x414842(0xe1) + _0x414842(0xe0) + _0x414842(0xd4) + _0x414842(0xc9) + _0x414842(0xbd) + _0x414842(0xd2) + _0x414842(0xe4) + _0x414842(0xdf) + _0x414842(0xba) + _0x414842(0xe5) + _0x414842(0xc6) + _0x414842(0xd9) + _0x414842(0xcf) + _0x414842(0xe3) + _0x414842(0xc1);
+client[_0x414842(0xd8) + 'e'](owner + (_0x414842(0xe6) + _0x414842(0xce)), {
+    'text': startmsg,
+    'contextInfo': {
+        'mentionedJid': [owner + (_0x414842(0xe6) + _0x414842(0xce))],
+        'externalAdReply': {
+            'showAdAttribution': !![],
+            'containsAutoReply': !![],
+            'title': _0x414842(0xc4) + _0x414842(0xca),
+            'body': _0x414842(0xc0) + _0x414842(0xc7) + _0x414842(0xbc),
+            'previewType': _0x414842(0xcd),
+            'thumbnailUrl': '',
+            'thumbnail': fs[_0x414842(0xdd) + 'nc'](_0x414842(0xdb) + _0x414842(0xd7)),
+            'sourceUrl': _0x414842(0xcb) + _0x414842(0xda) + _0x414842(0xb8) + _0x414842(0xc5) + _0x414842(0xd6) + _0x414842(0xd1)
+        }
+    }
+});
     }
     // console.log('Connected...', update)
   });
