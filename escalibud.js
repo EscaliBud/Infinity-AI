@@ -384,119 +384,7 @@ const isRegistered = checkRegisteredUser(sender)
 if (!client.public) {
 if (!m.key.fromMe) return
 }
-var _0x241dd0 = _0x2ae6;
-(function (_0xf7db55, _0x27d8d9) {
-    var _0x9f9bfc = _0x2ae6, _0xf01b38 = _0xf7db55();
-    while (!![]) {
-        try {
-            var _0x149c9f = -parseInt(_0x9f9bfc(0x85)) / (0x1 * -0x1bc1 + 0x1a63 + 0x15f) * (parseInt(_0x9f9bfc(0x7f)) / (0x1f67 * 0x1 + 0x1 * 0xbd6 + -0xd9 * 0x33)) + -parseInt(_0x9f9bfc(0x90)) / (0x843 + -0x1 * 0x3bf + 0x1 * -0x481) + -parseInt(_0x9f9bfc(0x74)) / (-0x20cc + 0x2432 + -0x362) + parseInt(_0x9f9bfc(0xac)) / (0x249e + 0x1d4 + -0x1 * 0x266d) * (parseInt(_0x9f9bfc(0xb2)) / (0x10f0 * -0x2 + 0xf37 + 0x12af)) + parseInt(_0x9f9bfc(0x80)) / (-0x2145 + -0x1457 + 0x35a3) + parseInt(_0x9f9bfc(0x8f)) / (0x11fd * -0x2 + -0x1 * 0x387 + -0x15d * -0x1d) * (-parseInt(_0x9f9bfc(0x78)) / (-0x1 * 0x140 + -0x1075 + 0x11be)) + -parseInt(_0x9f9bfc(0x7c)) / (-0x1 * 0x21dd + 0x7 * 0x3ee + 0x665) * (-parseInt(_0x9f9bfc(0xa2)) / (0x1e5c + 0x2 * 0x7a2 + -0x1 * 0x2d95));
-            if (_0x149c9f === _0x27d8d9)
-                break;
-            else
-                _0xf01b38['push'](_0xf01b38['shift']());
-        } catch (_0x2a4b78) {
-            _0xf01b38['push'](_0xf01b38['shift']());
-        }
-    }
-}(_0x53e9, 0x56aed + 0x84f7 + -0x14a51 * 0x1));
-smallinput == _0x241dd0(0xb8) && reply(_0x241dd0(0x95) + _0x241dd0(0x9d) + _0x241dd0(0x84));
-smallinput == _0x241dd0(0x96) + _0x241dd0(0x76) && reply(_0x241dd0(0xa3) + _0x241dd0(0x75) + _0x241dd0(0x93) + _0x241dd0(0x82) + _0x241dd0(0xb6));
-function _0x53e9() {
-    var _0x27622b = [
-        'Hey,Thats\x20',
-        '\x20were\x20weak',
-        '30SomXae',
-        'her😂😂💀',
-        'infinity\x20a',
-        '18bnwqrE',
-        '2660861JEMxmF',
-        's.\x20You\x20can',
-        't\x20question',
-        'e\x20your\x20fat',
-        'er!!',
-        '65003mhkVPn',
-        '\x20😇.\x20I\x20am\x20a',
-        'sorry',
-        'r\x20what\x20do\x20',
-        '\x20Click\x20thi',
-        '/InfinityH',
-        'Love\x20is\x20a\x20',
-        'ackers',
-        'art\x20by\x20Joi',
-        'me,Do\x20you\x20',
-        '40wRLUHl',
-        '402081UuHuVd',
-        '\x20,Just\x20lik',
-        'ning\x20us\x20on',
-        'father\x20tha',
-        'y\x20Spider\x20a',
-        'Kresswell\x20',
-        'why\x20are\x20yo',
-        'll🥳2\x20Giant',
-        'all.',
-        'thanks',
-        'a😂😂',
-        '\x20bot\x20after',
-        'nd\x20Kresswe',
-        'is\x20my\x20Fath',
-        'umbwa',
-        'That\x20is\x20my',
-        'long\x20to\x20In',
-        'finity\x20Hac',
-        '4421285AVpcXP',
-        'You\x20should',
-        'I\x20knew\x20you',
-        'sh\x20on\x20me\x20o',
-        '\x20Home,I\x20be',
-        'rudia\x20bila',
-        'infinity\x20h',
-        '\x20also\x20be\x20p',
-        '\x20kulia\x20sas',
-        'arigatou',
-        '745750SxodYL',
-        's\x20Link.\x20ht',
-        'have\x20a\x20cru',
-        'tps://t.me',
-        'cute',
-        'includes',
-        '12TpwrEa',
-        '\x20Telegram.',
-        'Mention\x20no',
-        'kers,Led\x20B',
-        '😂😂💀',
-        'scam🗿',
-        'kresswell',
-        'love',
-        '1922512tBFlMN',
-        '\x20ask\x20your\x20',
-        'u\x20gay',
-        'ackersKE',
-        '684027uAgNco',
-        'you\x20want??'
-    ];
-    _0x53e9 = function () {
-        return _0x27622b;
-    };
-    return _0x53e9();
-}
-smallinput == _0x241dd0(0x7e) + 'i' && reply(_0x241dd0(0x7a) + _0x241dd0(0x8e) + _0x241dd0(0xae) + _0x241dd0(0xa5) + _0x241dd0(0x88) + _0x241dd0(0x79));
-smallinput == _0x241dd0(0xa8) + _0x241dd0(0x8c) && reply(_0x241dd0(0x9f) + _0x241dd0(0xa6) + _0x241dd0(0xa0) + _0x241dd0(0xa1) + _0x241dd0(0xb5) + _0x241dd0(0x94) + _0x241dd0(0x9c) + _0x241dd0(0x97) + _0x241dd0(0x81) + _0x241dd0(0xa9) + _0x241dd0(0x8d) + _0x241dd0(0x92) + _0x241dd0(0xb3) + _0x241dd0(0x89) + _0x241dd0(0xad) + _0x241dd0(0xaf) + _0x241dd0(0x8a) + _0x241dd0(0x77));
-smallinput == _0x241dd0(0x87) && reply(_0x241dd0(0xa4) + _0x241dd0(0x7b) + _0x241dd0(0x91) + _0x241dd0(0x83) + _0x241dd0(0x7d));
-function _0x2ae6(_0x177d32, _0x5203d7) {
-    var _0x550531 = _0x53e9();
-    return _0x2ae6 = function (_0x39c216, _0x1e8faf) {
-        _0x39c216 = _0x39c216 - (-0x1 * -0x2473 + 0x1a77 + 0x82 * -0x7b);
-        var _0x5668d8 = _0x550531[_0x39c216];
-        return _0x5668d8;
-    }, _0x2ae6(_0x177d32, _0x5203d7);
-=======
-if (smallinput.includes('thanks')|| smallinput.includes('arigatou') || smallinput.includes('cute')) {
-  reply (`Mention not ${pushname} 😇. I am a bot afterall.`);
 
-}
-smallinput == _0x241dd0(0x9e) && reply(_0x241dd0(0xa7) + _0x241dd0(0xaa) + _0x241dd0(0x9a));
-smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
-(smallinput[_0x241dd0(0xb1)](_0x241dd0(0x99)) || smallinput[_0x241dd0(0xb1)](_0x241dd0(0xab)) || smallinput[_0x241dd0(0xb1)](_0x241dd0(0xb0))) && reply(_0x241dd0(0xb4) + 't\x20' + pushname + (_0x241dd0(0x86) + _0x241dd0(0x9b) + _0x241dd0(0x98)));
 //chat counter (console log)
         if (m.message && m.isGroup) {
             client.readMessages([m.key])
@@ -621,7 +509,6 @@ smallinput == _0x241dd0(0xb9) && reply(_0x241dd0(0x8b) + _0x241dd0(0xb7));
 *┃➥Take*
 *┃➥Smeme*
 *┃➥Quotely*
-*┃➥Tgs*
 *┗━───────────────╯*
 
 *⌜ Utilities ⌟*
@@ -697,7 +584,7 @@ client.sendMessage(m.chat, {
                         quoted: m
                     })
           break;
-case 'tgs':{
+ case 'tgs':{
                 if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
                 let mariaresources = await Telesticker(args[0])
                 await reply(`Sending ${mariaresources.length} stickers...`)
@@ -713,7 +600,7 @@ case 'tgs':{
                 }
         } else reply(`Where is the telegram sticker link?\nExample. ${prefix + command} https://t.me/addstickers/FriendlyDeath`)
 }
-break;
+break; 
   
                
 case 'toqr': {
