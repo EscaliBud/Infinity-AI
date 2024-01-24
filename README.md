@@ -14,9 +14,7 @@
 
 **⚠️ Note: This bot is not yet available for public Deploymens;**
 
- ***Click to [FORK](https://github.com/EscaliBud/InfinityAI/fork)***
+ ***Click to [FORK](https://github.com/EscaliBud/Infinity-AI/fork)***
 
 
 
-## ```SCAN QR CODE```
-[![SCAN QR](https://repl.it/badge/github/quiec/whatsasena)](http://qrscanner.kresswellke.repl.co/)
